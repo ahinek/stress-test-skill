@@ -1,6 +1,6 @@
 # Stress Test Skill
 
-A structured failure-first review skill that helps teams identify likely breakdowns, hidden assumptions, organizational risks, and prevention opportunities before major commitments.
+A structured failure-first review skill that helps teams identify likely breakdowns, hidden assumptions, organizational risks, and prevention opportunities before major commitments. This skill is inspired by Dr. Gary Klein's "Premortem" concept, but takes it much further into a forced ranking/commitment behavior. It also asks questions like “How do projects like these usually fail?.” Ultimately, this skill will feed a "Risk Burndown" skill.
 
 This skill is intended for planning reviews involving:
 - releases
@@ -13,7 +13,7 @@ This skill is intended for planning reviews involving:
 - operational changes
 - executive proposals
 
-The goal is not to criticize plans for sport. The goal is to make plans harder to break before teams commit to them publicly.
+The goal is to make plans harder to break before teams commit to them publicly, or at the very least identify the greatest potantials for failure in order to tackle them early before they cause delay to the project.
 
 ---
 
