@@ -12,7 +12,7 @@ Use this skill to help a user test a meaningful plan before they commit to it.
 
 A stress test assumes the plan has already failed and works backward to explain why. This framing helps surface risks, false assumptions, weak signals, and uncomfortable truths that ordinary feedback often misses.
 
-The goal is not to criticize the user’s plan for sport. The goal is to make the plan harder to break.
+The goal is not to stress-test the user’s plan to tick a box or for curiosity. The goal is to make the plan harder to break.
 
 ## When to Use This Skill
 
@@ -45,8 +45,8 @@ Do not use this skill for:
 Run this skill when the user says something like:
 
 * “premortem this”
-* “premortem my…”
-* “run a premortem”
+* “run a 'Start At The End' workshop on this”
+* “what are our biggest threats?”
 * “what could kill this?”
 * “future-proof this”
 * “stress test this plan”
@@ -101,7 +101,7 @@ Always evaluate whether failure is likely to emerge from:
 
 Before running the stress test, make sure you understand three things:
 
-1. **What is being premortemed?**
+1. **What is being stress-tested?**
    The plan, product, launch, hire, strategy, or decision should be describable in one sentence.
 
 2. **Who is affected?**
@@ -121,7 +121,7 @@ Before asking the user for more information, use any context already available:
 * Project notes, briefs, plans, README files, or other relevant workspace content
 * Any explicit constraints, success criteria, or stakeholders already mentioned
 
-Do not over-search. The goal is to gather enough context to run a useful premortem, not to perform open-ended research.
+Do not over-search. The goal is to gather enough context to run a useful stress-test, not to perform open-ended research.
 
 ### Step 2: Evaluate Sufficiency
 
@@ -143,11 +143,11 @@ Examples:
 
 If an answer can be reasonably inferred from context, infer it rather than asking.
 
-## Premortem Procedure
+## Stess-Test Procedure
 
 ### Step 1: Set the Frame
 
-Once the minimum context is available, explicitly establish the premortem frame.
+Once the minimum context is available, explicitly establish the stress-test frame.
 
 Use wording like:
 
@@ -181,14 +181,14 @@ If the environment supports parallel sub-agents or parallel task execution, run 
 Use this prompt structure for each deep dive:
 
 ```text
-You are an investigator in a premortem analysis. You have been assigned one specific failure reason to analyze in depth.
+You are an investigator in a stress-test analysis. You have been assigned one specific failure reason to analyze in depth.
 
 The plan:
 ---
 [Summarize the full relevant context: what it is, who it is for, what success looks like, and any constraints or source context.]
 ---
 
-PREMORTEM FRAME: It is six months from now. This plan has failed.
+STRESS-TEST FRAME: It is six months from now. This plan has failed.
 
 YOUR ASSIGNED FAILURE REASON:
 [Insert the specific failure reason.]
@@ -312,8 +312,8 @@ If precise base rates are unavailable, provide directional estimates and clearly
 When the environment supports file creation, generate two files:
 
 ```text
-premortem-report-[timestamp].html
-premortem-transcript-[timestamp].md
+stress-test-report-[timestamp].html
+stress-test-transcript-[timestamp].md
 ```
 
 ### HTML Report Requirements
@@ -329,7 +329,7 @@ Use:
 * One visual card per failure mode
 * Severity and likelihood indicators for each failure mode
 * A grid showing the number of investigator passes and their findings
-* Footer with timestamp and the item being premortemed
+* Footer with timestamp and the item being stress-tested
 
 The report should prioritize readability over decoration.
 
@@ -345,7 +345,7 @@ Create a Markdown transcript containing:
 
 ## Chat Response Format
 
-After completing the premortem, provide a short chat summary.
+After completing the stress-test, provide a short chat summary.
 
 Keep it to three sentences or fewer:
 
@@ -359,7 +359,7 @@ Example:
 
 ## Quality Bar
 
-A good premortem is:
+A good stress-test is:
 
 * Specific
 * Uncomfortable
@@ -368,7 +368,7 @@ A good premortem is:
 * Focused on preventable failure
 * Clear about what to change next
 
-A weak premortem is:
+A weak stress-test is:
 
 * Generic
 * Overly polite
@@ -381,7 +381,7 @@ A weak premortem is:
 
 User request:
 
-> Premortem this: I am about to launch a $297 live workshop on how to use Claude for marketing teams. It has 50 seats and targets marketing managers at companies with 10-50 employees.
+> Stress-test this: I am about to launch a $297 live workshop on how to use Claude for marketing teams. It has 50 seats and targets marketing managers at companies with 10-50 employees.
 
 Raw failure reasons might include:
 
