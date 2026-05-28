@@ -60,6 +60,27 @@ Known concerns:
 [What already feels risky, unclear, controversial, or assumed?]
 ```
 
+## Templates
+
+Quick-start templates are available in:
+
+```text
+templates/
+```
+
+Start with:
+
+```text
+templates/quick-start-template.md
+```
+
+Additional templates may be added over time for:
+- release planning
+- organizational change
+- strategic initiatives
+- AI rollouts
+- operational migrations
+
 Users do not need perfect formatting. The skill should infer what it can and ask only for the most important missing information.
 
 ---
