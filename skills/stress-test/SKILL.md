@@ -1,81 +1,213 @@
 ---
+
 name: stress-test
 description: Structured failure-first review for plans, launches, strategies, delivery commitments, and organizational decisions.
 ---
--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 # Stress Test Skill
 
 ## Purpose
 
-Use this skill to help a user test a meaningful plan before they commit to it.
+Use this skill to test a meaningful plan before commitment.
 
-A stress test assumes the plan has already failed and works backward to explain why. This framing helps surface risks, false assumptions, weak signals, and uncomfortable truths that ordinary feedback often misses.
+A Stress Test assumes the plan has already failed and works backward to explain why. This framing helps surface risks, hidden assumptions, weak signals, organizational friction, and uncomfortable truths that ordinary reviews often miss.
 
-The goal is not to stress-test the user’s plan to tick a box or for curiosity. The goal is to make the plan harder to break.
+The goal is not to criticize the plan.
 
-## When to Use This Skill
+The goal is to make the plan harder to break.
 
-Use this skill when the user has a concrete plan, decision, strategy, launch, or commitment where the cost of being wrong is meaningful.
+---
 
-Good targets include:
+# Operating Modes
 
-* Product or feature launches
-* Go-to-market plans
-* Pricing or packaging changes
-* Hiring decisions
-* Strategy or positioning shifts
-* Partnerships or vendor decisions
-* Executive proposals
-* Major process changes
-* High-cost or high-visibility commitments
+This skill supports two modes.
+
+## Default Mode
+
+Default Mode is the standard behavior.
+
+Use it unless the user explicitly requests a deeper analysis.
+
+Default Mode should:
+
+* identify the strongest failure modes
+* force prioritization
+* produce a concise decision-making artifact
+* focus on actionable insights
+
+Target length:
+
+* approximately 3-5 pages
+* 5-8 failure modes maximum
+
+Default Mode should be used for:
+
+* release reviews
+* strategy reviews
+* operational changes
+* organizational initiatives
+* leadership preparation
+* first-pass risk analysis
+
+---
+
+## Deep Dive Mode
+
+Deep Dive Mode is used when the user explicitly requests detailed analysis.
+
+Use Deep Dive Mode for:
+
+* workshops
+* executive planning sessions
+* major strategic initiatives
+* high-cost commitments
+* detailed investigation of a specific failure mode
+
+Deep Dive Mode may include:
+
+* failure narratives
+* expanded assumptions
+* detailed warning signs
+* prevention strategies
+* workshop-level analysis
+
+---
+
+## Invocation Rules
+
+Use Default Mode for requests such as:
+
+```text
+Stress test this.
+Stress test this plan.
+Find the blind spots.
+What could kill this?
+Poke holes in this.
+What am I missing?
+```
+
+Use Deep Dive Mode for requests such as:
+
+```text
+Stress test this in deep-dive mode.
+Run a full stress test.
+Give me the detailed version.
+Deep dive this plan.
+Expand failure mode #3.
+```
+
+If the user does not specify a mode, use Default Mode.
+
+---
+
+# Length Control
+
+Do not treat comprehensiveness as permission to be exhaustive.
+
+Default Mode should identify the strongest 5-8 failure modes, not every imaginable failure.
+
+Prioritize:
+
+* credibility
+* impact
+* preventability
+* decision usefulness
+
+over completeness.
+
+Prefer concise, high-signal analysis over long narrative explanation.
+
+Only produce expanded failure narratives in Deep Dive Mode.
+
+If additional failure modes exist but are substantially less likely, less impactful, or redundant, omit them.
+
+---
+
+# When To Use This Skill
+
+Use this skill when:
+
+* the user has a concrete plan
+* the cost of being wrong is meaningful
+* the plan can still be changed
+* there is a decision, commitment, launch, strategy, or organizational change being considered
+
+Good candidates include:
+
+* product launches
+* feature launches
+* AI adoption efforts
+* organizational changes
+* Jira migrations
+* process changes
+* executive proposals
+* delivery commitments
+* strategic initiatives
+* platform migrations
 
 Do not use this skill for:
 
-* Vague early ideas with no concrete plan yet
-* Questions with a factual answer
-* General editing or creative feedback
-* Decisions that are already made and cannot be changed
-* Requests that are better handled as multi-perspective review rather than failure analysis
+* factual questions
+* brainstorming with no concrete plan
+* editing requests
+* purely creative work
+* decisions that are already irreversible
 
-## Trigger Guidance
+---
 
-### Mandatory Triggers
+# Trigger Examples
 
-Run this skill when the user says something like:
+Examples:
 
-* “premortem this”
-* “run a 'Start At The End' workshop on this”
-* “what are our biggest threats?”
-* “what could kill this?”
-* “future-proof this”
-* “stress test this plan”
-* “what am I missing here?”
-* “find the blind spots”
+* stress test this
+* stress test this plan
+* what could kill this?
+* find the blind spots
+* what am I missing?
+* poke holes in this
+* future-proof this
 
-### Strong Triggers
+Only run the skill when there is a real plan, decision, commitment, launch, or organizational change to evaluate.
 
-Usually run this skill when the user says something like:
+---
 
-* “what could go wrong?”
-* “am I missing anything?”
-* “poke holes in this”
-* “where will this break?”
-* “devil’s advocate this”
+# Minimum Context
 
-Only run the skill if there is an actual plan, decision, or commitment to analyze.
+Before running a stress test, understand:
 
-## Commitment Requirement
+1. What is being stress-tested?
+2. Who is affected?
+3. What does success look like?
 
-* Do not present all risks as equally important.
-* Force prioritization.
-* If evidence is incomplete, make the best grounded judgment anyway.
-* Clearly state uncertainty rather than avoiding commitment.
-* Avoid collapsing into “it depends” unless the situation genuinely requires it.
+If this information is already available from the conversation or supporting documents, proceed.
 
-## Organizational Failure Modes
+If not, ask the smallest useful question necessary.
 
-Always evaluate whether failure is likely to emerge from:
+Ask one question at a time.
+
+Infer reasonable context whenever possible rather than turning the interaction into an intake form.
+
+---
+
+# Commitment Requirement
+
+Do not present all risks as equally important.
+
+Force prioritization.
+
+If evidence is incomplete:
+
+* make the best grounded judgment possible
+* state uncertainty clearly
+* avoid hiding behind "it depends"
+
+The skill should produce conclusions, not merely observations.
+
+---
+
+# Organizational Failure Modes
+
+Always evaluate whether failure could emerge from:
 
 * unclear ownership
 * cross-functional dependency friction
@@ -87,321 +219,254 @@ Always evaluate whether failure is likely to emerge from:
 * communication gaps between leadership and delivery teams
 * hidden operational work not represented in plans
 
-## Operating Principles
+---
+
+# Operating Principles
 
 * Be direct.
 * Do not sugarcoat serious risks.
 * Do not pad the analysis with generic concerns.
-* Ground every failure mode in the user’s actual context.
-* Ask for missing context only when needed.
+* Ground every failure mode in the user's actual context.
 * Prefer concrete revisions over vague advice.
-* Treat the synthesis as the main product.
+* Treat the synthesis as the primary product.
+* Prioritize prevention over observation.
 
-## Minimum Context Required
-
-Before running the stress test, make sure you understand three things:
-
-1. **What is being stress-tested?**
-   The plan, product, launch, hire, strategy, or decision should be describable in one sentence.
-
-2. **Who is affected?**
-   Identify the audience, customers, users, team, stakeholders, buyers, or decision-makers involved.
-
-3. **What does success look like?**
-   Understand the outcome the user is hoping for. Failure is defined by inverting success.
-
-## Context Gathering Process
-
-### Step 1: Scan Existing Context
-
-Before asking the user for more information, use any context already available:
-
-* The current conversation
-* Files or documents the user attached
-* Project notes, briefs, plans, README files, or other relevant workspace content
-* Any explicit constraints, success criteria, or stakeholders already mentioned
-
-Do not over-search. The goal is to gather enough context to run a useful stress-test, not to perform open-ended research.
-
-### Step 2: Evaluate Sufficiency
-
-Proceed if you can answer:
-
-* What is the plan?
-* Who is it for or who does it affect?
-* What outcome would count as success?
-
-If one or more of these is missing, ask the smallest useful question.
-
-Ask one question at a time. Do not turn this into an intake form.
-
-Examples:
-
-* “What specifically are you about to launch, build, or decide?”
-* “Who is this for?”
-* “What would make this a win?”
-
-If an answer can be reasonably inferred from context, infer it rather than asking.
-
-## Stess-Test Procedure
-
-### Step 1: Set the Frame
-
-Once the minimum context is available, explicitly establish the stress-test frame.
-
-Use wording like:
-
-> It is six months from now. This plan has failed. It did not merely underperform; it failed clearly enough that the team is looking back to understand what went wrong. We are now working backward to identify why it failed.
-
-This frame is required. Without it, the response may drift into ordinary risk review.
-
-### Step 2: Generate Raw Failure Reasons
-
-Generate a comprehensive list of genuine failure reasons.
-
-Instructions:
-
-* Assume the plan failed six months from now.
-* Identify every plausible, meaningful reason it failed.
-* Be specific to the plan.
-* Do not include generic risks that could apply to any plan.
-* Do not pad the list.
-* Do not stop early if there are more real failure modes.
-
-Each failure reason should be one to two sentences.
-
-Use as many failure reasons as the plan deserves. Some plans may have four. Others may have nine or more.
-
-### Step 3: Deep-Dive Each Failure Mode
-
-For each failure reason, conduct an independent deep dive.
-
-If the environment supports parallel sub-agents or parallel task execution, run one investigator per failure reason in parallel. If parallel execution is not available, simulate separate independent passes and avoid letting earlier failure analyses bias later ones.
-
-Use this prompt structure for each deep dive:
-
-```text
-You are an investigator in a stress-test analysis. You have been assigned one specific failure reason to analyze in depth.
-
-The plan:
----
-[Summarize the full relevant context: what it is, who it is for, what success looks like, and any constraints or source context.]
 ---
 
-STRESS-TEST FRAME: It is six months from now. This plan has failed.
+# Stress-Test Procedure
 
-YOUR ASSIGNED FAILURE REASON:
-[Insert the specific failure reason.]
+## Step 1: Establish the Frame
 
-Your job is to go deep on this one failure. Write the story of how it actually played out. Be specific. Use details from the plan. Make it feel like a realistic case study.
+Once sufficient context exists, establish the stress-test frame.
 
-Your output must include:
+Use wording similar to:
 
-1. THE FAILURE STORY
-A 2-3 paragraph narrative of how this specific failure played out. Name the moments where things went wrong and explain why.
+> It is six months from now. This plan has failed. It did not merely underperform; it failed clearly enough that people are looking back to understand what went wrong. We are now working backward to explain why.
 
-2. THE UNDERLYING ASSUMPTION
-The one thing the user was taking for granted that made this failure possible. State it in one sentence.
+Failure-first framing is required.
 
-3. EARLY WARNING SIGNS
-1-2 concrete, observable signals that would indicate this failure mode is beginning to happen. These should be measurable or visible, not vague feelings.
+Without it, the analysis often becomes a generic risk review.
 
-Keep the response under 300 words. Be direct. Do not hedge. Do not sugarcoat.
-```
+---
 
-### Step 4: Synthesize the Results
+## Step 2: Generate Failure Modes
 
-After the deep dives, produce a synthesis report.
+Generate plausible failure modes.
 
-The synthesis must include:
+Failure modes must be:
 
-## Stress Test Report
+* specific to the plan
+* realistic
+* meaningful
+* grounded in context
 
-### 1. Most Likely Failure
+Avoid generic risks that could apply to any initiative.
+
+---
+
+## Step 3: Prioritize Failure Modes
+
+Rank failure modes based on:
+
+* likelihood
+* impact
+* preventability
+* decision usefulness
+
+Select only the strongest 5-8 failure modes.
+
+Do not attempt to catalog every possible failure.
+
+Omit low-value, redundant, or highly speculative risks.
+
+---
+
+## Step 4: Analyze Failure Modes
+
+For each selected failure mode provide:
+
+| Failure Mode | Why It Could Happen | Early Warning Sign |
+| ------------ | ------------------- | ------------------ |
+
+Keep analysis concise.
+
+Narrative failure stories belong only in Deep Dive Mode.
+
+---
+
+## Step 5: Produce the Synthesis
+
+Generate a Stress Test Report.
+
+The report must contain:
+
+### Most Likely Failure
 
 Force a ranking.
 
-Identify the single failure scenario most likely to happen based on the available context.
-
-Do not hedge between multiple equally likely outcomes unless the evidence genuinely supports a tie.
+Identify the single failure mode most likely to occur.
 
 Explain:
 
-* Why this failure is the most probable
-* What assumptions make it likely
-* What evidence or patterns support the ranking
+* why it is most likely
+* what assumptions make it likely
+* what evidence supports the judgment
 
-### 2. Most Dangerous Failure
+---
+
+### Most Dangerous Failure
 
 Force a ranking.
 
-Identify the single failure scenario that would cause the most damage if it happened, even if it is not the most likely.
+Identify the failure mode with the greatest potential impact.
 
 Explain:
 
-* Why this failure is the most dangerous
-* What second-order effects it creates
-* Why the impact would compound if ignored
+* why it is dangerous
+* what second-order effects it creates
+* why impact would compound if ignored
 
-### 3. Cheapest Failure to Prevent
+---
 
-Identify the failure mode where a relatively small intervention now would significantly reduce risk later.
+### Cheapest Failure To Prevent
+
+Identify the failure mode where a relatively small intervention now would significantly reduce future risk.
 
 Explain:
 
-* Why prevention is inexpensive or low-friction
-* What specific action would reduce the risk
-* Why teams often fail to address it early even though it is preventable
+* why prevention is inexpensive
+* what action would reduce the risk
+* why organizations commonly overlook it
 
-### 4. Hidden Assumption
+---
 
-Identify the single biggest assumption the user appears to be making across the plan.
+### Hidden Assumption
 
-This should be the assumption that is most likely to go unquestioned because it feels obvious to the user.
+Identify the single biggest assumption underlying the plan.
 
-### 5. Revised Plan
+This should be the assumption most likely to remain unquestioned.
 
-Provide concrete changes that would make the plan more resilient.
+---
 
-Each revision must map directly to one or more failure modes.
+### Base Rates
 
-Avoid vague advice such as:
+Whenever possible, explain how similar efforts commonly fail.
 
-* “Consider testing the idea.”
-* “Improve communication.”
-* “Think about stakeholders.”
-
-Use concrete advice such as:
-
-* “Run a 20-person pilot before committing to the full launch.”
-* “Require written approval from the two stakeholder groups before announcing the date.”
-* “Test the pricing with 10 target buyers before building the full offer.”
-
-### 6. Pre-Launch Checklist
-
-Provide 3-5 specific things the user should verify, test, or put in place before executing.
-
-Each checklist item should prevent or detect one of the identified failure modes.
-
-### 7. Base Rates
-
-Whenever possible, estimate how commonly this category of project fails in the identified ways.
-
-Do not fabricate statistics.
+Do not invent statistics.
 
 Use:
 
-* Historical patterns
-* Industry norms
-* Comparable project classes
-* Organizational dynamics
-* Known failure tendencies in similar launches, transformations, tools, or strategic initiatives
+* historical patterns
+* industry norms
+* organizational dynamics
+* comparable initiatives
+* known failure tendencies
 
-Examples:
+If quantitative data is unavailable, provide qualitative judgment.
 
-* “Internal tooling adoption projects commonly fail because workflow disruption was underestimated.”
-* “Cross-functional reporting initiatives frequently stall due to unclear ownership.”
-* “AI enablement efforts often fail because teams optimize for tool usage rather than operational integration.”
+---
 
-The goal is to anchor the analysis in reality rather than treating every failure mode as equally novel.
+### Revised Plan
 
-If precise base rates are unavailable, provide directional estimates and clearly label them as qualitative judgment.
+Provide concrete changes that make the plan more resilient.
 
-## Optional File Outputs
+Every recommendation should map to one or more failure modes.
 
-When the environment supports file creation, generate two files:
+Avoid vague advice.
+
+---
+
+### Pre-Launch Checklist
+
+Provide 3-5 specific items that should be verified before execution.
+
+Each item should prevent or detect one of the identified failure modes.
+
+---
+
+### Recommended Follow-Up
+
+When appropriate, recommend running:
 
 ```text
-stress-test-report-[timestamp].html
-stress-test-transcript-[timestamp].md
+risk-reduction
 ```
 
-### HTML Report Requirements
+to convert identified failure modes into a prioritized mitigation backlog.
 
-Create a single self-contained HTML file with inline CSS.
+---
 
-Use:
+# Deep Dive Mode Rules
 
-* Dark background
-* Clean typography
-* Scannable cards
-* Prominent synthesis section at the top
-* One visual card per failure mode
-* Severity and likelihood indicators for each failure mode
-* A grid showing the number of investigator passes and their findings
-* Footer with timestamp and the item being stress-tested
+Deep Dive Mode extends the standard Stress Test.
 
-The report should prioritize readability over decoration.
+For each selected failure mode provide:
 
-### Transcript Requirements
+### Failure Story
 
-Create a Markdown transcript containing:
+A realistic narrative explaining how the failure unfolded.
 
-* Context gathered
-* Raw failure reasons
-* Deep dives for each failure mode
-* Full synthesis
-* Final checklist
+### Underlying Assumption
 
-## Chat Response Format
+The assumption that enabled the failure.
 
-After completing the stress-test, provide a short chat summary.
+### Early Warning Signs
 
-Keep it to three sentences or fewer:
+Observable indicators that the failure is beginning to occur.
 
-1. Most likely failure
-2. Hidden assumption
-3. Single most important revision
+### Prevention Options
 
-Example:
+Actions that could have prevented or reduced the failure.
 
-> The most likely failure is audience mismatch: the people who show up are not the buyers the plan depends on. The hidden assumption is that the target audience is reachable through the channel you plan to use. The most important revision is to run a small pilot with the intended audience before committing to the full launch.
+Keep each deep dive focused and specific to the plan.
 
-## Quality Bar
+---
 
-A good stress-test is:
+# Chat Response Format
 
-* Specific
-* Uncomfortable
-* Practical
-* Grounded in context
-* Focused on preventable failure
-* Clear about what to change next
+After completing the analysis, provide a brief summary:
 
-A weak stress-test is:
+1. Most Likely Failure
+2. Hidden Assumption
+3. Most Important Revision
 
-* Generic
-* Overly polite
-* Filled with obvious risks
-* Detached from the user’s actual plan
-* Heavy on categories but light on judgment
-* Full of vague recommendations
+Limit the summary to three sentences.
 
-## Example
+---
 
-User request:
+# Quality Bar
 
-> Stress-test this: I am about to launch a $297 live workshop on how to use Claude for marketing teams. It has 50 seats and targets marketing managers at companies with 10-50 employees.
+A good Stress Test is:
 
-Raw failure reasons might include:
+* specific
+* uncomfortable
+* practical
+* grounded in context
+* focused on preventable failure
+* clear about what should change next
 
-1. Marketing managers at this company size may need approval to spend $297, creating more purchase friction than expected.
-2. The tool-specific pitch may be too narrow for buyers who are still trying to understand whether AI is relevant to their work at all.
-3. The people most likely to buy may be solopreneurs rather than marketing managers, creating a mismatch between content and audience.
-4. The workshop may require realistic marketing data, demos, and multi-seat scenarios that take longer to prepare than expected.
-5. Testimonials from the wrong audience may weaken future cohorts.
-6. The maximum revenue may not justify the preparation time compared with other opportunities.
+A weak Stress Test is:
 
-Synthesis example:
+* generic
+* overly polite
+* exhaustive for its own sake
+* detached from context
+* vague in its recommendations
 
-> The most likely failure is audience mismatch: the offer attracts solopreneurs rather than marketing managers. The most dangerous failure is that the wrong early audience produces testimonials and case studies that make future marketing less credible. The hidden assumption is that “marketing managers at 10-50 person companies” are a reachable and self-identifying audience. The most important revision is to run a smaller paid pilot first and use it to validate who actually buys before building the full workshop.
+---
 
-## Important Distinction
+# Important Distinction
 
-This skill is not a general review and not a multi-perspective council.
+A review asks:
 
-A review asks, “Is this good?”
-A council asks, “What would different perspectives say?”
-A stress test asks, “This failed. Why?”
+> Is this a good idea?
 
-Use the stress test only when that failure-first frame is the right tool.
+A council asks:
+
+> What would different perspectives say?
+
+A Stress Test asks:
+
+> This failed. Why?
+
+Use this skill when failure-first analysis is the right tool.
