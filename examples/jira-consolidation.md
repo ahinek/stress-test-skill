@@ -1,4 +1,4 @@
-# Example: Jira Workspace Consolidation Stress Test
+# Example: Jira Workspace Consolidation Stress Test Generated Prompt
 
 Prompt:
 

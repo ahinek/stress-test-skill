@@ -1,4 +1,4 @@
-# Example: Release Plan Stress Test
+# Example: Release Plan Stress Test Generated Prompt
 
 Prompt:
 
