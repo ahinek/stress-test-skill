@@ -215,6 +215,14 @@ Output should render cleanly in:
 
 ## Expected Conditions
 
+Use a GitHub-flavored markdown table.
+
+Do not use ASCII tables.
+
+Do not use Unicode box-drawing tables.
+
+Required format:
+
 | Condition | Likelihood | Why This Is Expected |
 |-----------|------------|----------------------|
 
@@ -224,11 +232,13 @@ Limit "Why This Is Expected" to a single sentence.
 
 ## Prioritized Risk Table
 
-Sort from highest score to lowest score.
+Use a GitHub-flavored markdown table.
 
-Before finalizing scores, challenge the assumptions behind each score and adjust if necessary.
+Do not use ASCII tables.
 
-Do not display the self-challenge unless it materially changes the result.
+Do not use Unicode box-drawing tables.
+
+Required format:
 
 | Failure | Likelihood | Delay (Weeks) | Score | Effort | Rationale |
 |----------|------------|---------------|--------|--------|-----------|
@@ -246,7 +256,13 @@ Do not provide narrative explanations within the table.
 
 ## Mitigation Recommendations
 
-For each risk identified above:
+Use a GitHub-flavored markdown table.
+
+Do not use ASCII tables.
+
+Do not use Unicode box-drawing tables.
+
+Required format:
 
 | Failure | Mitigations |
 |----------|-------------|
