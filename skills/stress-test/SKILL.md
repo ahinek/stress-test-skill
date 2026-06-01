@@ -185,7 +185,11 @@ Output should render cleanly in:
 
 ## Failure Mode Format
 
-Use a concise markdown table.
+Use a GitHub-flavored markdown table.
+
+Do not use box-drawing characters.
+
+Required format:
 
 | Failure Mode | Likelihood | Impact | Warning Sign |
 |--------------|------------|---------|--------------|
@@ -284,10 +288,12 @@ Provide no more than 5 supporting bullets.
 
 ## Base-Rate Analysis
 
-Provide a concise table.
+Use a GitHub-flavored markdown table.
+
+Required format:
 
 | Failure Mode | Probability | Base-Rate Rationale |
-| ------------ | ----------- | ------------------- |
+|--------------|-------------|---------------------|
 
 Limit explanations to a single sentence per row.
 
@@ -297,11 +303,12 @@ Do not provide extended discussion.
 
 ## Organizational Failure Patterns
 
-Identify no more than 3 organizational patterns contributing to risk.
+Use a GitHub-flavored markdown table.
 
-Use the format:
+Required format:
 
 | Pattern | Why It Matters |
+|----------|---------------|
 | ------- | -------------- |
 
 Examples include:
@@ -319,19 +326,12 @@ Do not provide narrative analysis.
 
 ## Revised Plan
 
-Provide no more than 5 recommendations.
+Use a GitHub-flavored markdown table.
 
-Recommendations should:
-
-* address multiple failure modes where possible
-* be concrete
-* be actionable
-* be prioritized
-
-Use the format:
+Required format:
 
 | Priority | Recommendation | Failure Modes Addressed |
-| -------- | -------------- | ----------------------- |
+|----------|----------------|-------------------------|
 
 ---
 
@@ -353,12 +353,12 @@ If more than 5 items exist, include only the most important.
 
 ## Early Warning Indicators
 
-Provide the 5 strongest warning signals.
+Use a GitHub-flavored markdown table.
 
-Use the format:
+Required format:
 
 | Indicator | Why It Matters |
-| --------- | -------------- |
+|-----------|----------------|
 
 Avoid timelines, phases, and extended commentary.
 
