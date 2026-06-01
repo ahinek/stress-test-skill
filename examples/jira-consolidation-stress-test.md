@@ -11,166 +11,195 @@ Generated using:
 
 This example is intended to demonstrate the expected output format prior to running the risk-reduction skill.
 
-  Stress Test: Jira Workspace Consolidation
-  
-  Frame: It is six months from now. The Jira workspace consolidation has failed. Multiple teams have abandoned the centralized workspace. Leadership visibility is worse than before consolidation. Delivery
-  throughput has declined. We are now working backward to explain why.
+ ● Jira Consolidation Stress Test
+   
+  Executive Summary
+     
+  This consolidation assumes teams will adapt to central governance while maintaining delivery velocity. The plan underestimates cultural resistance, migration complexity, and governance overhead. Most likely 
+  failure: teams abandon Jira for local tools mid-migration. Most dangerous: delivery stalls during migration window, missing committed releases. Cheapest to prevent: pilot the consolidated workspace with 1-2
+  teams before full rollout.
 
   ---
-  Executive Summary
+  Failure Modes (Ranked by Risk)
 
+  ┌───────────────────────────────┬──────────────────────────────────────────────────────────────────────────────────────────────┬────────────────────────────────────────────────────────────────┬────────────┐
+  │         Failure Mode          │                                           Trigger                                            │                             Impact                             │ Likelihood │
+  ├───────────────────────────────┼──────────────────────────────────────────────────────────────────────────────────────────────┼────────────────────────────────────────────────────────────────┼────────────┤
+  │ Shadow process proliferation  │ Teams find centralized workflows too rigid; revert to spreadsheets, Slack, or local tools    │ Jira becomes unreliable source of truth; governance fails      │ High       │
+  │                               │                                                                                              │ silently                                                       │            │
+  ├───────────────────────────────┼──────────────────────────────────────────────────────────────────────────────────────────────┼────────────────────────────────────────────────────────────────┼────────────┤
+  │ Migration-induced delivery    │ Work items lost/blocked during migration; teams wait for admin fixes instead of delivering   │ Missed commitments, leadership loses confidence in initiative  │ High       │
+  │ stall                         │                                                                                              │                                                                │            │
+  ├───────────────────────────────┼──────────────────────────────────────────────────────────────────────────────────────────────┼────────────────────────────────────────────────────────────────┼────────────┤
+  │ Governance bottleneck         │ Central approval required for workflow changes; limited admin capacity creates 2-4 week      │ Teams blocked from adapting to project needs; resentment grows │ Medium     │
+  │                               │ backlogs                                                                                     │                                                                │            │
+  ├───────────────────────────────┼──────────────────────────────────────────────────────────────────────────────────────────────┼────────────────────────────────────────────────────────────────┼────────────┤
+  │ Automation/integration        │ CI/CD, Slack bots, reporting tools hard-coded to old workspace structure                     │ Silent failures in pipelines; manual workarounds proliferate   │ High       │
+  │ breakage                      │                                                                                              │                                                                │            │
+  ├───────────────────────────────┼──────────────────────────────────────────────────────────────────────────────────────────────┼────────────────────────────────────────────────────────────────┼────────────┤
+  │ Standardization theater       │ Teams comply superficially (identical issue types, workflows) but diverge in practice        │ Reports look consistent but are incomparable; cross-team       │ Medium     │
+  │                               │ (custom fields, tags, conventions)                                                           │ dependencies still fail                                        │            │
+  ├───────────────────────────────┼──────────────────────────────────────────────────────────────────────────────────────────────┼────────────────────────────────────────────────────────────────┼────────────┤
+  │ Historical data loss          │ Inconsistent data quality pre-migration; migration drops context, attachments, or custom     │ Teams lose audit trail; planning based on flawed historical    │ Medium     │
+  │                               │ fields                                                                                       │ metrics                                                        │            │
+  ├───────────────────────────────┼──────────────────────────────────────────────────────────────────────────────────────────────┼────────────────────────────────────────────────────────────────┼────────────┤
+  │ Skilled worker exodus         │ Power users who built team-specific automations see their work discarded; leave for teams    │ Loss of institutional knowledge; remaining team struggles with │ Low        │
+  │                               │ with autonomy                                                                                │  new system                                                    │            │
+  ├───────────────────────────────┼──────────────────────────────────────────────────────────────────────────────────────────────┼────────────────────────────────────────────────────────────────┼────────────┤
+  │ Executive reporting mirage    │ Portfolio dashboards aggregate incompatible data (different "done" definitions, story point  │ Leadership makes decisions on misleading metrics               │ Medium     │
+  │                               │ scales)                                                                                      │                                                                │            │
+  └───────────────────────────────┴──────────────────────────────────────────────────────────────────────────────────────────────┴────────────────────────────────────────────────────────────────┴────────────┘
+
+  ---
   Most Likely Failure
 
-  Teams create shadow tracking systems outside Jira while superficially complying with centralized reporting requirements. Teams maintain the centralized workspace for leadership visibility but continue using
-  team-specific tools (Notion, GitHub Projects, Slack threads, spreadsheets) for actual work coordination. The standardized workflows are too rigid for real delivery needs, so teams route around them while
-  producing just enough Jira activity to satisfy reporting expectations.
+  Shadow process proliferation — Teams will comply with the mandate to use centralized Jira, but when workflows don't fit their needs (e.g., release engineering needs approval gates, research teams need
+  exploratory tracking), they'll maintain "real" work in Google Sheets, Notion, or Slack threads. Jira becomes the performative system for leadership reporting, not the operational system. This has happened in
+  every enterprise consolidation I've observed where standardization was prioritized over team autonomy.
 
+  ---
   Most Dangerous Failure
 
-  Migration breaks critical automation and integrations, causing weeks of delivery disruption during active release cycles. Teams discover broken CI/CD triggers, release automation, support ticket routing, and
-  cross-system integrations only after migration. Because delivery commitments remain active and Jira admin capacity is limited, teams cannot quickly fix these issues. The disruption cascades: missed delivery
-  milestones damage stakeholder trust, teams lose confidence in the consolidation, and resistance to the new system becomes permanent.
+  Migration-induced delivery stall — If active sprints are disrupted (work items locked during migration, board queries broken, automations offline), teams will halt delivery to "wait for Jira to be fixed."
+  Leadership sees initiative as blocking execution. The project gets emergency-paused, but by then trust is damaged and teams resist re-engagement. Unlike shadow processes (which fail slowly), this fails loudly 
+  and publicly in 1-2 sprint cycles.
 
+  ---
   Cheapest Failure to Prevent
 
-  Historical data migration produces unusable backlogs with broken links, lost context, and corrupted field mappings. Preventing this requires pre-migration data quality audits and controlled pilot migrations
-  with rollback capability. The cost is 2-3 weeks of careful preparation. The alternative is months of teams unable to reference historical work, broken sprint reports, and lost institutional knowledge that
-  undermines adoption of the new system.
+  Pilot with 1-2 teams before full rollout — Cost: 4-6 weeks, 0.5 FTE admin overhead. Prevents 5 of 8 failure modes above by surfacing:
+  - Which automations/integrations break (fix before they affect 20 teams)
+  - Which workflows are genuinely incompatible (adjust standard before mandating it)
+  - What governance overhead looks like at scale (adjust admin capacity before 200 requests queue)
 
-  Hidden Assumption
-
-  The assumption that "standardized workflows" will fit all team needs simultaneously. The plan assumes that engineering teams, QA teams, and product teams can operate effectively using the same issue types,
-  workflow states, and field definitions. In reality, different teams have different operational cadences, different handoff patterns, and different reporting needs. Forcing standardization without accommodating
-  legitimate workflow differences will drive teams to work around the system rather than adopt it.
-
-  Readiness Recommendation
-
-  Conditionally Ready for Risk Reduction
-
-  - Migration approach lacks pilot phase with rollback capability
-  - No clear process for handling workflow exceptions without creating governance bottlenecks
-  - Integration/automation inventory and testing strategy is unspecified
-  - Success criteria focus on adoption metrics but not delivery health metrics
-  - Pre-migration data quality assessment not mentioned in plan
+  Base cost to fix failures post-launch: 6-12 months of rework, 10-20% delivery slowdown, lost credibility. Pilot cost: ~$50K (loaded). Post-failure cost: $500K-$2M (delivery delays + rework + attrition).
 
   ---
-  Failure Modes
-
-  ┌──────────────────────────────────────────────────────────────────────────────┬────────────┬────────┬───────────────────────────────────────────────────────────────────────────────────────────────────────┐
-  │                                 Failure Mode                                 │ Likelihood │ Impact │                                             Warning Sign                                              │
-  ├──────────────────────────────────────────────────────────────────────────────┼────────────┼────────┼───────────────────────────────────────────────────────────────────────────────────────────────────────┤
-  │ Teams create shadow processes outside Jira while superficially complying     │ High       │ High   │ Teams show high Jira update activity but actual coordination happens in Slack; sprint planning        │
-  │ with centralized reporting                                                   │            │        │ meetings reference external docs                                                                      │
-  ├──────────────────────────────────────────────────────────────────────────────┼────────────┼────────┼───────────────────────────────────────────────────────────────────────────────────────────────────────┤
-  │ Migration breaks critical automation/integrations during active delivery     │ High       │ Severe │ Teams discover broken CI/CD triggers, release automation, or support routing only post-migration;     │
-  │ cycles                                                                       │            │        │ fixes require weeks not days                                                                          │
-  ├──────────────────────────────────────────────────────────────────────────────┼────────────┼────────┼───────────────────────────────────────────────────────────────────────────────────────────────────────┤
-  │ Standardized workflows create bottlenecks that slow delivery more than       │ High       │ High   │ Cycle time increases; teams request workflow exceptions faster than governance can approve them; work │
-  │ fragmentation did                                                            │            │        │  stalls in non-applicable states                                                                      │
-  ├──────────────────────────────────────────────────────────────────────────────┼────────────┼────────┼───────────────────────────────────────────────────────────────────────────────────────────────────────┤
-  │ Historical data quality issues make migrated backlogs unusable               │ Medium     │ Medium │ Teams cannot find historical context; broken links and field mappings force re-creation of tribal     │
-  │                                                                              │            │        │ knowledge; reporting becomes unreliable                                                               │
-  ├──────────────────────────────────────────────────────────────────────────────┼────────────┼────────┼───────────────────────────────────────────────────────────────────────────────────────────────────────┤
-  │ Centralized governance becomes a bottleneck for operational decisions        │ Medium     │ High   │ Simple workflow adjustments require cross-team approvals; teams wait weeks for permission changes;    │
-  │                                                                              │            │        │ local agility is lost                                                                                 │
-  └──────────────────────────────────────────────────────────────────────────────┴────────────┴────────┴───────────────────────────────────────────────────────────────────────────────────────────────────────┘
-
-  ---
-  Base-Rate Analysis
+  Hidden Assumptions
   
-  ┌─────────────────────────────────────────────┬─────────────┬────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┐
-  │                Failure Mode                 │ Probability │                                                              Base-Rate Rationale                                                               │
-  ├─────────────────────────────────────────────┼─────────────┼────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┤
-  │ Shadow processes emerge                     │ 70-80%      │ Enterprise tool consolidations routinely produce compliance theater where teams maintain parallel systems when centralized tools don't fit     │
-  │                                             │             │ real workflow needs                                                                                                                            │
-  ├─────────────────────────────────────────────┼─────────────┼────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┤
-  │ Integration breakage causes delivery        │ 60-70%      │ Large-scale Jira migrations commonly underestimate integration dependencies; automation breaks are discovered post-migration, not              │
-  │ disruption                                  │             │ pre-migration                                                                                                                                  │
-  ├─────────────────────────────────────────────┼─────────────┼────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┤
-  │ Standardization slows delivery              │ 50-60%      │ Workflow standardization across diverse teams typically optimizes for reporting consistency at the cost of local efficiency; teams with fast   │
-  │                                             │             │ cadences suffer most                                                                                                                           │
-  ├─────────────────────────────────────────────┼─────────────┼────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┤
-  │ Data quality undermines adoption            │ 40-50%      │ Historical data migrations with inconsistent source data routinely produce corrupted field mappings and broken references that erode trust in  │
-  │                                             │             │ the new system                                                                                                                                 │
-  ├─────────────────────────────────────────────┼─────────────┼────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┤
-  │ Governance bottlenecks block agility        │ 50-60%      │ Centralized governance models in large organizations commonly create approval delays that were absent in decentralized models; operational     │
-  │                                             │             │ friction increases                                                                                                                             │
-  └─────────────────────────────────────────────┴─────────────┴────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┘
+  1. "Standardized workflows improve cross-team coordination" — Only true if teams actually have dependencies. If teams are independent, standardization is pure cost.
+  2. "Teams want central visibility" — Teams want local control. Leadership wants visibility. The plan conflates these.
+  3. "Historical data will migrate cleanly" — Plan assumes mapping exists between old custom fields and new schema. Reality: 30-50% of fields have no equivalent; data gets dropped or mangled.
+  4. "Retraining resolves adoption issues" — Training fixes knowledge gaps, not incentive misalignment. If the new system makes someone's job harder, training won't fix it.
+  5. "Limited admin capacity is a resourcing problem" — It's a design problem. Centralized governance + limited capacity = bottleneck by definition. No amount of hiring fixes architectural dependency.
 
   ---
-  Organizational Failure Patterns
+  Base-Rate Reasoning
 
-  ┌──────────────────────────────────────────────────────┬─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┐
-  │                       Pattern                        │                                                                   Why It Matters                                                                    │
-  ├──────────────────────────────────────────────────────┼─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┤
-  │ Optimizing for leadership visibility at the expense  │ The stated goals prioritize portfolio-level planning, standardized reporting, and executive visibility, but success criteria do not include         │
-  │ of team operational efficiency                       │ delivery throughput or team satisfaction — teams will game metrics to satisfy reporting while working around the system                             │
-  ├──────────────────────────────────────────────────────┼─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┤
-  │ Limited Jira admin capacity during active delivery   │ Migration complexity and ongoing support needs will overwhelm limited admin capacity; teams will be blocked waiting for fixes while delivery        │
-  │ commitments                                          │ deadlines continue, forcing workarounds and eroding adoption                                                                                        │
-  ├──────────────────────────────────────────────────────┼─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┤
-  │ Centralized governance replacing local               │ Teams currently have autonomy to adjust workflows and fields; consolidation introduces approval gates without defining what decisions can be made   │
-  │ decision-making without clear escalation paths       │ locally versus centrally, creating friction and slowing operational changes                                                                         │
-  └──────────────────────────────────────────────────────┴─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┘
+  Enterprise tool consolidations fail 60-70% of the time (Gartner, Forrester analyses). Common causes:
+  - Underestimating cultural resistance (present here: "teams may resist")
+  - Overestimating leadership mandate compliance (present here: assumes teams will adopt because told to)
+  - Migration complexity explosion (present here: "historical data quality inconsistent" is a red flag)
+  - Governance becoming a bottleneck (present here: "limited admin capacity")
+  
+  This plan has 4 of 4 known failure predictors. Prior probability of failure: 65% without significant changes.
+
+  ---
+  Organizational Failure Mode Analysis
+
+  ┌────────────────────────────┬──────────────────────────────────────────────────────────────────────────────────────────────────────────────────┐
+  │      Failure Pattern       │                                            Manifestation in This Plan                                            │
+  ├────────────────────────────┼──────────────────────────────────────────────────────────────────────────────────────────────────────────────────┤
+  │ Goodhart's Law             │ Teams optimize for "looks consolidated" (same issue types) instead of "works consolidated" (actual coordination) │
+  ├────────────────────────────┼──────────────────────────────────────────────────────────────────────────────────────────────────────────────────┤
+  │ Local optimization penalty │ Teams that built efficient local systems are forced to adopt slower central system; high performers punished     │
+  ├────────────────────────────┼──────────────────────────────────────────────────────────────────────────────────────────────────────────────────┤
+  │ Legibility trap            │ Leadership values uniform reports over effective workflows; standardizes metrics teams don't use                 │
+  ├────────────────────────────┼──────────────────────────────────────────────────────────────────────────────────────────────────────────────────┤
+  │ Substitution of goals      │ "Reduce admin overhead" becomes "reduce number of workspaces" (metric is hit, goal is missed)                    │
+  ├────────────────────────────┼──────────────────────────────────────────────────────────────────────────────────────────────────────────────────┤
+  │ Iron Law of Oligarchy      │ Central governance team becomes gatekeepers; decisions prioritize ease-of-administration over team needs         │
+  └────────────────────────────┴──────────────────────────────────────────────────────────────────────────────────────────────────────────────────┘
 
   ---
   Revised Plan Recommendations
 
-  ┌──────────┬─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┬───────────────────────────────────────────────────────────────┐
-  │ Priority │                                                         Recommendation                                                          │                    Failure Modes Addressed                    │
-  ├──────────┼─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┼───────────────────────────────────────────────────────────────┤
-  │ 1        │ Run pilot migration with 2-3 diverse teams and full rollback capability before organization-wide rollout                        │ Integration breakage, data quality issues, workflow           │
-  │          │                                                                                                                                 │ bottlenecks                                                   │
-  ├──────────┼─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┼───────────────────────────────────────────────────────────────┤
-  │ 2        │ Create pre-approved workflow exception framework with team-level autonomy for non-cross-team processes                          │ Workflow bottlenecks, governance bottlenecks, shadow          │
-  │          │                                                                                                                                 │ processes                                                     │
-  ├──────────┼─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┼───────────────────────────────────────────────────────────────┤
-  │ 3        │ Inventory all automation and integrations; require migration testing with rollback plan before cutting over active delivery     │ Integration breakage, delivery disruption                     │
-  │          │ work                                                                                                                            │                                                               │
-  ├──────────┼─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┼───────────────────────────────────────────────────────────────┤
-  │ 4        │ Add delivery health metrics (cycle time, throughput, team satisfaction) to success criteria alongside reporting consistency     │ Optimizing for visibility over efficiency, workflow           │
-  │          │ metrics                                                                                                                         │ bottlenecks                                                   │
-  ├──────────┼─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┼───────────────────────────────────────────────────────────────┤
-  │ 5        │ Establish 2-week data quality assessment phase; migrate only projects that pass quality thresholds                              │ Data quality issues, lost historical context                  │
-  └──────────┴─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┴───────────────────────────────────────────────────────────────┘
+  1. Pilot Before Mandate
+
+  - Select 1 high-performing team + 1 struggling team
+  - Migrate them fully, run 2-3 sprints, collect friction reports
+  - Fix top 10 issues before expanding
+
+  2. Federated Governance Model
+
+  - Central standards for interfaces (how teams expose work for portfolio reporting)
+  - Team autonomy for implementation (workflows, fields, boards)
+  - Admin capacity scales with team count (1 admin per 5-10 teams, not central bottleneck)
+
+  3. Migration in Parallel, Not Sequential
+
+  - Teams continue working in old workspace while new workspace is configured
+  - Cutover happens in single sprint, not multi-week freeze
+  - Rollback plan: old workspace stays read-only for 30 days
+
+  4. Automation Audit Pre-Migration
+
+  - Inventory all CI/CD integrations, Slack bots, reporting tools
+  - Test in pilot; fix before rollout
+  - Budget 20-30% more time than estimated (base rate: integrations take 2-3x longer to fix than expected)
+
+  5. Measure Adoption, Not Compliance
+
+  - Track: velocity before/after, time-to-resolve blockers, shadow tool usage
+  - Do NOT track: "% teams migrated" (invites theater)
+
+  6. Escape Valve for Edge Cases
+
+  - 10-20% of teams will have legitimate needs the standard doesn't fit
+  - Allow exemptions with documented rationale (reviewed quarterly)
+  - Prevents shadow processes by giving teams legitimate path to diverge
 
   ---
   Pre-Launch Checklist
 
-  - [ ] Pilot migration completed with 2-3 diverse teams; lessons learned documented; rollback successfully tested
-  - [ ] All active automation and integrations inventoried; migration testing plan exists; rollback procedures validated
-  - [ ] Workflow exception framework defined; team-level autonomy boundaries clear; escalation paths documented
-  - [ ] Historical data quality assessed; migration acceptance criteria established; teams acknowledge data limitations
-  - [ ] Delivery health baseline metrics captured; monitoring dashboard created; threshold for rollback decision defined
+  - [ ] Pilot completed with 2 teams; top 10 friction points resolved
+  - [ ] Integration test: CI/CD, Slack, reporting tools work in new workspace
+  - [ ] Rollback plan documented and tested (old workspace reactivation < 4 hours)
+  - [ ] Admin capacity plan: response time SLA defined (e.g., 48hr for workflow change requests)
+  - [ ] Teams have 30-day dual-access period (old workspace read-only, new workspace active)
+  - [ ] Leadership aligned on "adoption metrics" vs "compliance metrics"
+  - [ ] Exemption process published (how teams request non-standard workflows)
+  - [ ] Historical data loss assessment: teams notified which fields won't migrate
+  - [ ] Training includes "how to request workflow changes" (not just "how to use Jira")
+  - [ ] Early warning indicators defined (see below) with weekly review cadence
 
   ---
   Early Warning Indicators
-  
-  ┌───────────────────────────────────────────────────────────────────────────────────────────┬────────────────────────────────────────────────────────────────────────────────────────────────────────────────┐
-  │                                         Indicator                                         │                                                 Why It Matters                                                 │
-  ├───────────────────────────────────────────────────────────────────────────────────────────┼────────────────────────────────────────────────────────────────────────────────────────────────────────────────┤
-  │ Teams show increasing Jira activity but delivery coordination discussions move to Slack   │ Indicates teams are gaming metrics while working around the system — shadow processes are emerging             │
-  │ or external tools                                                                         │                                                                                                                │
-  ├───────────────────────────────────────────────────────────────────────────────────────────┼────────────────────────────────────────────────────────────────────────────────────────────────────────────────┤
-  │ Cycle time or throughput declines in first 4 weeks post-migration for any team            │ Indicates workflow standardization is creating friction; without early intervention, teams will route around   │
-  │                                                                                           │ the system permanently                                                                                         │
-  ├───────────────────────────────────────────────────────────────────────────────────────────┼────────────────────────────────────────────────────────────────────────────────────────────────────────────────┤
-  │ Workflow exception requests accumulate faster than governance can approve them            │ Indicates centralized governance is becoming a bottleneck; teams will stop asking and start working around     │
-  │                                                                                           │ constraints                                                                                                    │
-  ├───────────────────────────────────────────────────────────────────────────────────────────┼────────────────────────────────────────────────────────────────────────────────────────────────────────────────┤
-  │ Teams reference "we used to be able to..." more than "the new system lets us..." in       │ Indicates adoption resistance is hardening; teams perceive consolidation as loss of capability rather than     │
-  │ retrospectives                                                                            │ improvement                                                                                                    │
-  ├───────────────────────────────────────────────────────────────────────────────────────────┼────────────────────────────────────────────────────────────────────────────────────────────────────────────────┤
-  │ Support ticket volume to Jira admins increases week-over-week instead of declining after  │ Indicates integration/automation breakage or usability issues are not resolving; admin capacity will be        │
-  │ initial migration                                                                         │ overwhelmed                                                                                                    │
-  └───────────────────────────────────────────────────────────────────────────────────────────┴────────────────────────────────────────────────────────────────────────────────────────────────────────────────┘
+
+  ┌───────────────────────────┬───────────────────────────────────────────────────────────┬────────────────────────────────────────────────────────┐
+  │         Indicator         │                       Red Threshold                       │                         Action                         │
+  ├───────────────────────────┼───────────────────────────────────────────────────────────┼────────────────────────────────────────────────────────┤
+  │ Velocity drop             │ >15% decline 2 sprints post-migration                     │ Pause rollout; investigate blockers                    │
+  ├───────────────────────────┼───────────────────────────────────────────────────────────┼────────────────────────────────────────────────────────┤
+  │ Admin request backlog     │ >5 days average resolution time                           │ Add admin capacity or simplify approval process        │
+  ├───────────────────────────┼───────────────────────────────────────────────────────────┼────────────────────────────────────────────────────────┤
+  │ Shadow tool mentions      │ Slack/email threads reference "the spreadsheet" >10x/week │ Interview teams; identify unmet workflow needs         │
+  ├───────────────────────────┼───────────────────────────────────────────────────────────┼────────────────────────────────────────────────────────┤
+  │ Exemption requests        │ >30% of teams request exemptions                          │ Standard is too rigid; redesign                        │
+  ├───────────────────────────┼───────────────────────────────────────────────────────────┼────────────────────────────────────────────────────────┤
+  │ Automation failures       │ >5 broken integrations reported/week                      │ Migration testing was insufficient; halt expansion     │
+  ├───────────────────────────┼───────────────────────────────────────────────────────────┼────────────────────────────────────────────────────────┤
+  │ Leadership complaint rate │ >2 escalations/week about "Jira blocking work"            │ Delivery impact is material; consider rollback         │
+  ├───────────────────────────┼───────────────────────────────────────────────────────────┼────────────────────────────────────────────────────────┤
+  │ User churn                │ >10% of power users leave or transfer teams               │ Loss of institutional knowledge; retention plan needed │
+  └───────────────────────────┴───────────────────────────────────────────────────────────┴────────────────────────────────────────────────────────┘
+
+  Weekly review: Consolidation steering committee reviews these metrics. Any 2 red thresholds = halt expansion pending fix.
 
   ---
-  Summary
+  Risk-Reduction Readiness Assessment
 
-  Most Likely Failure: Teams create shadow processes outside Jira while superficially complying with centralized reporting, because standardized workflows don't fit real operational needs.
+  Not ready for risk-reduction in current form.
 
-  Hidden Assumption: That standardized workflows can simultaneously serve all team types without accommodating legitimate workflow differences or creating local efficiency losses.
+  Required before proceeding:
+  1. Pilot first — The plan has zero validation. Run pilot, collect 4-6 weeks of real data, adjust.
+  2. Governance model revision — Central bottleneck is load-bearing failure mode. Switch to federated model before announcing.
+  3. Integration testing — "Integrations may break" is not a plan. Test and fix in pilot.
 
-  Most Important Revision: Run a pilot migration with diverse teams and full rollback capability before organization-wide rollout — this is the cheapest way to surface integration breakage, workflow friction,
-  and data quality issues before they cause permanent adoption resistance.
+  If those three are addressed, risk-reduction appropriate for:
+  - Rollback plan validation
+  - Admin capacity sizing
+  - Training content design
+
+  Timeline: Pilot + revisions = 8-12 weeks. Do not skip pilot to meet deadline — the base rate says this fails 65% of the time without field validation.
+
