@@ -2,7 +2,7 @@
 
 name: risk-reduction
 description: Convert stress-test failure modes into a prioritized mitigation backlog by estimating likelihood, schedule impact, mitigation effort, and overall risk reduction potential.
----
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 # Risk Reduction
 
@@ -25,7 +25,7 @@ The goal is to reduce project risk before those failures occur.
 
 ---
 
-## Relationship to Stress Test
+# Relationship to Stress Test
 
 This skill is intended to be used after a Stress Test.
 
@@ -49,7 +49,7 @@ Risk Reduction converts those failures into actionable mitigation work.
 
 ---
 
-## Expected Inputs
+# Expected Inputs
 
 Preferred input:
 
@@ -66,18 +66,18 @@ If Stress Test output is available, use it.
 
 ---
 
-## Classification Rules
+# Classification Rules
 
-### Expected Conditions
+## Expected Conditions
 
 Any item with likelihood greater than 50% should be classified as an Expected Condition.
 
 Expected Conditions:
 
-* Should be planned for
-* Should be staffed for
-* Should be scheduled for
-* Should be budgeted for
+* should be planned for
+* should be staffed for
+* should be scheduled for
+* should be budgeted for
 
 Expected Conditions are not risks.
 
@@ -87,7 +87,7 @@ Expected Conditions should still influence mitigation planning and backlog prior
 
 ---
 
-### Risks
+## Risks
 
 Items with likelihood less than or equal to 50% remain risks.
 
@@ -95,7 +95,7 @@ Only risks are scored and prioritized.
 
 ---
 
-## Likelihood Estimation
+# Likelihood Estimation
 
 For every risk:
 
@@ -106,20 +106,32 @@ For every risk:
 
 Base estimates on:
 
-* Historical patterns
-* Organizational dynamics
-* Technical complexity
-* Stakeholder behavior
-* Comparable initiatives
-* Known failure modes
+* historical patterns
+* organizational dynamics
+* technical complexity
+* stakeholder behavior
+* comparable initiatives
+* known failure modes
 
 Do not generate arbitrary percentages.
 
 Do not display self-challenge reasoning unless it materially changes the estimate.
 
+Likelihood values should be shown as percentages, for example:
+
+```text
+40%
+```
+
+Do not use decimal likelihood values such as:
+
+```text
+0.40
+```
+
 ---
 
-## Risk Scoring
+# Risk Scoring
 
 For each risk estimate:
 
@@ -142,7 +154,7 @@ Use decimal values for Risk Score.
 
 ---
 
-## Mitigation Effort
+# Mitigation Effort
 
 Estimate mitigation effort as:
 
@@ -156,16 +168,16 @@ Favor low-effort / high-impact mitigations when possible.
 
 ---
 
-## Mitigation Recommendations
+# Mitigation Recommendations
 
 Provide exactly three mitigation recommendations per risk.
 
 Recommendations must be:
 
-* Concise
-* Actionable
-* Specific
-* Realistic
+* concise
+* actionable
+* specific
+* realistic
 
 Avoid generic advice.
 
@@ -183,24 +195,74 @@ Bad examples:
 
 ---
 
-## Output Formatting
+# Output Requirements
 
-Use standard GitHub-flavored markdown.
+When the environment supports file creation, create an HTML artifact as the primary output.
+
+Default file name pattern:
+
+```text
+examples/[descriptive-name]-risk-reduction.html
+```
+
+If the user provides a file name or path, use the user's requested path.
+
+Do not rely on terminal-rendered tables as the final artifact.
 
 Do not use:
 
 * ASCII tables
 * Unicode box-drawing tables
-* Terminal-rendered tables
+* terminal-rendered tables
 
-Output should render cleanly in:
+Do not use these characters in tables:
 
-* GitHub
-* GitLab
-* Google Docs
-* Markdown editors
+```text
+┌ ┬ ┐ ├ ┼ ┤ └ ┴ ┘ │
+```
+
+The HTML artifact must:
+
+* use real HTML tables
+* include clean section headings
+* use simple inline CSS
+* be readable in a browser
+* be suitable for copying into Google Docs
+* include the full Risk Reduction analysis
+* include timestamp or generated date when possible
+
+If file creation is not available, output clean markdown using standard GitHub-flavored markdown tables.
 
 Responses containing box-drawing characters are incorrect.
+
+---
+
+# HTML Artifact Requirements
+
+Generate a single self-contained HTML file.
+
+Use:
+
+* inline CSS
+* readable typography
+* clear section headers
+* bordered HTML tables
+* simple spacing
+* no external dependencies
+* no JavaScript required
+
+The HTML should include these sections:
+
+1. Expected Conditions
+2. Prioritized Risk Table
+3. Mitigation Recommendations
+4. Mitigation Backlog
+5. Risk Reduction Summary
+6. Execution Recommendation
+
+The HTML file should be the durable artifact.
+
+The chat response should be brief and should point to the generated file path.
 
 ---
 
@@ -208,17 +270,18 @@ Responses containing box-drawing characters are incorrect.
 
 ## Expected Conditions
 
-Use this exact markdown table format:
+Use an HTML table in the generated artifact.
 
-| Condition | Likelihood | Why This Is Expected |
-| --------- | ---------- | -------------------- |
+Columns:
+
+* Condition
+* Likelihood
+* Why This Is Expected
 
 Rules:
 
-* Use markdown table syntax exactly.
-* Do not substitute another table format.
-* Limit "Why This Is Expected" to one sentence.
 * Include only items with likelihood greater than 50%.
+* Limit "Why This Is Expected" to one sentence.
 
 After the table, provide a short section:
 
@@ -230,15 +293,19 @@ Briefly describe what the project should proactively plan for based on these Exp
 
 ## Prioritized Risk Table
 
-Use this exact markdown table format:
+Use an HTML table in the generated artifact.
 
-| Failure | Likelihood | Delay (Weeks) | Score | Effort | Rationale |
-| ------- | ---------- | ------------- | ----- | ------ | --------- |
+Columns:
+
+* Failure
+* Likelihood
+* Delay Weeks
+* Score
+* Effort
+* Rationale
 
 Rules:
 
-* Use markdown table syntax exactly.
-* Do not substitute another table format.
 * Include only risks with likelihood less than or equal to 50%.
 * Rationale must be one sentence maximum.
 * Delay must represent expected schedule impact if the failure occurs.
@@ -250,15 +317,15 @@ Rules:
 
 ## Mitigation Recommendations
 
-Use this exact markdown table format:
+Use an HTML table in the generated artifact.
 
-| Failure | Mitigations |
-| ------- | ----------- |
+Columns:
+
+* Failure
+* Mitigations
 
 Rules:
 
-* Use markdown table syntax exactly.
-* Do not substitute another table format.
 * Provide exactly three mitigation bullets per risk.
 * Each mitigation should be concise.
 * Each mitigation should be actionable.
@@ -268,15 +335,17 @@ Rules:
 
 ## Mitigation Backlog
 
-Use this exact markdown table format:
+Use an HTML table in the generated artifact.
 
-| Priority | Mitigation Activity | Related Risk | Effort |
-| -------- | ------------------- | ------------ | ------ |
+Columns:
+
+* Priority
+* Mitigation Activity
+* Related Risk
+* Effort
 
 Rules:
 
-* Use markdown table syntax exactly.
-* Do not substitute another table format.
 * Sort by:
 
   1. Highest Risk Score
@@ -286,6 +355,8 @@ Rules:
 The backlog may contain more items than the number of risks.
 
 The purpose of this section is to create actionable work.
+
+Do not artificially limit the backlog if more mitigation work is needed.
 
 ---
 
@@ -329,15 +400,15 @@ Limit this section to concise bullets and short paragraphs.
 
 ---
 
-## Decision Rules
+# Decision Rules
 
 Always prioritize:
 
-* Risk reduction over risk documentation
-* Prevention over monitoring
-* Mitigation over observation
-* Low-effort / high-impact actions
-* Organizational risks alongside technical risks
+* risk reduction over risk documentation
+* prevention over monitoring
+* mitigation over observation
+* low-effort / high-impact actions
+* organizational risks alongside technical risks
 
 Never produce a passive risk register.
 
@@ -346,3 +417,21 @@ Always produce actionable mitigation work.
 The final output should help the team answer:
 
 > What should we do next to reduce the probability of delay or failure?
+
+---
+
+# Chat Response Format
+
+After completing the analysis, provide a brief chat summary.
+
+Do not paste the full report into chat if an HTML artifact was generated.
+
+The chat summary should include:
+
+1. Generated file path
+2. Total Risk Score Before Mitigation
+3. Estimated Risk Reduction Percentage
+4. Highest Leverage Mitigation
+
+Keep the chat response brief.
+

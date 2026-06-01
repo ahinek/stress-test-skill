@@ -2,7 +2,7 @@
 
 name: stress-test
 description: Structured failure-first review for plans, launches, strategies, delivery commitments, and organizational decisions.
----
+---------------------------------------------------------------------------------------------------------------------------------
 
 # Stress Test Skill
 
@@ -10,7 +10,7 @@ description: Structured failure-first review for plans, launches, strategies, de
 
 Use this skill to test a meaningful plan before commitment.
 
-A Stress Test assumes the plan has already failed and works backward to explain why. This framing helps surface risks, hidden assumptions, weak signals, organizational friction, and uncomfortable truths that ordinary reviews often miss.
+A Stress Test assumes the plan has failed and works backward to explain why. This framing surfaces risks, hidden assumptions, weak signals, organizational friction, and uncomfortable truths that ordinary reviews often miss.
 
 The goal is not to criticize the plan.
 
@@ -18,26 +18,50 @@ The goal is to make the plan harder to break.
 
 ---
 
+# Relationship to Risk Reduction
+
+Stress Test is the first step in this workflow:
+
+```text
+Stress Test
+    ↓
+Potential Failures
+    ↓
+Risk Reduction
+    ↓
+Mitigation Backlog
+    ↓
+Project Execution
+```
+
+Stress Test answers:
+
+> How does this fail?
+
+Risk Reduction answers:
+
+> Which failures should we spend effort preventing right now?
+
+---
+
 # Operating Modes
 
-This skill supports two modes.
+This skill has two modes:
+
+1. Default Mode
+2. Deep Dive Mode
+
+Use Default Mode unless the user explicitly asks for Deep Dive Mode.
+
+---
 
 ## Default Mode
 
 Default Mode is the standard behavior.
 
-Use it unless the user explicitly requests a deeper analysis.
+Default Mode produces a concise decision-support artifact.
 
-Default Mode should:
-
-* identify the strongest failure modes
-* force prioritization
-* produce a concise decision-making artifact
-* focus on actionable insights
-
-Default Mode follows the Default Mode Rules and Output Budget defined later in this document.
-
-Default Mode should be used for:
+Use Default Mode for:
 
 * release reviews
 * strategy reviews
@@ -46,11 +70,18 @@ Default Mode should be used for:
 * leadership preparation
 * first-pass risk analysis
 
+Default Mode prioritizes:
+
+* signal over completeness
+* prioritization over documentation
+* actionability over explanation
+* decision support over exhaustive analysis
+
 ---
 
 ## Deep Dive Mode
 
-Deep Dive Mode is used when the user explicitly requests detailed analysis.
+Deep Dive Mode is used only when the user explicitly requests detailed analysis.
 
 Use Deep Dive Mode for:
 
@@ -70,7 +101,7 @@ Deep Dive Mode may include:
 
 ---
 
-## Invocation Rules
+# Invocation Rules
 
 Use Default Mode for requests such as:
 
@@ -94,303 +125,6 @@ Expand failure mode #3.
 ```
 
 If the user does not specify a mode, use Default Mode.
-
----
-
-# Default Mode Rules
-
-## Purpose
-
-Default Mode is a decision-support artifact, not a comprehensive report.
-
-Its purpose is to help leaders and teams identify which risks deserve immediate attention before committing to a plan.
-
-Default Mode should prioritize:
-
-* signal over completeness
-* prioritization over documentation
-* actionability over explanation
-* decision support over exhaustive analysis
-
-If additional risks exist but are substantially less likely, less impactful, less preventable, or less useful to decision makers, omit them.
-
----
-
-## Output Budget
-
-Default Mode must operate within a constrained output budget.
-
-Maximum output:
-
-* 5 failure modes
-* 3 organizational failure patterns
-* 5 recommendations
-* 5 checklist items
-* 5 early warning indicators
-
-These are maximums, not targets.
-
-Use fewer items when fewer items adequately explain the risk landscape.
-
-Do not add additional content merely because it exists.
-
-Every item included should earn its place by being:
-
-* likely
-* impactful
-* preventable
-* decision-relevant
-
----
-
-## Failure Mode Selection
-
-Generate plausible failure modes.
-
-Then rank them according to:
-
-* likelihood
-* impact
-* preventability
-* usefulness to decision makers
-
-Select only the 5 highest-value failure modes.
-
-Do not attempt to catalog every possible failure.
-
-Avoid generic risks that could apply to any initiative.
-
-Avoid redundant risks that share the same root cause.
-
----
-
-## Output Formatting
-
-Use standard GitHub-flavored markdown.
-
-Do not use:
-
-- ASCII tables
-- Unicode box-drawing tables
-- Terminal-rendered tables
-
-Output should render cleanly in:
-
-- GitHub
-- GitLab
-- Google Docs
-- Markdown editors
-
----
-
-## Failure Mode Format
-
-Use a GitHub-flavored markdown table.
-
-Do not use box-drawing characters.
-
-Required format:
-
-| Failure Mode | Likelihood | Impact | Warning Sign |
-|--------------|------------|---------|--------------|
-
-Rules:
-
-- Keep warning signs brief.
-- Use short phrases rather than paragraphs.
-- Do not provide narrative explanations in the table.
-- Limit the table to the 5 highest-value failure modes.
-
-Narrative exploration belongs exclusively in Deep Dive Mode.
-
-Do not provide:
-
-- failure narratives
-- detailed failure stories
-- workshop-level analysis
-- root-cause investigations
-
----
-
-## Executive Summary Format
-
-Use bullets rather than paragraphs.
-
-### Most Likely Failure
-
-- Failure:
-- Why:
-- Assumption:
-
-### Most Dangerous Failure
-
-- Failure:
-- Why:
-
-### Cheapest Failure to Prevent
-
-- Failure:
-- Action:
-
-### Hidden Assumption
-
-- Assumption:
-
-### Readiness Recommendation
-
-- Status:
-- Key Reasons:
-
-### Most Likely Failure
-
-Maximum 3 sentences.
-
-Explain:
-
-* why it is most likely
-* what assumptions make it likely
-
-### Most Dangerous Failure
-
-Maximum 3 sentences.
-
-Explain:
-
-* why impact would be severe
-* why consequences would compound
-
-### Cheapest Failure to Prevent
-
-Maximum 3 sentences.
-
-Explain:
-
-* why prevention cost is low
-* what action reduces the risk
-
-### Hidden Assumption
-
-Maximum 3 sentences.
-
-Identify the single assumption most likely to remain unchallenged.
-
-### Readiness Recommendation
-
-Choose one:
-
-* Ready for Risk Reduction
-* Conditionally Ready for Risk Reduction
-* Not Ready for Risk Reduction
-
-Provide no more than 5 supporting bullets.
-
----
-
-## Base-Rate Analysis
-
-Use a GitHub-flavored markdown table.
-
-Required format:
-
-| Failure Mode | Probability | Base-Rate Rationale |
-|--------------|-------------|---------------------|
-
-Limit explanations to a single sentence per row.
-
-Do not provide extended discussion.
-
----
-
-## Organizational Failure Patterns
-
-Use a GitHub-flavored markdown table.
-
-Required format:
-
-| Pattern | Why It Matters |
-|----------|---------------|
-| ------- | -------------- |
-
-Examples include:
-
-* unclear ownership
-* conflicting incentives
-* overloaded teams
-* metrics distortion
-* governance bottlenecks
-* communication gaps
-
-Do not provide narrative analysis.
-
----
-
-## Revised Plan
-
-Use a GitHub-flavored markdown table.
-
-Required format:
-
-| Priority | Recommendation | Failure Modes Addressed |
-|----------|----------------|-------------------------|
-
----
-
-## Pre-Launch Checklist
-
-Provide no more than 5 checklist items.
-
-Each item should:
-
-* validate a critical assumption
-
-or
-
-* prevent a high-impact failure
-
-If more than 5 items exist, include only the most important.
-
----
-
-## Early Warning Indicators
-
-Use a GitHub-flavored markdown table.
-
-Required format:
-
-| Indicator | Why It Matters |
-|-----------|----------------|
-
-Avoid timelines, phases, and extended commentary.
-
----
-
-## Default Mode Prohibitions
-
-Default Mode must not:
-
-* generate failure stories
-* generate workshop narratives
-* generate investigator reports
-* deep-dive every failure mode
-* provide exhaustive analysis
-* explain every risk in detail
-
-If detailed exploration is required, recommend Deep Dive Mode.
-
----
-
-## Success Criteria
-
-A successful Default Mode report allows a leader to quickly answer:
-
-1. What is most likely to go wrong?
-2. What is most dangerous?
-3. What is easiest to prevent?
-4. What assumption should we challenge?
-5. Are we ready to proceed to Risk Reduction?
-
-The report should be readable in a single meeting without requiring a separate summary.
-
 
 ---
 
@@ -419,32 +153,16 @@ Good candidates include:
 Do not use this skill for:
 
 * factual questions
-* brainstorming with no concrete plan
+* vague brainstorming with no concrete plan
 * editing requests
 * purely creative work
 * decisions that are already irreversible
 
 ---
 
-# Trigger Examples
-
-Examples:
-
-* stress test this
-* stress test this plan
-* what could kill this?
-* find the blind spots
-* what am I missing?
-* poke holes in this
-* future-proof this
-
-Only run the skill when there is a real plan, decision, commitment, launch, or organizational change to evaluate.
-
----
-
 # Minimum Context
 
-Before running a stress test, understand:
+Before running a Stress Test, understand:
 
 1. What is being stress-tested?
 2. Who is affected?
@@ -489,18 +207,108 @@ Always evaluate whether failure could emerge from:
 * AI accelerating unstable processes
 * communication gaps between leadership and delivery teams
 * hidden operational work not represented in plans
+* governance structures that slow local decision-making
+* reporting needs overwhelming delivery needs
 
 ---
 
-# Operating Principles
+# Default Mode Output Budget
 
-* Be direct.
-* Do not sugarcoat serious risks.
-* Do not pad the analysis with generic concerns.
-* Ground every failure mode in the user's actual context.
-* Prefer concrete revisions over vague advice.
-* Treat the synthesis as the primary product.
-* Prioritize prevention over observation.
+Default Mode must operate within a constrained output budget.
+
+Maximum output:
+
+* 5 failure modes
+* 3 organizational failure patterns
+* 5 recommendations
+* 5 checklist items
+* 5 early warning indicators
+
+These are maximums, not targets.
+
+Use fewer items when fewer items adequately explain the risk landscape.
+
+Do not add content merely because it exists.
+
+Every included item should earn its place by being:
+
+* likely
+* impactful
+* preventable
+* decision-relevant
+
+---
+
+# Output Requirements
+
+When the environment supports file creation, create an HTML artifact as the primary output.
+
+Default file name pattern:
+
+```text
+examples/[descriptive-name]-stress-test.html
+```
+
+If the user provides a file name or path, use the user's requested path.
+
+Do not rely on terminal-rendered tables as the final artifact.
+
+Do not use:
+
+* ASCII tables
+* Unicode box-drawing tables
+* terminal-rendered tables
+
+Do not use these characters in tables:
+
+```text
+┌ ┬ ┐ ├ ┼ ┤ └ ┴ ┘ │
+```
+
+The HTML artifact must:
+
+* use real HTML tables
+* include clean section headings
+* use simple inline CSS
+* be readable in a browser
+* be suitable for copying into Google Docs
+* include the full Stress Test report
+* include timestamp or generated date when possible
+
+If file creation is not available, output clean markdown using standard GitHub-flavored markdown tables.
+
+Responses containing box-drawing characters are incorrect.
+
+---
+
+# HTML Artifact Requirements
+
+Generate a single self-contained HTML file.
+
+Use:
+
+* inline CSS
+* readable typography
+* clear section headers
+* bordered HTML tables
+* simple spacing
+* no external dependencies
+* no JavaScript required
+
+The HTML should include these sections:
+
+1. Executive Summary
+2. Failure Modes
+3. Base-Rate Analysis
+4. Organizational Failure Patterns
+5. Revised Plan Recommendations
+6. Pre-Launch Checklist
+7. Early Warning Indicators
+8. Recommended Follow-Up
+
+The HTML file should be the durable artifact.
+
+The chat response should be brief and should point to the generated file path.
 
 ---
 
@@ -508,7 +316,7 @@ Always evaluate whether failure could emerge from:
 
 ## Step 1: Establish the Frame
 
-Once sufficient context exists, establish the stress-test frame.
+Once sufficient context exists, establish the Stress Test frame.
 
 Use wording similar to:
 
@@ -544,150 +352,185 @@ Rank failure modes based on:
 * preventability
 * decision usefulness
 
-Select only the 5 highest-value failure modes.
-
-Default Mode: maximum 5.
-Deep Dive Mode: up to 8.
-
-Do not attempt to catalog every possible failure.
-
-Omit low-value, redundant, or highly speculative risks.
-
----
-
-## Step 4: Analyze Failure Modes
-
 Default Mode:
 
-| Failure Mode | Likelihood | Impact | Warning Sign |
-
-Keep analysis concise.
-
-Use only the 5 highest-value failure modes selected in Step 3.
-
-Do not provide:
-
-- failure stories
-- workshop narratives
-- investigator reports
-- detailed root-cause exploration
+* Select only the 5 highest-value failure modes.
+* Do not attempt to catalog every possible failure.
+* Omit low-value, redundant, or highly speculative risks.
 
 Deep Dive Mode:
 
-Expanded analysis is permitted.
-
-For each selected failure mode, Deep Dive Mode may include:
-
-- Failure Story
-- Underlying Assumption
-- Early Warning Signs
-- Prevention Options
-
-Narrative exploration is reserved for Deep Dive Mode.
+* May include up to 8 failure modes.
+* May expand on each failure mode with additional narrative analysis.
 
 ---
 
-## Step 5: Produce the Synthesis
+# Default Mode Report Format
 
-Generate a Stress Test Report.
+Default Mode must use this structure.
 
-Default Mode must follow the Output Budget defined in Default Mode Rules.
+## Executive Summary
 
-The report must contain:
+Use bullets.
 
 ### Most Likely Failure
 
-Force a ranking.
-
-Identify the single failure mode most likely to occur.
-
-Explain:
-
-* why it is most likely
-* what assumptions make it likely
-
----
+* Failure:
+* Why:
+* Assumption:
 
 ### Most Dangerous Failure
 
-Force a ranking.
+* Failure:
+* Why:
 
-Identify the failure mode with the greatest potential impact.
+### Cheapest Failure to Prevent
 
-Explain:
-
-* why it is dangerous
-* why impact would be severe
-
----
-
-### Cheapest Failure To Prevent
-
-Identify the failure mode where a relatively small intervention now would significantly reduce future risk.
-
-Explain:
-
-* why prevention is inexpensive
-* what action would reduce the risk
-* why organizations commonly overlook it
-
----
+* Failure:
+* Action:
 
 ### Hidden Assumption
 
-Identify the single biggest assumption underlying the plan.
-
-This should be the assumption most likely to remain unquestioned.
-
----
-
-### Base Rates
-
-Whenever possible, explain how similar efforts commonly fail.
-
-Do not invent statistics.
-
-Use:
-
-* historical patterns
-* industry norms
-* organizational dynamics
-* comparable initiatives
-* known failure tendencies
-
-If quantitative data is unavailable, provide qualitative judgment.
-
----
-
-### Revised Plan
-
-Provide concrete changes that make the plan more resilient.
-
-Every recommendation should map to one or more failure modes.
-
-Avoid vague advice.
-
----
-
-### Pre-Launch Checklist
-
-Provide 3-5 specific items that should be verified before execution.
-
-Each item should prevent or detect one of the identified failure modes.
-
----
+* Assumption:
 
 ### Readiness Recommendation
 
 Choose one:
 
-- Ready for Risk Reduction
-- Conditionally Ready for Risk Reduction
-- Not Ready for Risk Reduction
+* Ready for Risk Reduction
+* Conditionally Ready for Risk Reduction
+* Not Ready for Risk Reduction
 
 Provide no more than 5 supporting bullets.
 
-If Ready or Conditionally Ready, recommend running risk-reduction.
+---
+
+## Failure Modes
+
+Use an HTML table in the generated artifact.
+
+Columns:
+
+* Failure Mode
+* Likelihood
+* Impact
+* Warning Sign
+
+Rules:
+
+* Limit to the 5 highest-value failure modes.
+* Keep warning signs brief.
+* Use short phrases rather than paragraphs.
+* Do not provide narrative explanations inside the table.
+
+---
+
+## Base-Rate Analysis
+
+Use an HTML table in the generated artifact.
+
+Columns:
+
+* Failure Mode
+* Probability
+* Base-Rate Rationale
+
+Rules:
+
+* Limit rationale to one sentence per row.
+* Do not invent statistics.
+* Use qualitative judgment when precise data is unavailable.
+
+---
+
+## Organizational Failure Patterns
+
+Use an HTML table in the generated artifact.
+
+Columns:
+
+* Pattern
+* Why It Matters
+
+Rules:
+
+* Include no more than 3 patterns.
+* Keep each explanation to one sentence.
+
+---
+
+## Revised Plan Recommendations
+
+Use an HTML table in the generated artifact.
+
+Columns:
+
+* Priority
+* Recommendation
+* Failure Modes Addressed
+
+Rules:
+
+* Include no more than 5 recommendations.
+* Recommendations should be concrete and actionable.
+* Each recommendation should map to one or more failure modes.
+
+---
+
+## Pre-Launch Checklist
+
+Provide no more than 5 checklist items.
+
+Each item should:
+
+* validate a critical assumption
+
+or
+
+* prevent a high-impact failure
+
+---
+
+## Early Warning Indicators
+
+Use an HTML table in the generated artifact.
+
+Columns:
+
+* Indicator
+* Why It Matters
+
+Rules:
+
+* Include no more than 5 indicators.
+* Avoid timelines, phases, and extended commentary.
+
+---
+
+## Recommended Follow-Up
+
+If the plan is Ready or Conditionally Ready for Risk Reduction, recommend running the risk-reduction skill to convert the failure modes into a prioritized mitigation backlog.
+
+If the plan is Not Ready for Risk Reduction, state what minimum clarification or validation is needed first.
+
+---
+
+# Default Mode Prohibitions
+
+Default Mode must not:
+
+* generate failure stories
+* generate workshop narratives
+* generate investigator reports
+* deep-dive every failure mode
+* provide exhaustive analysis
+* explain every risk in detail
+* produce more than 5 failure modes
+* produce more than 5 recommendations
+* produce more than 5 checklist items
+* produce more than 5 early warning indicators
+
+Narrative exploration belongs exclusively in Deep Dive Mode.
 
 ---
 
@@ -695,7 +538,7 @@ If Ready or Conditionally Ready, recommend running risk-reduction.
 
 Deep Dive Mode extends the standard Stress Test.
 
-For each selected failure mode provide:
+For each selected failure mode, Deep Dive Mode may include:
 
 ### Failure Story
 
@@ -713,19 +556,33 @@ Observable indicators that the failure is beginning to occur.
 
 Actions that could have prevented or reduced the failure.
 
-Keep each deep dive focused and specific to the plan.
+Deep Dive Mode may produce longer, workshop-level analysis.
+
+Deep Dive Mode should still avoid generic risks and vague advice.
+
+When the environment supports file creation, Deep Dive Mode should also generate an HTML artifact.
+
+Default file name pattern:
+
+```text
+examples/[descriptive-name]-stress-test-deep-dive.html
+```
 
 ---
 
 # Chat Response Format
 
-After completing the analysis, provide a brief summary:
+After completing the analysis, provide a brief chat summary.
 
-1. Most Likely Failure
-2. Hidden Assumption
+Do not paste the full report into chat if an HTML artifact was generated.
+
+The chat summary should include:
+
+1. Generated file path
+2. Most Likely Failure
 3. Most Important Revision
 
-Limit the summary to three sentences.
+Limit the chat summary to three sentences.
 
 ---
 
@@ -739,6 +596,7 @@ A good Stress Test is:
 * grounded in context
 * focused on preventable failure
 * clear about what should change next
+* delivered in a format that is easy to read, share, and reuse
 
 A weak Stress Test is:
 
@@ -747,6 +605,7 @@ A weak Stress Test is:
 * exhaustive for its own sake
 * detached from context
 * vague in its recommendations
+* formatted in a way that does not render cleanly
 
 ---
 
@@ -765,3 +624,4 @@ A Stress Test asks:
 > This failed. Why?
 
 Use this skill when failure-first analysis is the right tool.
+
