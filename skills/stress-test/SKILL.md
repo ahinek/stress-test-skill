@@ -35,10 +35,7 @@ Default Mode should:
 * produce a concise decision-making artifact
 * focus on actionable insights
 
-Target length:
-
-* approximately 3-5 pages
-* 5-8 failure modes maximum
+Default Mode follows the Default Mode Rules and Output Budget defined later in this document.
 
 Default Mode should be used for:
 
@@ -100,26 +97,248 @@ If the user does not specify a mode, use Default Mode.
 
 ---
 
-# Length Control
+# Default Mode Rules
 
-Do not treat comprehensiveness as permission to be exhaustive.
+## Purpose
 
-Default Mode should identify the strongest 5-8 failure modes, not every imaginable failure.
+Default Mode is a decision-support artifact, not a comprehensive report.
 
-Prioritize:
+Its purpose is to help leaders and teams identify which risks deserve immediate attention before committing to a plan.
 
-* credibility
+Default Mode should prioritize:
+
+* signal over completeness
+* prioritization over documentation
+* actionability over explanation
+* decision support over exhaustive analysis
+
+If additional risks exist but are substantially less likely, less impactful, less preventable, or less useful to decision makers, omit them.
+
+---
+
+## Output Budget
+
+Default Mode must operate within a constrained output budget.
+
+Maximum output:
+
+* 5 failure modes
+* 3 organizational failure patterns
+* 5 recommendations
+* 5 checklist items
+* 5 early warning indicators
+
+These are maximums, not targets.
+
+Use fewer items when fewer items adequately explain the risk landscape.
+
+Do not add additional content merely because it exists.
+
+Every item included should earn its place by being:
+
+* likely
+* impactful
+* preventable
+* decision-relevant
+
+---
+
+## Failure Mode Selection
+
+Generate plausible failure modes.
+
+Then rank them according to:
+
+* likelihood
 * impact
 * preventability
-* decision usefulness
+* usefulness to decision makers
 
-over completeness.
+Select only the 5 highest-value failure modes.
 
-Prefer concise, high-signal analysis over long narrative explanation.
+Do not attempt to catalog every possible failure.
 
-Only produce expanded failure narratives in Deep Dive Mode.
+Avoid generic risks that could apply to any initiative.
 
-If additional failure modes exist but are substantially less likely, less impactful, or redundant, omit them.
+Avoid redundant risks that share the same root cause.
+
+---
+
+## Failure Mode Format
+
+Use a concise table.
+
+| Failure Mode | Likelihood | Impact | Warning Sign |
+| ------------ | ---------- | ------ | ------------ |
+
+Do not provide failure narratives.
+
+Do not provide detailed failure stories.
+
+Do not provide workshop-level analysis.
+
+Narrative exploration belongs exclusively in Deep Dive Mode.
+
+---
+
+## Executive Summary
+
+Begin the report with an Executive Summary.
+
+### Most Likely Failure
+
+Maximum 3 sentences.
+
+Explain:
+
+* why it is most likely
+* what assumptions make it likely
+
+### Most Dangerous Failure
+
+Maximum 3 sentences.
+
+Explain:
+
+* why impact would be severe
+* why consequences would compound
+
+### Cheapest Failure to Prevent
+
+Maximum 3 sentences.
+
+Explain:
+
+* why prevention cost is low
+* what action reduces the risk
+
+### Hidden Assumption
+
+Maximum 3 sentences.
+
+Identify the single assumption most likely to remain unchallenged.
+
+### Readiness Recommendation
+
+Choose one:
+
+* Ready for Risk Reduction
+* Conditionally Ready for Risk Reduction
+* Not Ready for Risk Reduction
+
+Provide no more than 5 supporting bullets.
+
+---
+
+## Base-Rate Analysis
+
+Provide a concise table.
+
+| Failure Mode | Probability | Base-Rate Rationale |
+| ------------ | ----------- | ------------------- |
+
+Limit explanations to a single sentence per row.
+
+Do not provide extended discussion.
+
+---
+
+## Organizational Failure Patterns
+
+Identify no more than 3 organizational patterns contributing to risk.
+
+Use the format:
+
+| Pattern | Why It Matters |
+| ------- | -------------- |
+
+Examples include:
+
+* unclear ownership
+* conflicting incentives
+* overloaded teams
+* metrics distortion
+* governance bottlenecks
+* communication gaps
+
+Do not provide narrative analysis.
+
+---
+
+## Revised Plan
+
+Provide no more than 5 recommendations.
+
+Recommendations should:
+
+* address multiple failure modes where possible
+* be concrete
+* be actionable
+* be prioritized
+
+Use the format:
+
+| Priority | Recommendation | Failure Modes Addressed |
+| -------- | -------------- | ----------------------- |
+
+---
+
+## Pre-Launch Checklist
+
+Provide no more than 5 checklist items.
+
+Each item should:
+
+* validate a critical assumption
+
+or
+
+* prevent a high-impact failure
+
+If more than 5 items exist, include only the most important.
+
+---
+
+## Early Warning Indicators
+
+Provide the 5 strongest warning signals.
+
+Use the format:
+
+| Indicator | Why It Matters |
+| --------- | -------------- |
+
+Avoid timelines, phases, and extended commentary.
+
+---
+
+## Default Mode Prohibitions
+
+Default Mode must not:
+
+* generate failure stories
+* generate workshop narratives
+* generate investigator reports
+* deep-dive every failure mode
+* provide exhaustive analysis
+* explain every risk in detail
+
+If detailed exploration is required, recommend Deep Dive Mode.
+
+---
+
+## Success Criteria
+
+A successful Default Mode report allows a leader to quickly answer:
+
+1. What is most likely to go wrong?
+2. What is most dangerous?
+3. What is easiest to prevent?
+4. What assumption should we challenge?
+5. Are we ready to proceed to Risk Reduction?
+
+The report should be readable in a single meeting without requiring a separate summary.
+
 
 ---
 
@@ -273,7 +492,10 @@ Rank failure modes based on:
 * preventability
 * decision usefulness
 
-Select only the strongest 5-8 failure modes.
+Select only the 5 highest-value failure modes.
+
+Default Mode: maximum 5.
+Deep Dive Mode: up to 8.
 
 Do not attempt to catalog every possible failure.
 
@@ -283,20 +505,41 @@ Omit low-value, redundant, or highly speculative risks.
 
 ## Step 4: Analyze Failure Modes
 
-For each selected failure mode provide:
+Default Mode:
 
-| Failure Mode | Why It Could Happen | Early Warning Sign |
-| ------------ | ------------------- | ------------------ |
+| Failure Mode | Likelihood | Impact | Warning Sign |
 
 Keep analysis concise.
 
-Narrative failure stories belong only in Deep Dive Mode.
+Use only the 5 highest-value failure modes selected in Step 3.
+
+Do not provide:
+
+- failure stories
+- workshop narratives
+- investigator reports
+- detailed root-cause exploration
+
+Deep Dive Mode:
+
+Expanded analysis is permitted.
+
+For each selected failure mode, Deep Dive Mode may include:
+
+- Failure Story
+- Underlying Assumption
+- Early Warning Signs
+- Prevention Options
+
+Narrative exploration is reserved for Deep Dive Mode.
 
 ---
 
 ## Step 5: Produce the Synthesis
 
 Generate a Stress Test Report.
+
+Default Mode must follow the Output Budget defined in Default Mode Rules.
 
 The report must contain:
 
@@ -310,7 +553,6 @@ Explain:
 
 * why it is most likely
 * what assumptions make it likely
-* what evidence supports the judgment
 
 ---
 
@@ -323,8 +565,7 @@ Identify the failure mode with the greatest potential impact.
 Explain:
 
 * why it is dangerous
-* what second-order effects it creates
-* why impact would compound if ignored
+* why impact would be severe
 
 ---
 
@@ -384,15 +625,17 @@ Each item should prevent or detect one of the identified failure modes.
 
 ---
 
-### Recommended Follow-Up
+### Readiness Recommendation
 
-When appropriate, recommend running:
+Choose one:
 
-```text
-risk-reduction
-```
+- Ready for Risk Reduction
+- Conditionally Ready for Risk Reduction
+- Not Ready for Risk Reduction
 
-to convert identified failure modes into a prioritized mitigation backlog.
+Provide no more than 5 supporting bullets.
+
+If Ready or Conditionally Ready, recommend running risk-reduction.
 
 ---
 
