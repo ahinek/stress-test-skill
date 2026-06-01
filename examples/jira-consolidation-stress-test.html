@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jira Workspace Consolidation - Stress Test</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            max-width: 1000px;
+            margin: 40px auto;
+            padding: 0 20px;
+            color: #24292e;
+        }
+        h1 {
+            border-bottom: 2px solid #e1e4e8;
+            padding-bottom: 10px;
+            margin-bottom: 30px;
+        }
+        h2 {
+            margin-top: 40px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid #e1e4e8;
+            padding-bottom: 8px;
+        }
+        h3 {
+            margin-top: 30px;
+            margin-bottom: 15px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        th {
+            background-color: #f6f8fa;
+            font-weight: 600;
+            text-align: left;
+            padding: 12px;
+            border: 1px solid #d0d7de;
+        }
+        td {
+            padding: 12px;
+            border: 1px solid #d0d7de;
+            vertical-align: top;
+        }
+        tr:nth-child(even) {
+            background-color: #f6f8fa;
+        }
+        ul {
+            margin: 10px 0;
+            padding-left: 30px;
+        }
+        li {
+            margin: 8px 0;
+        }
+        .meta {
+            color: #57606a;
+            font-size: 0.9em;
+            margin-bottom: 30px;
+        }
+        .highlight {
+            background-color: #fff3cd;
+            padding: 15px;
+            border-left: 4px solid #ffc107;
+            margin: 20px 0;
+        }
+        .readiness {
+            font-weight: 600;
+            color: #d73a49;
+        }
+        .readiness-ready {
+            color: #28a745;
+        }
+        .readiness-conditional {
+            color: #f66a0a;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Jira Workspace Consolidation - Stress Test</h1>
+
+<div class="meta">
+    <strong>Generated:</strong> 2026-06-01<br>
+    <strong>Mode:</strong> Default<br>
+    <strong>Initiative:</strong> Consolidation of multiple independent Jira workspaces into a single centralized workspace
+</div>
+
+<h2>Executive Summary</h2>
+
+<p><strong>Frame:</strong> It is six months from now. The Jira consolidation has failed. Leadership is investigating what went wrong. Teams have either abandoned Jira for shadow tools or are blocked waiting for governance approvals while delivery stalls. The initiative is being rolled back at significant cost to credibility and delivery momentum.</p>
+
+<h3>Most Likely Failure</h3>
+<ul>
+    <li><strong>Failure:</strong> Shadow process proliferation</li>
+    <li><strong>Why:</strong> Teams comply superficially with centralized Jira while maintaining actual work in spreadsheets, Slack threads, and Notion because standardized workflows don't fit their operational needs</li>
+    <li><strong>Assumption:</strong> Standardized workflows can serve all team types (engineering, QA, product, release ops) equally well</li>
+</ul>
+
+<h3>Most Dangerous Failure</h3>
+<ul>
+    <li><strong>Failure:</strong> Migration-induced delivery stall during active sprint cycles</li>
+    <li><strong>Why:</strong> Work items locked, board queries broken, automations offline—teams halt delivery waiting for admin fixes; leadership sees initiative blocking execution and emergency-pauses the project</li>
+</ul>
+
+<h3>Cheapest Failure to Prevent</h3>
+<ul>
+    <li><strong>Failure:</strong> Integration breakage and data quality issues</li>
+    <li><strong>Action:</strong> Pilot migration with 2 diverse teams for 2-3 sprints before org-wide rollout (cost: 4-6 weeks, ~$50K vs. $500K-$2M remediation cost)</li>
+</ul>
+
+<h3>Hidden Assumption</h3>
+<ul>
+    <li><strong>Assumption:</strong> "Teams want central visibility" conflates leadership's need for portfolio visibility with teams' need for local control—these are not the same goal</li>
+</ul>
+
+<h3>Readiness Recommendation</h3>
+<p class="readiness">Not Ready for Risk Reduction</p>
+<ul>
+    <li>Plan has zero field validation—no pilot, no integration testing, no data quality assessment</li>
+    <li>Governance model creates architectural bottleneck (centralized approvals + limited admin capacity = guaranteed backlog)</li>
+    <li>No workflow exception framework defined despite knowing teams have diverse needs</li>
+    <li>Success criteria measure compliance ("all work in centralized workspace") not adoption quality (velocity, delivery health)</li>
+    <li>Required first: Run pilot, switch to federated governance model, test integrations, establish exception framework</li>
+</ul>
+
+<h2>Failure Modes</h2>
+
+<table>
+    <thead>
+        <tr>
+            <th>Failure Mode</th>
+            <th>Likelihood</th>
+            <th>Impact</th>
+            <th>Warning Sign</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Shadow process proliferation</td>
+            <td>High (70-80%)</td>
+            <td>Jira becomes unreliable source of truth; governance fails silently</td>
+            <td>Slack/email references to "the spreadsheet"; Jira velocity metrics disconnect from actual delivery</td>
+        </tr>
+        <tr>
+            <td>Migration-induced delivery stall</td>
+            <td>High (65-70%)</td>
+            <td>Missed commitments; leadership loses confidence; initiative paused mid-rollout</td>
+            <td>Teams reporting blocked work items; admin support backlog exceeds 48 hours; sprint velocity drops >15%</td>
+        </tr>
+        <tr>
+            <td>Integration/automation breakage</td>
+            <td>High (65-70%)</td>
+            <td>CI/CD pipelines fail silently; manual workarounds proliferate; delivery friction increases</td>
+            <td>Broken Slack notifications; failed pipeline triggers; reporting dashboards show stale data</td>
+        </tr>
+        <tr>
+            <td>Governance bottleneck</td>
+            <td>Medium (50%)</td>
+            <td>Teams blocked 2-4 weeks waiting for workflow changes; resentment grows; shadow processes accelerate</td>
+            <td>Admin request queue >5 days average resolution; >30% of teams requesting exemptions</td>
+        </tr>
+        <tr>
+            <td>Standardization theater</td>
+            <td>Medium (55-60%)</td>
+            <td>Reports look consistent but remain incomparable; cross-team coordination still fails</td>
+            <td>Teams using identical issue types but different custom field conventions; dependency tracking still manual</td>
+        </tr>
+    </tbody>
+</table>
+
+<h2>Base-Rate Analysis</h2>
+
+<table>
+    <thead>
+        <tr>
+            <th>Reference Class</th>
+            <th>Failure Rate</th>
+            <th>Rationale</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Enterprise tool consolidations</td>
+            <td>60-70%</td>
+            <td>Gartner/Forrester analyses show most fail due to underestimating cultural resistance, overestimating mandate compliance, migration complexity, and governance bottlenecks—all present in this plan</td>
+        </tr>
+        <tr>
+            <td>Jira migrations at scale</td>
+            <td>50-65%</td>
+            <td>Historical pattern: integration breakage is systematically underestimated; data quality issues surface post-migration; teams revert to familiar tools when new system creates friction</td>
+        </tr>
+        <tr>
+            <td>Standardization without pilot</td>
+            <td>70-85%</td>
+            <td>Standardization efforts without field validation routinely fail to account for edge cases representing 20-40% of actual use cases; exemption requests overwhelm governance</td>
+        </tr>
+    </tbody>
+</table>
+
+<p><strong>This plan exhibits 4 of 4 known failure predictors:</strong> cultural resistance underestimated, leadership mandate overestimated, migration complexity present, governance bottleneck by design. Prior probability of failure: 65% without significant changes.</p>
+
+<h2>Organizational Failure Patterns</h2>
+
+<table>
+    <thead>
+        <tr>
+            <th>Pattern</th>
+            <th>Why It Matters</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Goodhart's Law</td>
+            <td>Teams will optimize for "looks consolidated" (same issue types, Jira activity) rather than "works consolidated" (actual coordination improvement)</td>
+        </tr>
+        <tr>
+            <td>Local optimization penalty</td>
+            <td>High-performing teams with efficient local systems are forced to adopt slower central system—punishes top performers, degrades overall delivery velocity</td>
+        </tr>
+        <tr>
+            <td>Substitution of goals</td>
+            <td>"Reduce admin overhead" becomes "reduce number of workspaces"—metric is achieved, actual goal is missed (overhead shifts from workspace admin to governance bottleneck)</td>
+        </tr>
+    </tbody>
+</table>
+
+<h2>Revised Plan Recommendations</h2>
+
+<table>
+    <thead>
+        <tr>
+            <th>Priority</th>
+            <th>Recommendation</th>
+            <th>Failure Modes Addressed</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>1</td>
+            <td>Run pilot with 1 high-performing + 1 struggling team; collect 2-3 sprints of friction data; fix top 10 issues before expansion</td>
+            <td>All failure modes—surfaces integration breakage, workflow incompatibilities, data quality issues, governance overhead before affecting 20+ teams</td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>Switch to federated governance model: central standards for reporting interfaces, team autonomy for workflows/fields/boards; scale admin capacity with team count</td>
+            <td>Governance bottleneck, shadow processes, standardization theater</td>
+        </tr>
+        <tr>
+            <td>3</td>
+            <td>Implement parallel migration: teams work in old workspace while new workspace is configured; single-sprint cutover with tested rollback plan</td>
+            <td>Migration-induced delivery stall, integration breakage</td>
+        </tr>
+        <tr>
+            <td>4</td>
+            <td>Inventory and test all integrations in pilot (CI/CD, Slack bots, reporting tools); budget 2-3x estimated fix time</td>
+            <td>Integration/automation breakage</td>
+        </tr>
+        <tr>
+            <td>5</td>
+            <td>Define workflow exception framework with 48-hour SLA and auto-approval timeout; measure adoption quality (velocity, shadow tool usage) not compliance</td>
+            <td>Shadow processes, governance bottleneck, standardization theater</td>
+        </tr>
+    </tbody>
+</table>
+
+<h2>Pre-Launch Checklist</h2>
+
+<ul>
+    <li><strong>Pilot validation:</strong> 2 teams migrated, ran 2-3 sprints, top 10 friction points resolved, delivery metrics stable or improved</li>
+    <li><strong>Integration testing:</strong> All CI/CD, Slack, reporting integrations tested in pilot; fixes deployed; no critical breakage</li>
+    <li><strong>Rollback plan:</strong> Documented and tested; old workspace reactivation < 4 hours; 30-day dual-access period defined</li>
+    <li><strong>Exception framework:</strong> Workflow exception process documented with team autonomy boundaries; 48-hour SLA established; 10-20% exemption budget allocated</li>
+    <li><strong>Success criteria revision:</strong> Adoption quality metrics defined (velocity, cycle time, shadow tool mentions) replacing compliance metrics ("% teams migrated")</li>
+</ul>
+
+<h2>Early Warning Indicators</h2>
+
+<table>
+    <thead>
+        <tr>
+            <th>Indicator</th>
+            <th>Red Threshold</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Velocity drop post-migration</td>
+            <td>>15% decline sustained for 2 sprints</td>
+            <td>Pause rollout; investigate blockers; consider rollback</td>
+        </tr>
+        <tr>
+            <td>Admin request backlog</td>
+            <td>>5 days average resolution time</td>
+            <td>Add admin capacity or simplify approval process</td>
+        </tr>
+        <tr>
+            <td>Shadow tool mentions</td>
+            <td>Slack/email references to "the spreadsheet" >10x/week</td>
+            <td>Interview teams; identify unmet workflow needs; adjust standards or create exemptions</td>
+        </tr>
+        <tr>
+            <td>Exemption request rate</td>
+            <td>>30% of migrated teams requesting exemptions</td>
+            <td>Standard is too rigid; redesign workflows or switch to federated model</td>
+        </tr>
+        <tr>
+            <td>Integration failure reports</td>
+            <td>>5 broken integrations reported/week</td>
+            <td>Migration testing was insufficient; halt expansion pending remediation</td>
+        </tr>
+    </tbody>
+</table>
+
+<p><strong>Review cadence:</strong> Consolidation steering committee reviews these metrics weekly. Any 2 red thresholds = halt expansion pending fix.</p>
+
+<h2>Recommended Follow-Up</h2>
+
+<div class="highlight">
+    <p><strong>Not ready for risk-reduction in current form.</strong></p>
+    <p><strong>Required before proceeding:</strong></p>
+    <ol>
+        <li><strong>Pilot first</strong> — The plan has zero validation. Run pilot, collect 4-6 weeks of real data, adjust.</li>
+        <li><strong>Governance model revision</strong> — Central bottleneck is load-bearing failure mode. Switch to federated model before announcing.</li>
+        <li><strong>Integration testing</strong> — "Integrations may break" is not a plan. Test and fix in pilot.</li>
+    </ol>
+    <p>If those three are addressed, risk-reduction appropriate for:</p>
+    <ul>
+        <li>Rollback plan validation</li>
+        <li>Admin capacity sizing</li>
+        <li>Training content design</li>
+    </ul>
+    <p><strong>Timeline:</strong> Pilot + revisions = 8-12 weeks. Do not skip pilot to meet deadline—the base rate says this fails 65% of the time without field validation.</p>
+</div>
+
+</body>
+</html>
