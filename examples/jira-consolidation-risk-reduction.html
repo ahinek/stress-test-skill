@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Risk Reduction Analysis: Jira Workspace Consolidation</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 20px;
+            color: #24292e;
+        }
+        h1 {
+            border-bottom: 2px solid #e1e4e8;
+            padding-bottom: 10px;
+            margin-bottom: 30px;
+        }
+        h2 {
+            margin-top: 40px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid #e1e4e8;
+            padding-bottom: 8px;
+        }
+        h3 {
+            margin-top: 30px;
+            margin-bottom: 15px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        th {
+            background-color: #f6f8fa;
+            font-weight: 600;
+            text-align: left;
+            padding: 12px;
+            border: 1px solid #d0d7de;
+        }
+        td {
+            padding: 12px;
+            border: 1px solid #d0d7de;
+            vertical-align: top;
+        }
+        tr:nth-child(even) {
+            background-color: #f6f8fa;
+        }
+        ul {
+            margin: 10px 0;
+            padding-left: 30px;
+        }
+        li {
+            margin: 8px 0;
+        }
+        .meta {
+            color: #57606a;
+            font-size: 0.9em;
+            margin-bottom: 30px;
+        }
+        .highlight {
+            background-color: #fff3cd;
+            padding: 15px;
+            border-left: 4px solid #ffc107;
+            margin: 20px 0;
+        }
+        .warning {
+            background-color: #f8d7da;
+            padding: 15px;
+            border-left: 4px solid #dc3545;
+            margin: 20px 0;
+        }
+        .info {
+            background-color: #d1ecf1;
+            padding: 15px;
+            border-left: 4px solid #0c5460;
+            margin: 20px 0;
+        }
+        .score-before {
+            color: #d73a49;
+            font-weight: 600;
+        }
+        .score-after {
+            color: #28a745;
+            font-weight: 600;
+        }
+        strong {
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Risk Reduction Analysis: Jira Workspace Consolidation</h1>
+
+<div class="meta">
+    <strong>Generated:</strong> 2026-06-01<br>
+    <strong>Source:</strong> Stress Test - Jira Workspace Consolidation<br>
+    <strong>Initiative:</strong> Consolidation of multiple independent Jira workspaces into a single centralized workspace
+</div>
+
+<h2>Expected Conditions</h2>
+
+<table>
+    <thead>
+        <tr>
+            <th>Condition</th>
+            <th>Likelihood</th>
+            <th>Why This Is Expected</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Teams create shadow processes (spreadsheets, Slack, Notion) while superficially complying with Jira</td>
+            <td>70-80%</td>
+            <td>Enterprise tool consolidations routinely produce compliance theater when standardized workflows cannot accommodate diverse operational needs; base rate for this pattern is 60-70% according to Gartner/Forrester analyses</td>
+        </tr>
+        <tr>
+            <td>Migration breaks critical integrations and automation during active delivery cycles</td>
+            <td>65-70%</td>
+            <td>Jira migrations systematically underestimate integration dependencies; plan lacks comprehensive automation inventory or pre-migration testing; historical pattern shows integration breakage is the norm, not the exception</td>
+        </tr>
+        <tr>
+            <td>Standardized workflows create delivery friction compared to pre-consolidation performance</td>
+            <td>55-60%</td>
+            <td>Workflow standardization optimizes for reporting consistency at the cost of local efficiency; high-performing teams with optimized local systems will experience degraded velocity in one-size-fits-all system</td>
+        </tr>
+    </tbody>
+</table>
+
+<div class="info">
+    <p><strong>Implication:</strong> These are not risks to monitor—they are expected outcomes requiring proactive planning. The migration plan must include:</p>
+    <ul>
+        <li><strong>Pre-allocated budget</strong> for workflow exception framework (10-20% exemption rate expected)</li>
+        <li><strong>Dedicated capacity</strong> for automation remediation (budget 2-3x estimated integration fix time)</li>
+        <li><strong>Baseline metrics</strong> established before migration with defined rollback thresholds (>15% velocity drop = pause trigger)</li>
+        <li><strong>Dual-access period</strong> (30 days minimum) to prevent delivery stall during transition</li>
+    </ul>
+</div>
+
+<h2>Prioritized Risk Table</h2>
+
+<table>
+    <thead>
+        <tr>
+            <th>Failure</th>
+            <th>Likelihood</th>
+            <th>Delay (Weeks)</th>
+            <th>Score</th>
+            <th>Effort</th>
+            <th>Rationale</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Migration-induced delivery stall halts active sprints</td>
+            <td>45%</td>
+            <td>10</td>
+            <td>4.5</td>
+            <td>Medium</td>
+            <td>Work items locked + broken queries + offline automations = teams waiting for admin fixes; leadership sees blocking execution and emergency-pauses initiative; unlike shadow processes (slow failure), this fails loudly in 1-2 sprint cycles</td>
+        </tr>
+        <tr>
+            <td>Centralized governance bottleneck blocks workflow adaptation</td>
+            <td>50%</td>
+            <td>6</td>
+            <td>3.0</td>
+            <td>Medium</td>
+            <td>Central approval required + limited admin capacity creates 2-4 week backlogs by design; no local vs. central decision boundaries defined; architectural bottleneck, not resourcing problem</td>
+        </tr>
+        <tr>
+            <td>Skilled worker exodus after local automation work discarded</td>
+            <td>25%</td>
+            <td>8</td>
+            <td>2.0</td>
+            <td>Medium</td>
+            <td>Power users who built efficient local systems perceive consolidation as devaluing contributions; plan lacks retention strategy or knowledge transfer path</td>
+        </tr>
+        <tr>
+            <td>Data quality issues render migrated backlogs unusable</td>
+            <td>35%</td>
+            <td>5</td>
+            <td>1.8</td>
+            <td>Low</td>
+            <td>Plan assumes clean field mapping; reality is 30-50% of custom fields have no equivalent and will be dropped/mangled without pre-migration assessment</td>
+        </tr>
+    </tbody>
+</table>
+
+<h3>Self-Challenge Notes</h3>
+
+<ul>
+    <li><strong>Delivery stall (45%):</strong> This assumes teams wait for fixes rather than immediately reverting to shadow tools—if teams route around broken tooling instantly, likelihood shifts from "delivery stall" to "shadow process acceleration" (already an Expected Condition)</li>
+    <li><strong>Governance bottleneck (50%):</strong> If teams abandon formal exception requests and use shadow tools instead, governance won't bottleneck, it will be bypassed entirely (converting this risk into Expected Condition #1)</li>
+    <li><strong>Data quality (35%):</strong> Assumes teams value historical data—newer teams or those willing to "start fresh" may not be impacted; also assumes no manual cleanup post-migration</li>
+    <li><strong>Worker exodus (25%):</strong> Assumes power users have transfer options or exit alternatives—may be lower in tight labor markets or organizations with strong retention incentives</li>
+</ul>
+
+<h2>Mitigation Recommendations</h2>
+
+<table>
+    <thead>
+        <tr>
+            <th>Failure</th>
+            <th>Mitigations</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Migration-induced delivery stall halts active sprints</td>
+            <td>
+                <ul>
+                    <li>Implement parallel migration: teams continue in old workspace during new workspace configuration; single-sprint cutover only</li>
+                    <li>Document and test rollback plan (old workspace reactivation < 4 hours)</li>
+                    <li>Establish 30-day dual-access period (old workspace read-only, new workspace active)</li>
+                </ul>
+            </td>
+        </tr>
+        <tr>
+            <td>Centralized governance bottleneck blocks workflow adaptation</td>
+            <td>
+                <ul>
+                    <li>Switch to federated governance model: central standards for reporting interfaces, team autonomy for workflow implementation</li>
+                    <li>Establish 48-hour SLA for workflow change requests with auto-approval after timeout</li>
+                    <li>Create self-service capability for common adjustments (field additions, board configurations)</li>
+                </ul>
+            </td>
+        </tr>
+        <tr>
+            <td>Data quality issues render migrated backlogs unusable</td>
+            <td>
+                <ul>
+                    <li>Run 2-week data quality assessment on pilot workspaces before full migration</li>
+                    <li>Define migration acceptance criteria (max % broken links, required field mapping accuracy thresholds)</li>
+                    <li>Archive original workspaces read-only for 6 months as fallback</li>
+                </ul>
+            </td>
+        </tr>
+        <tr>
+            <td>Skilled worker exodus after local automation work discarded</td>
+            <td>
+                <ul>
+                    <li>Interview power users to inventory current automation value and identify migration/replication paths</li>
+                    <li>Determine which custom automations can be replicated in centralized workspace before announcing migration</li>
+                    <li>Create "automation champions" role bridging local knowledge to central platform</li>
+                </ul>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<h2>Mitigation Backlog</h2>
+
+<table>
+    <thead>
+        <tr>
+            <th>Priority</th>
+            <th>Mitigation Activity</th>
+            <th>Related Risk</th>
+            <th>Effort</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>1</td>
+            <td>Run pilot migration with 1 high-performing + 1 struggling team; collect 2-3 sprints of friction data; fix top 10 issues before expansion</td>
+            <td>Delivery stall (Risk), Integration breakage (Expected), Data quality (Risk), Governance bottleneck (Risk), Shadow processes (Expected)</td>
+            <td>Medium</td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>Switch to federated governance model: central standards for reporting interfaces, team autonomy for workflows/fields/boards; scale admin capacity with team count</td>
+            <td>Governance bottleneck (Risk), Shadow processes (Expected), Standardization theater (Expected)</td>
+            <td>High</td>
+        </tr>
+        <tr>
+            <td>3</td>
+            <td>Inventory all automation/integrations (CI/CD, Slack bots, reporting); test in pilot; budget 2-3x estimated fix time</td>
+            <td>Integration breakage (Expected), Delivery stall (Risk)</td>
+            <td>Medium</td>
+        </tr>
+        <tr>
+            <td>4</td>
+            <td>Implement parallel migration architecture: teams work in old workspace during new configuration; single-sprint cutover</td>
+            <td>Delivery stall (Risk)</td>
+            <td>Medium</td>
+        </tr>
+        <tr>
+            <td>5</td>
+            <td>Define workflow exception framework with team autonomy boundaries; 48-hour SLA; 10-20% exemption budget</td>
+            <td>Governance bottleneck (Risk), Shadow processes (Expected)</td>
+            <td>Medium</td>
+        </tr>
+        <tr>
+            <td>6</td>
+            <td>Run 2-week data quality assessment on pilot workspaces; establish migration acceptance criteria</td>
+            <td>Data quality (Risk)</td>
+            <td>Low</td>
+        </tr>
+        <tr>
+            <td>7</td>
+            <td>Document and test rollback plan (old workspace reactivation < 4 hours)</td>
+            <td>Delivery stall (Risk)</td>
+            <td>Low</td>
+        </tr>
+        <tr>
+            <td>8</td>
+            <td>Establish 30-day dual-access period (old workspace read-only)</td>
+            <td>Delivery stall (Risk)</td>
+            <td>Low</td>
+        </tr>
+        <tr>
+            <td>9</td>
+            <td>Archive original workspaces read-only for 6 months</td>
+            <td>Data quality (Risk)</td>
+            <td>Low</td>
+        </tr>
+        <tr>
+            <td>10</td>
+            <td>Interview power users; inventory automation value; identify replication paths</td>
+            <td>Worker exodus (Risk)</td>
+            <td>Low</td>
+        </tr>
+        <tr>
+            <td>11</td>
+            <td>Establish baseline delivery metrics (velocity, cycle time, shadow tool mentions); define rollback thresholds</td>
+            <td>Workflow slowdown (Expected), Shadow processes (Expected)</td>
+            <td>Low</td>
+        </tr>
+        <tr>
+            <td>12</td>
+            <td>Create self-service capability for common workflow adjustments</td>
+            <td>Governance bottleneck (Risk)</td>
+            <td>Medium</td>
+        </tr>
+        <tr>
+            <td>13</td>
+            <td>Revise success criteria: adoption quality metrics (velocity, delivery health) replacing compliance metrics ("% teams migrated")</td>
+            <td>Shadow processes (Expected), Standardization theater (Expected)</td>
+            <td>Low</td>
+        </tr>
+    </tbody>
+</table>
+
+<h2>Risk Reduction Summary</h2>
+
+<h3>Risk Scores</h3>
+
+<p><strong>Total Risk Score Before Mitigation:</strong> <span class="score-before">11.3</span></p>
+<ul>
+    <li>Migration-induced delivery stall: 4.5</li>
+    <li>Centralized governance bottleneck: 3.0</li>
+    <li>Skilled worker exodus: 2.0</li>
+    <li>Data quality issues: 1.8</li>
+</ul>
+
+<p><strong>Estimated Risk Score After Mitigation:</strong> <span class="score-after">2.8</span></p>
+<ul>
+    <li>Migration-induced delivery stall: 0.5 (parallel migration + rollback plan + dual-access reduces likelihood 45% → 5%)</li>
+    <li>Centralized governance bottleneck: 0.8 (federated model + SLA + self-service reduces likelihood 50% → 13%)</li>
+    <li>Skilled worker exodus: 0.6 (power user engagement + automation migration reduces likelihood 25% → 8%)</li>
+    <li>Data quality issues: 0.9 (assessment + acceptance criteria reduces likelihood 35% → 18%)</li>
+</ul>
+
+<p><strong>Estimated Risk Reduction:</strong> <span class="score-after">75%</span></p>
+
+<h3>Key Insights</h3>
+
+<h4>Highest Leverage Mitigation</h4>
+
+<div class="highlight">
+    <p><strong>Pilot migration with 1 high-performing + 1 struggling team before org-wide rollout</strong></p>
+    <ul>
+        <li>Addresses 5 of 8 failure modes (both risks and expected conditions)</li>
+        <li><strong>Cost:</strong> 4-6 weeks, 0.5 FTE admin overhead (~$50K loaded)</li>
+        <li><strong>Prevents:</strong> $500K-$2M post-failure cost (delivery delays, rework, attrition, credibility loss)</li>
+        <li><strong>ROI:</strong> 10-40x (prevents multiple failure modes at 1/10 to 1/40 the remediation cost)</li>
+        <li>Surfaces integration breakage, workflow incompatibilities, data quality issues, and governance overhead <em>before</em> they affect 20+ teams</li>
+        <li>Provides empirical evidence to design exception framework and size admin capacity correctly</li>
+    </ul>
+</div>
+
+<h4>Cheapest Mitigations (Low Effort, High Impact)</h4>
+
+<ol>
+    <li><strong>2-week data quality assessment</strong> (Low effort, 49% risk reduction on data quality issues)</li>
+    <li><strong>Document and test rollback plan</strong> (Low effort, critical safety net for delivery stall)</li>
+    <li><strong>Establish baseline delivery metrics + rollback thresholds</strong> (Low effort, early warning system)</li>
+    <li><strong>Archive original workspaces read-only for 6 months</strong> (Low effort, fallback for data/rollback)</li>
+    <li><strong>Interview power users and inventory automation</strong> (Low effort, 68% risk reduction on worker exodus)</li>
+    <li><strong>30-day dual-access period</strong> (Low effort, prevents hard cutover delivery stall)</li>
+    <li><strong>Revise success criteria to measure adoption quality</strong> (Low effort, prevents Goodhart's Law optimization)</li>
+</ol>
+
+<h4>Most Expensive Mitigation</h4>
+
+<p><strong>Federated governance model redesign</strong> (High effort)</p>
+
+<p>This is architectural, not incremental. Requires:</p>
+<ul>
+    <li>Redefining central vs. local decision boundaries</li>
+    <li>Establishing reporting interface standards teams must expose</li>
+    <li>Scaling admin capacity with team count (1 admin per 5-10 teams)</li>
+</ul>
+
+<p><strong>However:</strong> This is the only mitigation that eliminates the governance bottleneck—without it, you're treating symptoms, not the architectural flaw.</p>
+
+<h4>Hardest Remaining Risk to Reduce</h4>
+
+<div class="warning">
+    <p><strong>Teams creating shadow processes while superficially complying with Jira</strong> (Expected Condition, 70-80% likelihood)</p>
+
+    <p>This is structural, not technical:</p>
+
+    <ul>
+        <li><strong>Root cause:</strong> Standardized workflows cannot simultaneously optimize for all team types (engineering, QA, product, research, release ops)</li>
+        <li><strong>Cannot be eliminated</strong> without either (a) abandoning standardization or (b) accepting local workflow variations</li>
+        <li><strong>Mitigation strategy:</strong> Reduce harm rather than eliminate occurrence
+            <ul>
+                <li>Make workflow exceptions fast and frictionless (48-hour SLA, auto-approval timeout)</li>
+                <li>Monitor delivery health metrics instead of Jira activity (detect shadow processes before governance fails)</li>
+                <li>Accept that 10-20% of teams will legitimately need non-standard workflows</li>
+                <li>Measure "adoption quality" not "compliance"</li>
+            </ul>
+        </li>
+    </ul>
+
+    <p><strong>Critical Insight:</strong> The workflow exception framework is <strong>not optional</strong>—it is the primary mechanism preventing shadow processes from becoming the dominant pattern. Without it, teams will route around the system rather than request changes, and the consolidation will produce compliance theater instead of operational improvement.</p>
+
+    <p>The hidden assumption that "standardized workflows serve all team types equally" is the plan's core flaw. The exception framework acknowledges this reality and provides a valve for legitimate divergence.</p>
+</div>
+
+<h2>Execution Recommendation</h2>
+
+<h3>Pre-Condition: Plan Is Not Ready for Full Risk Reduction</h3>
+
+<div class="warning">
+    <p>The stress test assessment is correct: <strong>Not Ready for Risk Reduction</strong> in current form.</p>
+
+    <p><strong>Blocking issues:</strong></p>
+    <ol>
+        <li><strong>Zero field validation</strong> — No pilot, no integration testing, no data quality assessment</li>
+        <li><strong>Architectural bottleneck</strong> — Centralized governance + limited admin capacity = guaranteed backlog</li>
+        <li><strong>No exception framework</strong> — Despite knowing teams have diverse needs</li>
+        <li><strong>Wrong success criteria</strong> — Measuring compliance, not adoption quality</li>
+    </ol>
+</div>
+
+<h3>Phase 1: Foundation (Must Complete Before Org-Wide Announcement)</h3>
+
+<ol>
+    <li><strong>Run pilot migration</strong> with 1 high-performing + 1 struggling team</li>
+    <li><strong>Conduct 2-week data quality assessment</strong> on pilot workspaces</li>
+    <li><strong>Inventory all automation/integrations</strong> and test in pilot</li>
+    <li><strong>Design federated governance model</strong> based on pilot learnings (not theoretical)</li>
+    <li><strong>Define workflow exception framework</strong> with empirical data from pilot friction reports</li>
+</ol>
+
+<p><strong>Timeline:</strong> 8-12 weeks</p>
+
+<p><strong>Gate:</strong> Pilot teams confirm delivery metrics stable or improved after 2-3 sprints</p>
+
+<h3>Phase 2: Risk Reduction (After Pilot Validates Approach)</h3>
+
+<p><strong>If pilot succeeds,</strong> proceed with risk reduction for:</p>
+<ul>
+    <li>Rollback plan validation</li>
+    <li>Admin capacity sizing (scaled per team count, not centralized)</li>
+    <li>Training content design</li>
+    <li>Integration remediation backlog prioritization</li>
+    <li>Exception request workflow design</li>
+</ul>
+
+<h3>Block Org-Wide Rollout Until</h3>
+
+<ul>
+    <li>✓ Pilot teams' delivery metrics stable or improved 2-3 sprints post-migration</li>
+    <li>✓ Integration testing shows no critical automation breakage (or fixes deployed)</li>
+    <li>✓ Federated governance model documented and approved</li>
+    <li>✓ Workflow exception framework tested with pilot teams</li>
+    <li>✓ Data migration acceptance criteria met (broken link threshold, field mapping accuracy)</li>
+    <li>✓ Rollback plan tested (< 4 hour reactivation)</li>
+    <li>✓ Success criteria revised (adoption quality, not compliance)</li>
+</ul>
+
+<h3>If Pilot Reveals Worse Outcomes Than Expected</h3>
+
+<p><strong>Reassess consolidation scope:</strong></p>
+<ul>
+    <li>Are the benefits (leadership visibility, reporting consistency) worth the operational cost?</li>
+    <li>Does the organization have enough cross-team dependencies to justify standardization overhead?</li>
+    <li>Should the approach shift from "centralized workspace" to "federated workspaces with standardized reporting interfaces"?</li>
+</ul>
+
+<p><strong>The hidden assumption</strong> that standardization serves all team types simultaneously may require abandoning the centralized model entirely, not just adjusting implementation.</p>
+
+<h3>Critical Path Timeline</h3>
+
+<ul>
+    <li><strong>Pilot + revisions:</strong> 8-12 weeks (do not skip to meet deadline)</li>
+    <li><strong>Post-pilot risk reduction:</strong> 2-4 weeks</li>
+    <li><strong>Org-wide rollout:</strong> 12-16 weeks (phased, with pause triggers)</li>
+    <li><strong>Total:</strong> 22-32 weeks from start to full adoption</li>
+</ul>
+
+<div class="warning">
+    <p><strong>Base rate warning:</strong> Skipping the pilot increases failure probability from 35% to 65%. It's faster to do it right once than to roll back and rebuild trust after org-wide failure.</p>
+</div>
+
+<h2>Summary</h2>
+
+<p>This risk reduction analysis operates under the constraint that <strong>the plan is not yet ready for full execution risk reduction</strong> because foundational validation is missing.</p>
+
+<p>The analysis therefore focuses on:</p>
+<ol>
+    <li><strong>Expected Conditions</strong> (70-80% likelihood) that must be planned for, not monitored</li>
+    <li><strong>Quantified Risks</strong> (25-50% likelihood) that can be reduced through targeted mitigations</li>
+    <li><strong>Phase 1 Foundation</strong> work required before org-wide risk reduction makes sense</li>
+</ol>
+
+<div class="highlight">
+    <p><strong>Key decision point:</strong> Do not proceed with org-wide rollout planning until pilot validates the approach. The base rate says this fails 65% of the time without field validation—the $50K pilot investment prevents a $500K-$2M remediation.</p>
+</div>
+
+</body>
+</html>
