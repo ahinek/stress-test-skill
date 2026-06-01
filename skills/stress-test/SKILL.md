@@ -164,26 +164,78 @@ Avoid redundant risks that share the same root cause.
 
 ---
 
-## Failure Mode Format
+## Output Formatting
 
-Use a concise table.
+Use standard GitHub-flavored markdown.
 
-| Failure Mode | Likelihood | Impact | Warning Sign |
-| ------------ | ---------- | ------ | ------------ |
+Do not use:
 
-Do not provide failure narratives.
+- ASCII tables
+- Unicode box-drawing tables
+- Terminal-rendered tables
 
-Do not provide detailed failure stories.
+Output should render cleanly in:
 
-Do not provide workshop-level analysis.
-
-Narrative exploration belongs exclusively in Deep Dive Mode.
+- GitHub
+- GitLab
+- Google Docs
+- Markdown editors
 
 ---
 
-## Executive Summary
+## Failure Mode Format
 
-Begin the report with an Executive Summary.
+Use a concise markdown table.
+
+| Failure Mode | Likelihood | Impact | Warning Sign |
+|--------------|------------|---------|--------------|
+
+Rules:
+
+- Keep warning signs brief.
+- Use short phrases rather than paragraphs.
+- Do not provide narrative explanations in the table.
+- Limit the table to the 5 highest-value failure modes.
+
+Narrative exploration belongs exclusively in Deep Dive Mode.
+
+Do not provide:
+
+- failure narratives
+- detailed failure stories
+- workshop-level analysis
+- root-cause investigations
+
+---
+
+## Executive Summary Format
+
+Use bullets rather than paragraphs.
+
+### Most Likely Failure
+
+- Failure:
+- Why:
+- Assumption:
+
+### Most Dangerous Failure
+
+- Failure:
+- Why:
+
+### Cheapest Failure to Prevent
+
+- Failure:
+- Action:
+
+### Hidden Assumption
+
+- Assumption:
+
+### Readiness Recommendation
+
+- Status:
+- Key Reasons:
 
 ### Most Likely Failure
 

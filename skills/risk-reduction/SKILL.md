@@ -194,12 +194,31 @@ Bad:
 
 ## Output Format
 
+Use standard GitHub-flavored markdown.
+
+Do not use:
+
+- ASCII tables
+- Unicode box-drawing tables
+- Terminal-rendered tables
+
+Output should render cleanly in:
+
+- GitHub
+- GitLab
+- Google Docs
+- Markdown editors
+
+---
+
 # Risk Reduction Analysis
 
 ## Expected Conditions
 
 | Condition | Likelihood | Why This Is Expected |
-| --------- | ---------- | -------------------- |
+|-----------|------------|----------------------|
+
+Limit "Why This Is Expected" to a single sentence.
 
 ---
 
@@ -207,10 +226,37 @@ Bad:
 
 Sort from highest score to lowest score.
 
-| Failure | Likelihood | Delay (Weeks) | Score | Likelihood Rationale | Self-Challenge | Mitigation Effort | Mitigations |
-| ------- | ---------- | ------------- | ----- | -------------------- | -------------- | ----------------- | ----------- |
+Before finalizing scores, challenge the assumptions behind each score and adjust if necessary.
 
-The Mitigations column should contain exactly three concise bullet items.
+Do not display the self-challenge unless it materially changes the result.
+
+| Failure | Likelihood | Delay (Weeks) | Score | Effort | Rationale |
+|----------|------------|---------------|--------|--------|-----------|
+
+Rules:
+
+- Rationale must be one sentence maximum.
+- Delay must represent expected schedule impact if the failure occurs.
+- Score = Likelihood × Delay.
+- Effort must be Low, Medium, or High.
+
+Do not provide narrative explanations within the table.
+
+---
+
+## Mitigation Recommendations
+
+For each risk identified above:
+
+| Failure | Mitigations |
+|----------|-------------|
+
+Rules:
+
+- Provide exactly three mitigation bullets.
+- Each mitigation should be concise.
+- Mitigations should be actionable.
+- Prefer preventative actions over detection activities.
 
 ---
 
