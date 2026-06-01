@@ -2,7 +2,7 @@
 
 name: risk-reduction
 description: Convert stress-test failure modes into a prioritized mitigation backlog by estimating likelihood, schedule impact, mitigation effort, and overall risk reduction potential.
-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+---
 
 # Risk Reduction
 
@@ -79,7 +79,11 @@ Expected Conditions:
 * Should be scheduled for
 * Should be budgeted for
 
-Expected Conditions should not appear in the risk ranking table.
+Expected Conditions are not risks.
+
+Expected Conditions should not appear in the Prioritized Risk Table.
+
+Expected Conditions should still influence mitigation planning and backlog prioritization.
 
 ---
 
@@ -96,10 +100,9 @@ Only risks are scored and prioritized.
 For every risk:
 
 1. Estimate a likelihood percentage.
-2. Explain the rationale.
-3. Challenge the estimate.
-
-### Likelihood Rationale
+2. Provide a concise rationale.
+3. Challenge the estimate internally.
+4. Adjust the estimate if warranted.
 
 Base estimates on:
 
@@ -112,17 +115,7 @@ Base estimates on:
 
 Do not generate arbitrary percentages.
 
-Every estimate must include reasoning.
-
-### Self-Challenge
-
-For each estimate answer:
-
-> Why might this estimate be wrong?
-
-The purpose is to avoid false precision and overconfidence.
-
-The challenge should be concise and specific.
+Do not display self-challenge reasoning unless it materially changes the estimate.
 
 ---
 
@@ -145,7 +138,7 @@ Example:
 40% × 6 weeks = 2.4
 ```
 
-Use decimal values.
+Use decimal values for Risk Score.
 
 ---
 
@@ -176,15 +169,13 @@ Recommendations must be:
 
 Avoid generic advice.
 
-Examples:
-
-Good:
+Good examples:
 
 * Conduct migration pilot
 * Assign dependency owner
 * Establish rollback rehearsal
 
-Bad:
+Bad examples:
 
 * Improve communication
 * Increase visibility
@@ -192,22 +183,24 @@ Bad:
 
 ---
 
-## Output Format
+## Output Formatting
 
 Use standard GitHub-flavored markdown.
 
 Do not use:
 
-- ASCII tables
-- Unicode box-drawing tables
-- Terminal-rendered tables
+* ASCII tables
+* Unicode box-drawing tables
+* Terminal-rendered tables
 
 Output should render cleanly in:
 
-- GitHub
-- GitLab
-- Google Docs
-- Markdown editors
+* GitHub
+* GitLab
+* Google Docs
+* Markdown editors
+
+Responses containing box-drawing characters are incorrect.
 
 ---
 
@@ -215,79 +208,84 @@ Output should render cleanly in:
 
 ## Expected Conditions
 
-Use a GitHub-flavored markdown table.
-
-Do not use ASCII tables.
-
-Do not use Unicode box-drawing tables.
-
-Required format:
+Use this exact markdown table format:
 
 | Condition | Likelihood | Why This Is Expected |
-|-----------|------------|----------------------|
+| --------- | ---------- | -------------------- |
 
-Limit "Why This Is Expected" to a single sentence.
+Rules:
+
+* Use markdown table syntax exactly.
+* Do not substitute another table format.
+* Limit "Why This Is Expected" to one sentence.
+* Include only items with likelihood greater than 50%.
+
+After the table, provide a short section:
+
+### Implication
+
+Briefly describe what the project should proactively plan for based on these Expected Conditions.
 
 ---
 
 ## Prioritized Risk Table
 
-Use a GitHub-flavored markdown table.
-
-Do not use ASCII tables.
-
-Do not use Unicode box-drawing tables.
-
-Required format:
+Use this exact markdown table format:
 
 | Failure | Likelihood | Delay (Weeks) | Score | Effort | Rationale |
-|----------|------------|---------------|--------|--------|-----------|
+| ------- | ---------- | ------------- | ----- | ------ | --------- |
 
 Rules:
 
-- Rationale must be one sentence maximum.
-- Delay must represent expected schedule impact if the failure occurs.
-- Score = Likelihood × Delay.
-- Effort must be Low, Medium, or High.
-
-Do not provide narrative explanations within the table.
+* Use markdown table syntax exactly.
+* Do not substitute another table format.
+* Include only risks with likelihood less than or equal to 50%.
+* Rationale must be one sentence maximum.
+* Delay must represent expected schedule impact if the failure occurs.
+* Score = Likelihood × Delay.
+* Effort must be Low, Medium, or High.
+* Sort highest score to lowest score.
 
 ---
 
 ## Mitigation Recommendations
 
-Use a GitHub-flavored markdown table.
-
-Do not use ASCII tables.
-
-Do not use Unicode box-drawing tables.
-
-Required format:
+Use this exact markdown table format:
 
 | Failure | Mitigations |
-|----------|-------------|
+| ------- | ----------- |
 
 Rules:
 
-- Provide exactly three mitigation bullets.
-- Each mitigation should be concise.
-- Mitigations should be actionable.
-- Prefer preventative actions over detection activities.
+* Use markdown table syntax exactly.
+* Do not substitute another table format.
+* Provide exactly three mitigation bullets per risk.
+* Each mitigation should be concise.
+* Each mitigation should be actionable.
+* Prefer prevention over detection.
 
 ---
 
 ## Mitigation Backlog
 
-Sort by:
-
-1. Highest Risk Score
-2. Lowest Mitigation Effort
-3. Greatest Risk Reduction Potential
-
-Format:
+Use this exact markdown table format:
 
 | Priority | Mitigation Activity | Related Risk | Effort |
 | -------- | ------------------- | ------------ | ------ |
+
+Rules:
+
+* Use markdown table syntax exactly.
+* Do not substitute another table format.
+* Sort by:
+
+  1. Highest Risk Score
+  2. Lowest Mitigation Effort
+  3. Greatest Risk Reduction Potential
+
+The backlog may contain more items than the number of risks.
+
+The purpose of this section is to create actionable work.
 
 ---
 
@@ -301,10 +299,33 @@ Calculate:
 
 Also identify:
 
-* Highest leverage mitigation
-* Cheapest mitigation
-* Most expensive mitigation
-* Hardest remaining risk to reduce
+* Highest Leverage Mitigation
+* Cheapest Mitigation
+* Hardest Remaining Risk
+
+Keep this section concise.
+
+Use bullets rather than long narrative explanations.
+
+---
+
+## Execution Recommendation
+
+Provide:
+
+### Immediate Actions
+
+The first actions that should be taken before execution begins.
+
+### Block Execution Until
+
+Conditions that should be satisfied before broad rollout or commitment.
+
+### Key Insight
+
+The single most important insight produced by the analysis.
+
+Limit this section to concise bullets and short paragraphs.
 
 ---
 
