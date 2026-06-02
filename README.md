@@ -135,6 +135,13 @@ The skill should infer what it can and ask only for the most important missing i
 
 ---
 
+# Rendered Examples
+
+View the formatted HTML examples here:
+
+- [Jira Consolidation Stress Test](https://ahinek.github.io/stress-test-skill/examples/jira-consolidation-stress-test.html)
+- [Jira Consolidation Risk Reduction](https://ahinek.github.io/stress-test-skill/examples/jira-consolidation-risk-reduction.html)
+
 # Invocation Examples
 
 ## Default Mode
