@@ -8,6 +8,21 @@ The goal is not to criticize a plan.
 
 The goal is to make the plan harder to break.
 
+# Cassandra Assessments
+
+The primary output of the Stress Test Skill is a Cassandra Assessment.
+
+A Cassandra Assessment identifies the most credible failure modes, hidden assumptions, and preventable risks associated with a proposed plan. The goal is not to predict the future with certainty, but to surface warnings early enough that they can still be acted upon.
+
+The name comes from Cassandra of Greek mythology, who was granted the ability to foresee disasters but cursed to have her warnings ignored.
+
+A Cassandra Assessment is designed to surface credible warnings before resources are committed and while corrective action remains possible.
+
+The Stress Test Skill is the process.
+
+The Cassandra Assessment is the artifact it produces.
+
+
 ---
 
 # Relationship to Risk Reduction
@@ -184,9 +199,9 @@ Give me the detailed version.
 
 ---
 
-# What the Skill Produces
+# What a Cassandra Assessment Contains
 
-The skill produces:
+A Cassandra Assessment contains:
 
 * Most Likely Failure
 * Most Dangerous Failure

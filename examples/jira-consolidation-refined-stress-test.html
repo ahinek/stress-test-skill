@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jira Workspace Consolidation (Refined) - Stress Test</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            max-width: 1000px;
+            margin: 40px auto;
+            padding: 0 20px;
+            color: #24292e;
+        }
+        h1 {
+            border-bottom: 2px solid #e1e4e8;
+            padding-bottom: 10px;
+            margin-bottom: 30px;
+        }
+        h2 {
+            margin-top: 40px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid #e1e4e8;
+            padding-bottom: 8px;
+        }
+        h3 {
+            margin-top: 30px;
+            margin-bottom: 15px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        th {
+            background-color: #f6f8fa;
+            font-weight: 600;
+            text-align: left;
+            padding: 12px;
+            border: 1px solid #d0d7de;
+        }
+        td {
+            padding: 12px;
+            border: 1px solid #d0d7de;
+            vertical-align: top;
+        }
+        tr:nth-child(even) {
+            background-color: #f6f8fa;
+        }
+        ul {
+            margin: 10px 0;
+            padding-left: 30px;
+        }
+        li {
+            margin: 8px 0;
+        }
+        .meta {
+            color: #57606a;
+            font-size: 0.9em;
+            margin-bottom: 30px;
+        }
+        .highlight {
+            background-color: #fff3cd;
+            padding: 15px;
+            border-left: 4px solid #ffc107;
+            margin: 20px 0;
+        }
+        .readiness {
+            font-weight: 600;
+            color: #f66a0a;
+        }
+        strong {
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Jira Workspace Consolidation (Refined) - Stress Test</h1>
+
+<div class="meta">
+    <strong>Generated:</strong> 2026-06-02<br>
+    <strong>Mode:</strong> Default<br>
+    <strong>Initiative:</strong> Consolidation of multiple independent Jira workspaces with tested AI tools and zero-loss migration
+</div>
+
+<h2>Executive Summary</h2>
+
+<p><strong>Frame:</strong> It is six months from now. The Jira consolidation has failed. Despite "successfully tested" AI tools, production issues appear that testing didn't catch. The "0 issues dropped/lost" criterion is violated within the first week—Customer Service bugs vanish, Security escalations route to wrong teams, partner integrations break. Teams revert to shadow processes while leadership investigates what testing missed.</p>
+
+<h3>Most Likely Failure</h3>
+<ul>
+    <li><strong>Failure:</strong> Issues are dropped/lost despite testing showing "0 loss"</li>
+    <li><strong>Why:</strong> Testing validates happy-path migration but misses edge cases: issues in-flight during cutover, issues with broken links to archived projects, issues with custom fields that have no mapping, issues created via partner integrations that use old API endpoints</li>
+    <li><strong>Assumption:</strong> "Successfully tested" means production behavior will match test behavior—ignores that test environments lack production load, edge cases, partner integrations, and in-flight state transitions</li>
+</ul>
+
+<h3>Most Dangerous Failure</h3>
+<ul>
+    <li><strong>Failure:</strong> Security vulnerability escalations route to wrong teams or are lost entirely</li>
+    <li><strong>Why:</strong> Security routing depends on field mappings, permission models, and escalation workflows; migration changes all three simultaneously; a high-severity vulnerability is created but doesn't reach the security response team; incident response is delayed by days</li>
+</ul>
+
+<h3>Cheapest Failure to Prevent</h3>
+<ul>
+    <li><strong>Failure:</strong> Partner organization integrations break because testing didn't include external systems</li>
+    <li><strong>Action:</strong> Invite partner organizations to participate in parallel workspace testing; provide test API endpoints; validate end-to-end flows jointly before production cutover (cost: 2-3 weeks coordination, ~$15K vs. weeks of broken partner escalations and relationship damage)</li>
+</ul>
+
+<h3>Hidden Assumption</h3>
+<ul>
+    <li><strong>Assumption:</strong> "0 issues dropped/lost" is measurable and achievable—in reality, you can only detect issues that were known to exist; issues created via broken integrations, routed incorrectly, or abandoned by teams using shadow processes are invisible to measurement</li>
+</ul>
+
+<h3>Readiness Recommendation</h3>
+<p class="readiness">Conditionally Ready for Risk Reduction</p>
+<ul>
+    <li>Success criteria improved: "successfully tested AI tools" and "0 issues dropped/lost" are concrete and measurable</li>
+    <li>However: Testing scope undefined—no definition of "successfully tested," no partner integration testing, no edge case inventory</li>
+    <li>However: "0 issues dropped/lost" measurement undefined—how to detect loss, how to attribute cause, how to trigger rollback</li>
+    <li>Required before full commitment: Define testing scope (AI tools, partner integrations, edge cases, load testing), establish issue loss detection mechanism with hourly monitoring during cutover</li>
+</ul>
+
+<h2>Failure Modes</h2>
+
+<table>
+    <thead>
+        <tr>
+            <th>Failure Mode</th>
+            <th>Likelihood</th>
+            <th>Impact</th>
+            <th>Warning Sign</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Issues dropped during cutover despite "0 loss" testing</td>
+            <td>Medium-High (60-70%)</td>
+            <td>Customer bugs lost; Security vulnerabilities not routed; teams lose trust; manual recovery required</td>
+            <td>Issue creation volume drops >10% day 1; teams reporting "where did my ticket go?"; API error logs showing failed creates</td>
+        </tr>
+        <tr>
+            <td>AI tools create malformed tickets in production despite passing tests</td>
+            <td>Medium (50-60%)</td>
+            <td>AI output requires manual cleanup; teams stop trusting AI tools; adoption stalls</td>
+            <td>AI-generated tickets missing required fields; tickets in wrong status; field mapping errors not caught in testing</td>
+        </tr>
+        <tr>
+            <td>Partner integrations break because external systems excluded from testing</td>
+            <td>High (70-75%)</td>
+            <td>Partner escalations fail silently; discovered only when partner complains; relationship damage</td>
+            <td>Partner API calls returning 404/403; webhook delivery failures; partners reporting "your system is down"</td>
+        </tr>
+        <tr>
+            <td>Customer Service bug routing changes cause bugs to route to wrong teams</td>
+            <td>Medium-High (55-65%)</td>
+            <td>Engineering teams receive wrong bugs; Customer Service SLAs violated; customer satisfaction impact</td>
+            <td>Teams reporting "we're getting bugs that aren't ours"; Customer Service escalations about unaddressed bugs</td>
+        </tr>
+        <tr>
+            <td>Security escalation workflow breaks under production load</td>
+            <td>Medium (45-55%)</td>
+            <td>Delayed incident response; compliance violations; potential security breach due to mis-routed vulnerability</td>
+            <td>Security team unable to set severity correctly; escalation notifications not delivering; approval workflows timing out</td>
+        </tr>
+    </tbody>
+</table>
+
+<h2>Base-Rate Analysis</h2>
+
+<table>
+    <thead>
+        <tr>
+            <th>Reference Class</th>
+            <th>Failure Rate</th>
+            <th>Rationale</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Test environment vs. production divergence</td>
+            <td>70-80%</td>
+            <td>Testing catches happy-path issues but misses production-only conditions: load, edge cases, timing, external dependencies, permission interactions—"works in test" rarely means "works in production" for complex migrations</td>
+        </tr>
+        <tr>
+            <td>"Zero data loss" migration commitments</td>
+            <td>60-70%</td>
+            <td>Data loss is often invisible until someone looks for missing data; issues created via broken integrations, routed incorrectly, or abandoned don't appear in "items migrated" counts—measurement assumes perfect visibility</td>
+        </tr>
+        <tr>
+            <td>External partner integration testing</td>
+            <td>75-85%</td>
+            <td>External systems are systematically excluded from testing due to coordination overhead; partner breakage discovered post-cutover when partner tries to use integration and fails</td>
+        </tr>
+    </tbody>
+</table>
+
+<p><strong>This plan exhibits 2 of 3 high-risk patterns:</strong> test/production divergence (testing scope undefined) and external dependency exclusion (partner testing not mentioned). Prior probability of production issues despite "successful testing": 65%.</p>
+
+<h2>Organizational Failure Patterns</h2>
+
+<table>
+    <thead>
+        <tr>
+            <th>Pattern</th>
+            <th>Why It Matters</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Test/production gap</td>
+            <td>"Successfully tested AI tools" sounds rigorous but testing scope is undefined—no mention of load testing, edge case enumeration, partner integration validation, or production-like state transitions</td>
+        </tr>
+        <tr>
+            <td>Undetectable failure criteria</td>
+            <td>"0 issues dropped/lost" is unmeasurable without continuous monitoring and attribution—how do you detect an issue that was supposed to be created but wasn't? Success depends on perfect visibility assumption</td>
+        </tr>
+        <tr>
+            <td>Security workflow brittleness</td>
+            <td>Security escalations depend on multiple brittle dependencies (field mappings, permissions, notifications); testing often validates "can create issue" but not "does escalation reach correct responders under load"</td>
+        </tr>
+    </tbody>
+</table>
+
+<h2>Revised Plan Recommendations</h2>
+
+<table>
+    <thead>
+        <tr>
+            <th>Priority</th>
+            <th>Recommendation</th>
+            <th>Failure Modes Addressed</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>1</td>
+            <td>Define "successfully tested" scope: AI tools under load, partner integrations, edge cases (in-flight issues, broken links, unmapped fields), Security/Customer Service workflows end-to-end; document test plan before claiming "tested"</td>
+            <td>All failure modes—prevents test/production gap by making testing scope explicit</td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>Establish "0 issues dropped/lost" detection: hourly issue creation volume monitoring during cutover; comparison to baseline; API error log monitoring; immediate investigation if volume drops >5%; automated alerts to migration team</td>
+            <td>Issues dropped during cutover—makes failure visible within hours, not weeks</td>
+        </tr>
+        <tr>
+            <td>3</td>
+            <td>Invite partner organizations to parallel workspace testing; provide test API endpoints 30+ days before cutover; validate partner integrations jointly; maintain dual-routing for 30 days post-cutover</td>
+            <td>Partner integration breakage—surfaces issues before production cutover</td>
+        </tr>
+        <tr>
+            <td>4</td>
+            <td>Conduct load testing with production-like volume: AI tool load (10x expected), Customer Service bug volume (peak rates), Security escalations (simulate incident); validate performance and correctness under stress</td>
+            <td>AI tool failures, Customer Service routing, Security workflow breakage—finds issues testing missed</td>
+        </tr>
+        <tr>
+            <td>5</td>
+            <td>Create edge case test suite: issues in-flight during cutover, issues with broken links, issues with unmapped custom fields, issues via old API endpoints; validate handling before production cutover</td>
+            <td>Issues dropped during cutover—catches cases happy-path testing misses</td>
+        </tr>
+    </tbody>
+</table>
+
+<h2>Pre-Launch Checklist</h2>
+
+<ul>
+    <li><strong>Testing scope documented:</strong> "Successfully tested" defined with specific test plan covering AI tools, partner integrations, edge cases, load testing, Security/Customer Service workflows; test results reviewed and approved</li>
+    <li><strong>Issue loss detection active:</strong> Hourly monitoring of issue creation volume by source (AI tools, Customer Service, Security, partners, internal teams); baseline established; <5% drop threshold triggers investigation</li>
+    <li><strong>Partner integration validated:</strong> All partner organizations tested against parallel workspace; test API endpoints provided 30+ days early; end-to-end flows validated jointly; dual-routing plan established</li>
+    <li><strong>Load testing completed:</strong> AI tools tested at 10x expected load; Customer Service peak volume simulated; Security incident response tested; performance and correctness validated under stress</li>
+    <li><strong>Edge case suite passed:</strong> In-flight issues, broken links, unmapped fields, old API endpoints tested; handling validated; rollback triggers defined for each edge case type</li>
+    <li><strong>Security escalation validated:</strong> End-to-end Security workflow tested under load; vulnerability routing confirmed; escalation notifications validated; approval workflows tested; Security team sign-off obtained</li>
+    <li><strong>Customer Service routing validated:</strong> Bug allocation rules tested with production-like volume; routing correctness confirmed; Customer Service team trained; dual-routing fallback ready</li>
+</ul>
+
+<h2>Early Warning Indicators</h2>
+
+<table>
+    <thead>
+        <tr>
+            <th>Indicator</th>
+            <th>Red Threshold</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Issue creation volume drop</td>
+            <td>>5% decline from baseline in first 24 hours</td>
+            <td>Immediate triage; investigate which source is down; activate dual-routing; consider rollback if >10%</td>
+        </tr>
+        <tr>
+            <td>AI tool error rate</td>
+            <td>>3% of AI-generated tickets malformed or mis-routed</td>
+            <td>Pause AI tool integration; audit field mappings; compare to test results; fix before re-enabling</td>
+        </tr>
+        <tr>
+            <td>Partner integration failures</td>
+            <td>>2 partner organizations reporting integration issues</td>
+            <td>Emergency partner communication; activate dual-routing for partner integrations; investigate breakage</td>
+        </tr>
+        <tr>
+            <td>Customer Service routing errors</td>
+            <td>>10% of bugs routed to wrong teams in first week</td>
+            <td>Audit routing rules; activate manual triage; restore dual-routing; retrain Customer Service team</td>
+        </tr>
+        <tr>
+            <td>Security escalation failures</td>
+            <td>>1 Security vulnerability mis-routed or delayed >4 hours</td>
+            <td>Immediate escalation; manual routing for all Security issues; audit workflow; potential rollback</td>
+        </tr>
+    </tbody>
+</table>
+
+<p><strong>Review cadence:</strong> Hourly monitoring first 48 hours; daily for 2 weeks; weekly thereafter. Any 2 red thresholds in first week = activate full rollback.</p>
+
+<h2>Recommended Follow-Up</h2>
+
+<div class="highlight">
+    <p><strong>Conditionally ready for risk-reduction.</strong></p>
+    <p><strong>Improvements from prior plan:</strong></p>
+    <ul>
+        <li>"Successfully tested AI tools" replaces "AI tools successfully land output" (shifts from hope to validation)</li>
+        <li>"0 issues dropped/lost" is concrete success criterion (measurable, though measurement mechanism needed)</li>
+    </ul>
+    <p><strong>Required before full commitment:</strong></p>
+    <ol>
+        <li><strong>Define testing scope</strong> — "Successfully tested" is undefined. Document test plan: AI tools under load, partner integrations, edge cases (in-flight issues, broken links, unmapped fields), Security/Customer Service end-to-end workflows.</li>
+        <li><strong>Establish issue loss detection</strong> — "0 issues dropped/lost" requires continuous monitoring. Set up hourly issue creation volume tracking by source; define <5% drop as investigation trigger.</li>
+        <li><strong>Include partner organizations in testing</strong> — External integrations systematically excluded from testing. Invite partners 30+ days early; provide test endpoints; validate jointly.</li>
+        <li><strong>Conduct load testing</strong> — Test environment won't catch production-only issues. Load test at 10x volume (AI tools, Customer Service, Security); validate under stress.</li>
+        <li><strong>Build edge case test suite</strong> — Happy-path testing misses majority of production failures. Test in-flight issues, broken links, unmapped fields, old API endpoints.</li>
+    </ol>
+    <p>If those five are addressed, proceed to risk-reduction for:</p>
+    <ul>
+        <li>Dual-routing cutover logistics</li>
+        <li>Rollback plan refinement</li>
+        <li>Internal team migration (standardization, governance, training)</li>
+    </ul>
+    <p><strong>Timeline:</strong> Test plan definition + load testing + partner coordination + edge case testing = 6-10 weeks. The "successfully tested" qualifier moves plan from "not ready" to "conditionally ready"—but only if testing actually happens at production-like scope and load.</p>
+</div>
+
+</body>
+</html>

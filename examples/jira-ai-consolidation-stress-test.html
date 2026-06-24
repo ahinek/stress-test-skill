@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jira Workspace Consolidation with AI Integration - Stress Test</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            max-width: 1000px;
+            margin: 40px auto;
+            padding: 0 20px;
+            color: #24292e;
+        }
+        h1 {
+            border-bottom: 2px solid #e1e4e8;
+            padding-bottom: 10px;
+            margin-bottom: 30px;
+        }
+        h2 {
+            margin-top: 40px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid #e1e4e8;
+            padding-bottom: 8px;
+        }
+        h3 {
+            margin-top: 30px;
+            margin-bottom: 15px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        th {
+            background-color: #f6f8fa;
+            font-weight: 600;
+            text-align: left;
+            padding: 12px;
+            border: 1px solid #d0d7de;
+        }
+        td {
+            padding: 12px;
+            border: 1px solid #d0d7de;
+            vertical-align: top;
+        }
+        tr:nth-child(even) {
+            background-color: #f6f8fa;
+        }
+        ul {
+            margin: 10px 0;
+            padding-left: 30px;
+        }
+        li {
+            margin: 8px 0;
+        }
+        .meta {
+            color: #57606a;
+            font-size: 0.9em;
+            margin-bottom: 30px;
+        }
+        .highlight {
+            background-color: #fff3cd;
+            padding: 15px;
+            border-left: 4px solid #ffc107;
+            margin: 20px 0;
+        }
+        .readiness {
+            font-weight: 600;
+            color: #d73a49;
+        }
+        strong {
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Jira Workspace Consolidation with AI Integration - Stress Test</h1>
+
+<div class="meta">
+    <strong>Generated:</strong> 2026-06-02<br>
+    <strong>Mode:</strong> Default<br>
+    <strong>Initiative:</strong> Consolidation of multiple independent Jira workspaces into a single centralized workspace with AI tool integration
+</div>
+
+<h2>Executive Summary</h2>
+
+<p><strong>Frame:</strong> It is six months from now. The Jira consolidation has failed catastrophically. AI tools are creating tickets in wrong locations, breaking cross-org workflows. Partner organization connections are severed. Customer Service cannot route bugs. Security issues are being mis-classified. The initiative is being emergency-rolled back while teams scramble to restore critical external integrations.</p>
+
+<h3>Most Likely Failure</h3>
+<ul>
+    <li><strong>Failure:</strong> AI tools land output in wrong locations after naming convention changes</li>
+    <li><strong>Why:</strong> AI tools were trained/configured on old workspace structure (project keys, field IDs, board names); migration changes these identifiers without updating AI tool configurations; AI creates tickets in wrong projects or with malformed field mappings</li>
+    <li><strong>Assumption:</strong> AI tools will adapt automatically to new workspace structure, or someone will remember to update all AI tool configurations before cutover</li>
+</ul>
+
+<h3>Most Dangerous Failure</h3>
+<ul>
+    <li><strong>Failure:</strong> Partner organization integrations break, severing critical cross-org workflows</li>
+    <li><strong>Why:</strong> External partners have hard-coded dependencies to current workspace structure (API endpoints, project keys, webhook URLs); migration breaks these silently; partner teams discover breakage when critical escalations fail to route</li>
+</ul>
+
+<h3>Cheapest Failure to Prevent</h3>
+<ul>
+    <li><strong>Failure:</strong> Customer Service bug allocation and Security issue escalation routing breaks</li>
+    <li><strong>Action:</strong> Map all Customer Service and Security routing rules before migration; test in parallel workspace for 2 weeks; maintain dual-routing during 30-day cutover period (cost: 2-3 weeks, ~$20K vs. weeks of mis-routed critical issues)</li>
+</ul>
+
+<h3>Hidden Assumption</h3>
+<ul>
+    <li><strong>Assumption:</strong> "AI tools successfully and accurately land output in correct locations" appears in success criteria but has no corresponding validation, testing, or rollback plan—success is assumed, not engineered</li>
+</ul>
+
+<h3>Readiness Recommendation</h3>
+<p class="readiness">Not Ready for Risk Reduction</p>
+<ul>
+    <li>No AI tool integration testing plan despite being first success criterion</li>
+    <li>No partner organization integration inventory or breakage impact assessment</li>
+    <li>Customer Service and Security routing workflows not mapped or tested</li>
+    <li>Naming convention changes will break AI tools, partner integrations, and automation—no mitigation planned</li>
+    <li>Required first: Inventory all external dependencies (AI tools, partner orgs, Customer Service, Security), test in parallel workspace, establish dual-routing cutover</li>
+</ul>
+
+<h2>Failure Modes</h2>
+
+<table>
+    <thead>
+        <tr>
+            <th>Failure Mode</th>
+            <th>Likelihood</th>
+            <th>Impact</th>
+            <th>Warning Sign</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>AI tools create tickets in wrong locations after naming changes</td>
+            <td>Very High (80-90%)</td>
+            <td>AI-generated output pollutes wrong projects; manual cleanup required; teams lose trust in AI tools</td>
+            <td>AI tool error logs showing "project not found" or tickets appearing in unexpected projects</td>
+        </tr>
+        <tr>
+            <td>Partner organization integrations break silently</td>
+            <td>High (70-80%)</td>
+            <td>Critical cross-org escalations fail to route; partner teams discover breakage only when issues are missed; relationship damage</td>
+            <td>Partner teams reporting "we're not seeing your tickets anymore"; webhook delivery failures; API 404 errors</td>
+        </tr>
+        <tr>
+            <td>Customer Service bug routing breaks during migration</td>
+            <td>High (65-75%)</td>
+            <td>Customer-reported bugs not reaching engineering teams; SLA violations; customer satisfaction impact</td>
+            <td>Customer Service reporting tickets are "disappearing"; engineering teams not receiving expected bug volume</td>
+        </tr>
+        <tr>
+            <td>Security issue escalation routing fails</td>
+            <td>Medium-High (60-70%)</td>
+            <td>Security vulnerabilities not reaching correct teams; compliance violations; delayed incident response</td>
+            <td>Security team unable to create issues with correct severity; escalation workflows timing out</td>
+        </tr>
+        <tr>
+            <td>Automation breaks due to renamed fields/boards/projects</td>
+            <td>High (70-80%)</td>
+            <td>CI/CD triggers fail; reporting dashboards go stale; manual workarounds proliferate</td>
+            <td>Automation logs showing field/project not found errors; dashboards showing "no data"</td>
+        </tr>
+    </tbody>
+</table>
+
+<h2>Base-Rate Analysis</h2>
+
+<table>
+    <thead>
+        <tr>
+            <th>Reference Class</th>
+            <th>Failure Rate</th>
+            <th>Rationale</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Tool migrations with AI integrations</td>
+            <td>75-85%</td>
+            <td>AI tool integrations are brittle to schema changes; models/configurations hard-coded to old structure rarely survive migration without explicit re-training or configuration updates—which are systematically forgotten</td>
+        </tr>
+        <tr>
+            <td>Migrations with external partner dependencies</td>
+            <td>70-80%</td>
+            <td>External dependencies are invisible until they break; partners operate on different timelines; breakage discovered post-cutover when partner team tries to escalate and fails</td>
+        </tr>
+        <tr>
+            <td>Naming convention changes during active operations</td>
+            <td>80-90%</td>
+            <td>Renaming identifiers (project keys, field IDs) breaks hard-coded references across tools, scripts, documentation, and partner integrations; comprehensive inventory is nearly impossible; breakage emerges over weeks</td>
+        </tr>
+    </tbody>
+</table>
+
+<p><strong>This plan exhibits 3 of 3 critical risk amplifiers:</strong> AI tool dependencies, external partner integrations, and naming convention changes—all simultaneously. Prior probability of integration failure: 80% without comprehensive testing and dual-routing cutover.</p>
+
+<h2>Organizational Failure Patterns</h2>
+
+<table>
+    <thead>
+        <tr>
+            <th>Pattern</th>
+            <th>Why It Matters</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Success criteria misalignment</td>
+            <td>First success criterion is "AI tools successfully land output in correct locations" but plan has no AI tool testing, validation, or rollback strategy—success is hoped for, not planned</td>
+        </tr>
+        <tr>
+            <td>External dependency invisibility</td>
+            <td>Partner integrations, Customer Service routing, and Security escalations are known concerns but treated as secondary to internal consolidation—external breakage discovered only when partners complain</td>
+        </tr>
+        <tr>
+            <td>Identifier renaming cascade</td>
+            <td>Plan acknowledges "naming conventions and connections to other automation may break" but treats this as acceptable risk rather than primary threat requiring comprehensive remediation</td>
+        </tr>
+    </tbody>
+</table>
+
+<h2>Revised Plan Recommendations</h2>
+
+<table>
+    <thead>
+        <tr>
+            <th>Priority</th>
+            <th>Recommendation</th>
+            <th>Failure Modes Addressed</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>1</td>
+            <td>Inventory all AI tool integrations; document current configurations (project keys, field mappings, board IDs); test each tool against parallel workspace; update configurations before cutover</td>
+            <td>AI tools landing output in wrong locations</td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>Identify all partner organization integrations; notify partners 60+ days before cutover; establish parallel routing during transition; provide partner teams test access to new workspace</td>
+            <td>Partner organization integration breakage</td>
+        </tr>
+        <tr>
+            <td>3</td>
+            <td>Map all Customer Service bug routing rules and Security escalation workflows; test in parallel workspace for 2+ weeks; maintain dual-routing for 30 days post-cutover</td>
+            <td>Customer Service routing, Security escalation failures</td>
+        </tr>
+        <tr>
+            <td>4</td>
+            <td>Create identifier mapping table (old project keys → new keys, old field IDs → new IDs); run automated scan for hard-coded references; update or deprecate before cutover</td>
+            <td>Automation breakage from naming changes</td>
+        </tr>
+        <tr>
+            <td>5</td>
+            <td>Establish parallel workspace with production-like data; run AI tools, partner integrations, Customer Service, and Security workflows for 2-4 weeks; fix breakage before announcing migration</td>
+            <td>All failure modes—surfaces integration issues before production cutover</td>
+        </tr>
+    </tbody>
+</table>
+
+<h2>Pre-Launch Checklist</h2>
+
+<ul>
+    <li><strong>AI tool validation:</strong> All AI tools tested against new workspace structure; configurations updated; field mappings validated; output landing in correct locations confirmed</li>
+    <li><strong>Partner notification:</strong> All partner organizations notified 60+ days in advance; new API endpoints/webhook URLs provided; partner teams have test access; integration testing completed jointly</li>
+    <li><strong>Customer Service routing:</strong> Bug allocation rules mapped to new workspace; tested end-to-end for 2+ weeks; dual-routing established; Customer Service team trained on new structure</li>
+    <li><strong>Security escalation:</strong> Vulnerability and exposure issue workflows mapped and tested; escalation routing validated; Security team confirms issue creation and routing works correctly</li>
+    <li><strong>Naming convention mapping:</strong> Identifier mapping table created (old → new); all known hard-coded references inventoried and updated; deprecation warnings in place for old identifiers</li>
+    <li><strong>Parallel workspace testing:</strong> Production-like parallel workspace running for 2-4 weeks; AI tools, partner integrations, Customer Service, Security, and internal automation tested; top 20 issues resolved</li>
+    <li><strong>Dual-routing cutover:</strong> 30-day dual-access period planned (old workspace read-only, routing mirrors to both); rollback plan tested (< 4 hour reactivation of old workspace)</li>
+</ul>
+
+<h2>Early Warning Indicators</h2>
+
+<table>
+    <thead>
+        <tr>
+            <th>Indicator</th>
+            <th>Red Threshold</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>AI tool error rate</td>
+            <td>>5% of AI-generated tickets landing in wrong projects or with field mapping errors</td>
+            <td>Pause AI tool integration; audit configurations; re-test before re-enabling</td>
+        </tr>
+        <tr>
+            <td>Partner integration failures</td>
+            <td>>3 partner escalations reporting "tickets not routing"</td>
+            <td>Emergency communication to all partners; activate dual-routing; investigate breakage</td>
+        </tr>
+        <tr>
+            <td>Customer Service bug volume drop</td>
+            <td>>20% decline in bugs reaching engineering teams compared to baseline</td>
+            <td>Audit routing rules; activate dual-routing; investigate where bugs are going</td>
+        </tr>
+        <tr>
+            <td>Security issue routing failures</td>
+            <td>>1 security vulnerability mis-routed or delayed</td>
+            <td>Immediate escalation; manual routing for security issues; audit escalation workflow</td>
+        </tr>
+        <tr>
+            <td>Automation failure reports</td>
+            <td>>10 automation/integration breakage reports in first week</td>
+            <td>Halt further migration; establish triage team; prioritize fixes by business impact</td>
+        </tr>
+    </tbody>
+</table>
+
+<p><strong>Review cadence:</strong> Daily monitoring for first 2 weeks post-cutover. Any 2 red thresholds = activate full rollback plan.</p>
+
+<h2>Recommended Follow-Up</h2>
+
+<div class="highlight">
+    <p><strong>Not ready for risk-reduction in current form.</strong></p>
+    <p><strong>Required before proceeding:</strong></p>
+    <ol>
+        <li><strong>AI tool integration inventory and testing</strong> — First success criterion but zero validation plan. Inventory all AI tools, document configurations, test against parallel workspace, update before cutover.</li>
+        <li><strong>Partner organization integration mapping</strong> — External dependencies invisible until they break. Identify all partners, notify 60+ days early, establish parallel routing, test jointly.</li>
+        <li><strong>Customer Service and Security workflow validation</strong> — Critical routing workflows at risk. Map current state, test in parallel, maintain dual-routing for 30 days.</li>
+        <li><strong>Naming convention impact assessment</strong> — Plan acknowledges this will break things but has no mitigation. Create identifier mapping, scan for hard-coded references, update before cutover.</li>
+        <li><strong>Parallel workspace testing</strong> — Run production-like environment for 2-4 weeks with AI tools, partners, Customer Service, Security, and automation; fix top 20 issues before announcing migration.</li>
+    </ol>
+    <p>If those five are addressed, risk-reduction appropriate for:</p>
+    <ul>
+        <li>Internal team migration (standardization, governance, training)</li>
+        <li>Rollback plan refinement</li>
+        <li>Dual-routing cutover logistics</li>
+    </ul>
+    <p><strong>Timeline:</strong> Parallel workspace testing + partner notification + AI tool validation = 10-14 weeks. Do not skip external dependency validation—integration failures are 80% likely and create relationship damage beyond internal project scope.</p>
+</div>
+
+</body>
+</html>

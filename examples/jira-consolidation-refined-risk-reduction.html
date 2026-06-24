@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Risk Reduction Analysis: Jira Consolidation (Refined)</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 20px;
+            color: #24292e;
+        }
+        h1 {
+            border-bottom: 2px solid #e1e4e8;
+            padding-bottom: 10px;
+            margin-bottom: 30px;
+        }
+        h2 {
+            margin-top: 40px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid #e1e4e8;
+            padding-bottom: 8px;
+        }
+        h3 {
+            margin-top: 30px;
+            margin-bottom: 15px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        th {
+            background-color: #f6f8fa;
+            font-weight: 600;
+            text-align: left;
+            padding: 12px;
+            border: 1px solid #d0d7de;
+        }
+        td {
+            padding: 12px;
+            border: 1px solid #d0d7de;
+            vertical-align: top;
+        }
+        tr:nth-child(even) {
+            background-color: #f6f8fa;
+        }
+        ul {
+            margin: 10px 0;
+            padding-left: 30px;
+        }
+        li {
+            margin: 8px 0;
+        }
+        .meta {
+            color: #57606a;
+            font-size: 0.9em;
+            margin-bottom: 30px;
+        }
+        .highlight {
+            background-color: #fff3cd;
+            padding: 15px;
+            border-left: 4px solid #ffc107;
+            margin: 20px 0;
+        }
+        .warning {
+            background-color: #f8d7da;
+            padding: 15px;
+            border-left: 4px solid #dc3545;
+            margin: 20px 0;
+        }
+        .info {
+            background-color: #d1ecf1;
+            padding: 15px;
+            border-left: 4px solid #0c5460;
+            margin: 20px 0;
+        }
+        .score-before {
+            color: #d73a49;
+            font-weight: 600;
+        }
+        .score-after {
+            color: #28a745;
+            font-weight: 600;
+        }
+        strong {
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Risk Reduction Analysis: Jira Workspace Consolidation (Refined)</h1>
+
+<div class="meta">
+    <strong>Generated:</strong> 2026-06-02<br>
+    <strong>Source:</strong> Stress Test - Jira Workspace Consolidation (Refined)<br>
+    <strong>Initiative:</strong> Consolidation with "successfully tested AI tools" and "0 issues dropped/lost" criteria
+</div>
+
+<h2>Expected Conditions</h2>
+
+<table>
+    <thead>
+        <tr>
+            <th>Condition</th>
+            <th>Likelihood</th>
+            <th>Why This Is Expected</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Partner organization integrations break because external systems excluded from testing</td>
+            <td>70-75%</td>
+            <td>Base rate for external partner integration testing failure is 75-85%; external systems systematically excluded from testing due to coordination overhead; partner breakage discovered post-cutover when partner tries to use integration</td>
+        </tr>
+        <tr>
+            <td>Test environment diverges from production behavior despite "successful testing"</td>
+            <td>70-80%</td>
+            <td>Testing catches happy-path issues but misses production-only conditions: load, edge cases, timing, external dependencies, permission interactions; "works in test" rarely means "works in production" for complex migrations</td>
+        </tr>
+        <tr>
+            <td>Issues dropped during cutover despite testing showing "0 loss"</td>
+            <td>60-70%</td>
+            <td>Testing validates happy-path migration but systematically misses edge cases: in-flight issues during cutover, broken links to archived projects, unmapped custom fields, old API endpoint usage; "0 loss" measurement assumes perfect visibility</td>
+        </tr>
+    </tbody>
+</table>
+
+<div class="info">
+    <p><strong>Implication:</strong> These are not risks to monitor—they are expected outcomes requiring proactive mitigation. The migration plan must include:</p>
+    <ul>
+        <li><strong>Partner integration validation:</strong> Invite partner organizations to parallel workspace testing 30+ days before cutover; provide test API endpoints; validate end-to-end flows jointly</li>
+        <li><strong>Production-like testing:</strong> Load testing at 10x expected volume; edge case test suite (in-flight issues, broken links, unmapped fields, old API endpoints); Security/Customer Service end-to-end validation</li>
+        <li><strong>Issue loss detection:</strong> Hourly monitoring of issue creation volume by source during cutover; <5% drop triggers immediate investigation; automated alerts to migration team</li>
+        <li><strong>Dual-routing cutover:</strong> 30-day parallel operation period; maintain old integration endpoints alongside new; gradual migration source-by-source rather than single cutover</li>
+    </ul>
+</div>
+
+<h2>Prioritized Risk Table</h2>
+
+<table>
+    <thead>
+        <tr>
+            <th>Failure</th>
+            <th>Likelihood</th>
+            <th>Delay (Weeks)</th>
+            <th>Score</th>
+            <th>Effort</th>
+            <th>Rationale</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Customer Service bug routing sends bugs to wrong teams</td>
+            <td>55%</td>
+            <td>4</td>
+            <td>2.2</td>
+            <td>Low</td>
+            <td>Routing rule changes during migration; testing validates "can create bug" but not "does bug reach correct team"; Customer Service SLA violations surface within days</td>
+        </tr>
+        <tr>
+            <td>AI tools create malformed tickets in production despite passing tests</td>
+            <td>50%</td>
+            <td>3</td>
+            <td>1.5</td>
+            <td>Medium</td>
+            <td>Test environment lacks production load and edge cases; AI field mappings brittle to schema changes; teams stop trusting AI tools after cleanup overhead exceeds value</td>
+        </tr>
+        <tr>
+            <td>Security escalation workflow breaks under production load</td>
+            <td>45%</td>
+            <td>8</td>
+            <td>3.6</td>
+            <td>Medium</td>
+            <td>Security routing depends on field mappings + permissions + notifications changing simultaneously; delayed incident response creates compliance violations and potential breach; testing validates creation but not escalation under load</td>
+        </tr>
+    </tbody>
+</table>
+
+<h3>Self-Challenge Notes</h3>
+
+<ul>
+    <li><strong>Customer Service routing (55%):</strong> Assumes routing errors are detected within first week—if Customer Service doesn't report mis-routed bugs and engineering teams silently ignore wrong bugs, detection could take weeks longer</li>
+    <li><strong>AI tools (50%):</strong> Assumes teams will report malformed tickets rather than quietly abandoning AI tool usage—if adoption just drops silently, failure won't be visible in error logs</li>
+    <li><strong>Security escalation (45%):</strong> This is catastrophically high for a Security workflow—even 10% would be unacceptable; likelihood may be conservative given Security workflows are brittle and testing scope is undefined</li>
+</ul>
+
+<h2>Mitigation Recommendations</h2>
+
+<table>
+    <thead>
+        <tr>
+            <th>Failure</th>
+            <th>Mitigations</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Security escalation workflow breaks under production load</td>
+            <td>
+                <ul>
+                    <li>Define Security escalation test plan: end-to-end workflow under simulated incident load; vulnerability routing validation; escalation notification testing; approval workflow stress testing; Security team sign-off required</li>
+                    <li>Establish Security-specific rollback trigger: >1 mis-routed vulnerability or >4 hour delay = immediate manual routing for all Security issues; potential full rollback</li>
+                    <li>Maintain manual escalation fallback: Security team retains direct communication channel bypassing Jira for first 30 days; escalation checklist includes "confirm Jira ticket created AND routed correctly"</li>
+                </ul>
+            </td>
+        </tr>
+        <tr>
+            <td>Customer Service bug routing sends bugs to wrong teams</td>
+            <td>
+                <ul>
+                    <li>Test Customer Service routing with production-like volume: simulate peak bug creation rates; validate routing correctness for each team; Customer Service team participates in testing; dual-routing active for 30 days</li>
+                    <li>Establish routing correctness monitoring: daily report of "bugs routed to each team" compared to baseline; engineering teams report wrong bugs via dedicated channel; >10% error rate triggers investigation</li>
+                    <li>Create Customer Service rollback plan: old routing rules documented and ready to reactivate; dual-routing architecture supports instant failover; Customer Service team trained on rollback procedure</li>
+                </ul>
+            </td>
+        </tr>
+        <tr>
+            <td>AI tools create malformed tickets in production despite passing tests</td>
+            <td>
+                <ul>
+                    <li>Conduct AI tool load testing: 10x expected volume; edge case validation (unmapped fields, in-flight schema changes, permission errors); field mapping audit comparing test vs. production schemas</li>
+                    <li>Establish AI tool error monitoring: >3% malformed tickets triggers pause; AI tool logs reviewed daily for first 2 weeks; teams can disable AI tool integration per-team if quality degrades</li>
+                    <li>Create AI tool validation checklist: before cutover, AI tools tested against production-like schema; field mappings documented and reviewed; fallback to manual ticket creation if AI quality fails</li>
+                </ul>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<h2>Mitigation Backlog</h2>
+
+<table>
+    <thead>
+        <tr>
+            <th>Priority</th>
+            <th>Mitigation Activity</th>
+            <th>Related Risk</th>
+            <th>Effort</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>1</td>
+            <td>Define comprehensive testing scope: document "successfully tested" to include AI tools under load, partner integrations, edge cases, Security/Customer Service end-to-end workflows; get stakeholder approval before claiming "tested"</td>
+            <td>Test/production divergence (Expected), All risks</td>
+            <td>Low</td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>Establish hourly issue loss detection: monitor issue creation volume by source; baseline established; <5% drop triggers immediate investigation; automated alerts to migration team</td>
+            <td>Issues dropped during cutover (Expected)</td>
+            <td>Low</td>
+        </tr>
+        <tr>
+            <td>3</td>
+            <td>Define Security escalation test plan and execute: end-to-end under load; vulnerability routing validation; escalation notifications; approval workflows; Security team sign-off required</td>
+            <td>Security escalation workflow (Risk)</td>
+            <td>Medium</td>
+        </tr>
+        <tr>
+            <td>4</td>
+            <td>Invite partner organizations to parallel workspace testing 30+ days before cutover; provide test API endpoints; validate end-to-end flows jointly; maintain dual-routing for 30 days</td>
+            <td>Partner integration breakage (Expected)</td>
+            <td>Medium</td>
+        </tr>
+        <tr>
+            <td>5</td>
+            <td>Test Customer Service routing with production-like volume; validate routing correctness per team; dual-routing active for 30 days; Customer Service participates in testing</td>
+            <td>Customer Service routing (Risk)</td>
+            <td>Low</td>
+        </tr>
+        <tr>
+            <td>6</td>
+            <td>Conduct AI tool load testing: 10x volume; edge cases; field mapping audit; document test results before production cutover</td>
+            <td>AI tool malformed tickets (Risk)</td>
+            <td>Medium</td>
+        </tr>
+        <tr>
+            <td>7</td>
+            <td>Build edge case test suite: in-flight issues during cutover, broken links, unmapped custom fields, old API endpoints; validate handling; define rollback triggers</td>
+            <td>Issues dropped during cutover (Expected)</td>
+            <td>Medium</td>
+        </tr>
+        <tr>
+            <td>8</td>
+            <td>Establish Security-specific rollback trigger and manual escalation fallback: >1 mis-routed vulnerability = manual routing; direct communication bypassing Jira for 30 days</td>
+            <td>Security escalation workflow (Risk)</td>
+            <td>Low</td>
+        </tr>
+        <tr>
+            <td>9</td>
+            <td>Create routing correctness monitoring for Customer Service: daily report vs. baseline; engineering teams report wrong bugs; >10% error rate triggers investigation</td>
+            <td>Customer Service routing (Risk)</td>
+            <td>Low</td>
+        </tr>
+        <tr>
+            <td>10</td>
+            <td>Establish AI tool error monitoring: >3% malformed triggers pause; logs reviewed daily for 2 weeks; teams can disable per-team if quality degrades</td>
+            <td>AI tool malformed tickets (Risk)</td>
+            <td>Low</td>
+        </tr>
+        <tr>
+            <td>11</td>
+            <td>Document dual-routing cutover architecture: 30-day parallel operation; maintain old endpoints alongside new; source-by-source migration; instant rollback capability</td>
+            <td>Partner integration breakage (Expected), Issues dropped (Expected)</td>
+            <td>Medium</td>
+        </tr>
+        <tr>
+            <td>12</td>
+            <td>Create rollback plans: Customer Service routing rules ready to reactivate; Security manual escalation procedure documented; AI tool fallback to manual creation defined</td>
+            <td>All risks</td>
+            <td>Low</td>
+        </tr>
+    </tbody>
+</table>
+
+<h2>Risk Reduction Summary</h2>
+
+<h3>Risk Scores</h3>
+
+<p><strong>Total Risk Score Before Mitigation:</strong> <span class="score-before">7.3</span></p>
+<ul>
+    <li>Security escalation workflow breaks: 3.6</li>
+    <li>Customer Service bug routing errors: 2.2</li>
+    <li>AI tools create malformed tickets: 1.5</li>
+</ul>
+
+<p><strong>Estimated Risk Score After Mitigation:</strong> <span class="score-after">1.8</span></p>
+<ul>
+    <li>Security escalation workflow breaks: 0.8 (end-to-end testing + manual fallback + specific rollback trigger reduces likelihood 45% → 10%)</li>
+    <li>Customer Service bug routing errors: 0.6 (production-like volume testing + dual-routing + monitoring reduces likelihood 55% → 15%)</li>
+    <li>AI tools create malformed tickets: 0.4 (load testing + error monitoring + per-team disable reduces likelihood 50% → 13%)</li>
+</ul>
+
+<p><strong>Estimated Risk Reduction:</strong> <span class="score-after">75%</span></p>
+
+<h3>Key Insights</h3>
+
+<h4>Highest Leverage Mitigation</h4>
+
+<div class="highlight">
+    <p><strong>Define comprehensive testing scope before claiming "successfully tested"</strong></p>
+    <ul>
+        <li>Addresses all 3 Expected Conditions and all 3 quantified risks</li>
+        <li><strong>Cost:</strong> 1-2 weeks to document test plan; <$10K if done internally</li>
+        <li><strong>Prevents:</strong> Test/production divergence (70-80% likelihood); partner integration failures (70-75%); issue loss (60-70%); all downstream risks</li>
+        <li><strong>ROI:</strong> Highest possible—without defining testing scope, "successfully tested" is meaningless and all other mitigations build on undefined foundation</li>
+        <li>Test plan must include: AI tools under load (10x volume), partner integrations (joint validation), edge cases (in-flight, broken links, unmapped fields), Security/Customer Service end-to-end, production-like load</li>
+    </ul>
+</div>
+
+<h4>Cheapest Mitigations (Low Effort, High Impact)</h4>
+
+<ol>
+    <li><strong>Define testing scope</strong> (Low effort, prevents all Expected Conditions—70-80% likelihood events)</li>
+    <li><strong>Establish hourly issue loss detection</strong> (Low effort, makes invisible failures visible within hours)</li>
+    <li><strong>Test Customer Service routing with production volume</strong> (Low effort, 73% risk reduction on 2.2-score risk)</li>
+    <li><strong>Establish Security-specific rollback trigger</strong> (Low effort, prevents catastrophic delayed incident response)</li>
+    <li><strong>Create routing correctness monitoring</strong> (Low effort, early warning for Customer Service errors)</li>
+    <li><strong>Establish AI tool error monitoring</strong> (Low effort, 74% risk reduction on AI tool quality)</li>
+    <li><strong>Document rollback plans</strong> (Low effort, enables fast recovery across all failure modes)</li>
+</ol>
+
+<h4>Most Expensive Mitigation</h4>
+
+<p><strong>Partner organization testing coordination</strong> (Medium effort)</p>
+
+<p>Requires:</p>
+<ul>
+    <li>Identifying all partner organizations (may be incomplete inventory)</li>
+    <li>Coordinating schedules 30+ days before cutover (partners operate on different timelines)</li>
+    <li>Providing test API endpoints and access</li>
+    <li>Joint validation of end-to-end flows</li>
+    <li>Maintaining dual-routing for 30 days (operational overhead)</li>
+</ul>
+
+<p><strong>However:</strong> This is the only mitigation that prevents Expected Condition #1 (70-75% likelihood). The $15K investment prevents weeks of broken partner escalations and relationship damage—base rate says 75-85% of migrations fail here.</p>
+
+<h4>Hardest Remaining Risk to Reduce</h4>
+
+<div class="warning">
+    <p><strong>Test environment diverges from production behavior</strong> (Expected Condition, 70-80% likelihood)</p>
+
+    <p>This is structural, not solvable through testing alone:</p>
+
+    <ul>
+        <li><strong>Root cause:</strong> Test environments fundamentally cannot replicate production's load, timing, external dependencies, permission interactions, and edge cases</li>
+        <li><strong>Cannot be eliminated</strong> through more testing—testing finds known issues, production finds unknown issues</li>
+        <li><strong>Mitigation strategy:</strong> Reduce impact through early detection and fast recovery
+            <ul>
+                <li>Hourly monitoring during cutover (detect divergence within hours, not weeks)</li>
+                <li>Dual-routing architecture (instant rollback capability)</li>
+                <li>Gradual source-by-source migration (limits blast radius)</li>
+                <li>Manual fallbacks for critical workflows (Security, Customer Service bypass Jira if needed)</li>
+            </ul>
+        </li>
+    </ul>
+
+    <p><strong>Critical Insight:</strong> "Successfully tested" does not mean "will work in production"—it means "we validated what we could think to test." The plan must assume production will surface issues testing missed and be architected for fast detection and recovery, not for perfection.</p>
+
+    <p>The hidden assumption that testing eliminates production risk is the plan's core vulnerability. Comprehensive testing (including load, partners, edge cases) reduces risk from 70-80% to 40-50%—still high. Dual-routing cutover + hourly monitoring + manual fallbacks are not optional—they're how you survive the inevitable test/production gap.</p>
+</div>
+
+<h2>Execution Recommendation</h2>
+
+<h3>Pre-Condition: Conditionally Ready for Risk Reduction</h3>
+
+<div class="info">
+    <p>The stress test assessment is correct: <strong>Conditionally Ready for Risk Reduction</strong>.</p>
+
+    <p><strong>Improvements from prior plan:</strong></p>
+    <ul>
+        <li>"Successfully tested AI tools" replaces hope with validation (though testing scope still undefined)</li>
+        <li>"0 issues dropped/lost" is concrete success criterion (though measurement mechanism needed)</li>
+    </ul>
+
+    <p><strong>Remaining gaps blocking full readiness:</strong></p>
+    <ul>
+        <li>Testing scope undefined—"successfully tested" is meaningless without defining what tests pass</li>
+        <li>Issue loss detection undefined—can't measure "0 loss" without hourly monitoring by source</li>
+        <li>Partner integration testing not planned—70-75% Expected Condition with no mitigation</li>
+        <li>Security workflow validation insufficient—45% risk of delayed incident response is unacceptable</li>
+    </ul>
+</div>
+
+<h3>Phase 1: Foundation (Complete Before Org-Wide Commitment)</h3>
+
+<ol>
+    <li><strong>Define testing scope:</strong> Document "successfully tested" to include AI tools under load, partner integrations, edge cases, Security/Customer Service end-to-end; get stakeholder approval (1-2 weeks)</li>
+    <li><strong>Execute Security escalation testing:</strong> End-to-end under simulated incident load; vulnerability routing validation; escalation notifications; approval workflows; Security team sign-off required (2-3 weeks)</li>
+    <li><strong>Coordinate partner organization testing:</strong> Identify partners, invite 30+ days before cutover, provide test endpoints, validate jointly (4-6 weeks lead time, 1-2 weeks execution)</li>
+    <li><strong>Establish issue loss detection:</strong> Hourly monitoring by source, baseline established, <5% drop triggers investigation (1 week setup)</li>
+    <li><strong>Build edge case test suite:</strong> In-flight issues, broken links, unmapped fields, old API endpoints; validate handling (2-3 weeks)</li>
+</ol>
+
+<p><strong>Timeline:</strong> 6-10 weeks (partner coordination is longest pole)</p>
+
+<p><strong>Gate:</strong> All tests pass; Security team sign-off; partner integrations validated; issue loss detection active</p>
+
+<h3>Phase 2: Risk Reduction (After Foundation Complete)</h3>
+
+<p><strong>If foundation testing succeeds,</strong> proceed with risk reduction for:</p>
+<ul>
+    <li>Dual-routing cutover architecture design</li>
+    <li>Rollback plan refinement per workflow (Security, Customer Service, AI tools)</li>
+    <li>Internal team migration logistics (standardization, governance, training)</li>
+    <li>Monitoring dashboard design (hourly volume tracking, error rate trending)</li>
+</ul>
+
+<h3>Block Production Cutover Until</h3>
+
+<ul>
+    <li>✓ Testing scope documented and approved</li>
+    <li>✓ Security escalation testing passed with Security team sign-off</li>
+    <li>✓ Partner organizations tested jointly; integrations validated</li>
+    <li>✓ Issue loss detection active with hourly monitoring</li>
+    <li>✓ Edge case test suite passed; handling validated</li>
+    <li>✓ AI tool load testing completed at 10x volume</li>
+    <li>✓ Customer Service routing tested with production-like volume</li>
+    <li>✓ Dual-routing architecture ready; instant rollback capability tested</li>
+    <li>✓ Manual fallbacks documented for Security and Customer Service</li>
+</ul>
+
+<h3>If Foundation Testing Reveals Issues</h3>
+
+<p><strong>Expected outcome:</strong> Foundation testing will find issues—that's the point. Budget for 2-3 weeks of remediation after initial testing.</p>
+
+<p>If testing reveals failures worse than expected:</p>
+<ul>
+    <li>Security escalation workflow fundamentally broken → delay cutover until workflow redesigned</li>
+    <li>Partner integrations breaking at >50% rate → reassess partner notification/coordination approach</li>
+    <li>Issue loss >10% in testing → audit migration logic before proceeding</li>
+    <li>AI tool error rate >10% → reassess AI tool readiness; may need to defer AI integration to post-consolidation</li>
+</ul>
+
+<h3>Critical Path Timeline</h3>
+
+<ul>
+    <li><strong>Phase 1 Foundation:</strong> 6-10 weeks (testing + coordination)</li>
+    <li><strong>Remediation buffer:</strong> 2-3 weeks (fix issues found in testing)</li>
+    <li><strong>Phase 2 Risk Reduction:</strong> 2-4 weeks (cutover logistics, monitoring, rollback plans)</li>
+    <li><strong>Production cutover:</strong> 1 week (dual-routing activation, gradual migration)</li>
+    <li><strong>Stabilization period:</strong> 4 weeks (hourly then daily monitoring, dual-routing active)</li>
+    <li><strong>Total:</strong> 15-22 weeks from start to full migration</li>
+</ul>
+
+<div class="warning">
+    <p><strong>Critical decision point:</strong> The plan is conditionally ready ONLY if testing actually happens at production-like scope and load. "Successfully tested" without defining testing scope is hope, not validation. The 6-10 week foundation testing is not optional overhead—it's how you reduce failure probability from 70-80% to 40-50%.</p>
+</div>
+
+<h2>Summary</h2>
+
+<p>This risk reduction analysis addresses a plan that is <strong>conditionally ready</strong>—improved from prior version but still missing foundational validation.</p>
+
+<p>The analysis focuses on:</p>
+<ol>
+    <li><strong>Expected Conditions</strong> (60-80% likelihood) requiring proactive mitigation, not monitoring</li>
+    <li><strong>Quantified Risks</strong> (45-55% likelihood) reducible through targeted testing and fallbacks</li>
+    <li><strong>Phase 1 Foundation</strong> work (6-10 weeks) required to make "successfully tested" and "0 issues dropped/lost" meaningful rather than aspirational</li>
+</ol>
+
+<div class="highlight">
+    <p><strong>Key decision point:</strong> The improved success criteria ("successfully tested AI tools" and "0 issues dropped/lost") move the plan from "not ready" to "conditionally ready"—but only if:</p>
+    <ul>
+        <li>Testing scope is defined comprehensively (AI tools under load, partners, edge cases, Security/Customer Service end-to-end)</li>
+        <li>Issue loss detection is established (hourly monitoring by source during cutover)</li>
+        <li>Partner integration validation happens (30+ days coordination, joint testing)</li>
+        <li>Security escalation testing includes load and end-to-end validation with Security team sign-off</li>
+    </ul>
+    <p>Without those four, "successfully tested" is hope and "0 issues dropped/lost" is unmeasurable. The 6-10 week foundation testing investment prevents 70-80% likelihood failures and enables the 75% risk reduction estimated above.</p>
+</div>
+
+</body>
+</html>
