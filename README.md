@@ -1,101 +1,104 @@
 # Stress Test Skill
 
-A structured failure-first review skill that helps teams identify likely breakdowns, hidden assumptions, organizational risks, and prevention opportunities before major commitments.
+The **Stress Test Skill** is a structured failure-first reasoning framework for evaluating plans before major commitments are made.
 
-The skill is inspired by Dr. Gary Klein's Premortem technique but extends it by forcing prioritization, ranking likely outcomes, identifying hidden assumptions, and grounding recommendations in historical patterns and organizational realities.
+Rather than asking whether a plan is good, the Stress Test assumes the plan has already failed and works backward to determine the most credible reasons why. This approach exposes hidden assumptions, organizational friction, weak signals, and preventable risks that conventional reviews often overlook.
 
-The goal is not to criticize a plan.
+The objective is not to criticize a plan.
 
-The goal is to make the plan harder to break.
+The objective is to improve the plan before reality does.
+
+---
 
 # Cassandra Assessments
 
-The primary output of the Stress Test Skill is a Cassandra Assessment.
+The primary output of the Stress Test Skill is a **Cassandra Assessment**.
 
-A Cassandra Assessment identifies the most credible failure modes, hidden assumptions, and preventable risks associated with a proposed plan. The goal is not to predict the future with certainty, but to surface warnings early enough that they can still be acted upon.
+A Cassandra Assessment identifies the most credible failure modes, hidden assumptions, and preventable risks associated with a proposed plan. Its purpose is not to predict the future with certainty, but to expose the most likely ways a plan could fail while there is still time to improve it.
 
-The name comes from Cassandra of Greek mythology, who was granted the ability to foresee disasters but cursed to have her warnings ignored.
+The name comes from Cassandra of Greek mythology, who was granted the ability to foresee disasters but cursed to have her warnings ignored. A Cassandra Assessment is intended to surface credible warnings before resources are committed and while corrective action remains possible.
 
-A Cassandra Assessment is designed to surface credible warnings before resources are committed and while corrective action remains possible.
+The **Stress Test Skill** is the reasoning process.
 
-The Stress Test Skill is the process.
+The **Cassandra Assessment** is the artifact it produces.
 
-The Cassandra Assessment is the artifact it produces.
+---
 
+# Core Principles
+
+Every Stress Test follows five principles.
+
+## Assume Failure
+
+Begin with the assumption that the plan has already failed and work backward to explain why.
+
+## Commit to Conclusions
+
+Prioritize findings by likelihood, impact, preventability, and decision value. Distinguish evidence from uncertainty, but avoid hiding behind "it depends."
+
+## Be Specific
+
+Focus on risks that are grounded in the actual plan, organization, stakeholders, and delivery context rather than generic observations.
+
+## Be Actionable
+
+Every significant finding should lead naturally to one or more changes that improve the plan.
+
+## Be Concise
+
+Prefer fewer, stronger findings over exhaustive analysis. Every item should earn its place by being likely, impactful, preventable, and decision-relevant.
 
 ---
 
 # Relationship to Risk Reduction
 
-Stress Test is intended to be the first step in a two-skill workflow.
+The Stress Test Skill is intended to be the first step in a two-skill workflow.
 
 ```text
 Stress Test
-    ↓
+      ↓
 Potential Failures
-    ↓
+      ↓
 Risk Reduction
-    ↓
+      ↓
 Mitigation Backlog
-    ↓
-Project Execution
+      ↓
+Execution
 ```
 
-Stress Test answers:
+The Stress Test identifies the most credible ways a plan could fail.
 
-> How does this fail?
-
-Risk Reduction answers:
-
-> Which failures should we spend effort preventing right now?
-
-Stress Test identifies potential failure modes.
-
-Risk Reduction converts those failure modes into prioritized mitigation work.
+The Risk Reduction Skill converts those findings into a prioritized mitigation backlog.
 
 ---
 
 # Operating Modes
 
-The skill supports two modes.
-
 ## Default Mode
 
-Default Mode is the standard behavior.
+Default Mode is recommended for most situations.
 
 Use it for:
 
 * release reviews
-* roadmap reviews
-* AI adoption efforts
-* organizational changes
+* organizational initiatives
 * operational improvements
-* strategic initiatives
 * executive proposals
+* delivery commitments
+* first-pass risk analysis
 
-Default Mode:
+Default Mode emphasizes:
 
-* focuses on the 5-8 strongest failure modes
-* prioritizes signal over completeness
-* produces a concise decision-making artifact
-* targets approximately 3-5 pages of output
-
-This is the recommended mode for most situations.
-
----
+* decision support over exhaustive analysis
+* prioritization over completeness
+* actionability over explanation
+* concise, high-value findings
 
 ## Deep Dive Mode
 
-Deep Dive Mode is intended for:
+Deep Dive Mode is intended for workshops, executive planning sessions, and detailed investigations of selected failure modes.
 
-* workshops
-* executive planning sessions
-* major strategic initiatives
-* detailed investigation of a specific failure mode
-
-Deep Dive Mode expands selected failure modes into fuller narratives, assumptions, warning signs, and prevention strategies.
-
-Use this mode when detailed exploration is more important than brevity.
+It extends the standard Cassandra Assessment with expanded failure narratives, assumptions, warning signs, and prevention strategies while preserving the same reasoning principles.
 
 ---
 
@@ -103,21 +106,24 @@ Use this mode when detailed exploration is more important than brevity.
 
 Use this skill when:
 
-* the cost of being wrong is meaningful
-* timelines are tight
-* multiple teams are involved
-* dependencies are unclear
-* organizational coordination matters
-* leadership visibility is high
-* quality and delivery pressure are increasing
-* AI acceleration may amplify existing process weaknesses
+* meaningful decisions have not yet been finalized
+* the cost of failure is significant
+* the plan can still be changed
+* multiple teams, organizations, or dependencies are involved
 
-This skill works especially well when teams feel:
+Typical applications include:
 
-* something about this feels risky
-* we may be missing something
-* this looks good on paper, but...
-* poke holes in this before we commit
+* product launches
+* feature launches
+* AI adoption initiatives
+* organizational change
+* platform or Jira migrations
+* delivery commitments
+* executive proposals
+* strategic initiatives
+
+Avoid using this skill for factual questions, editing requests, open-ended brainstorming, purely creative work, or decisions that are already irreversible.
+
 
 ---
 
@@ -149,53 +155,62 @@ Users do not need perfect formatting.
 The skill should infer what it can and ask only for the most important missing information.
 
 ---
-
-# Rendered Examples
-
-View the formatted HTML examples here:
-
-- [Jira Consolidation Stress Test](https://ahinek.github.io/stress-test-skill/examples/jira-consolidation-stress-test.html)
-- [Jira Consolidation Risk Reduction](https://ahinek.github.io/stress-test-skill/examples/jira-consolidation-risk-reduction.html)
-
 # Invocation Examples
-
-## Default Mode
-
-```text
-Stress test this release plan before we commit to the date.
-```
+## Recommended Invocation
+### Default Mode
 
 ```text
-Stress test this AI rollout for engineering teams.
-```
+Stress test this plan.
+
+## Plan
+
+Consolidate multiple Jira workspaces into a single shared workspace.
+
+## Stakeholders
+
+Engineering
+Product Management
+QE
+Release Management
+Customer Support
+
+## Success Criteria
+
+- Minimal disruption
+- Standardized workflows
+- Improved reporting
+- Shared governance
+
+## Constraints
+
+Migration must occur during active development.
+No interruption to release planning.
+Limited administrative resources.
+
+## Known Concerns
+
+Teams have customized workflows.
+Some automation depends on existing project structures.
+
+### Deep Dive Invocation
 
 ```text
-Find the blind spots in this organizational change proposal.
+Run a Deep Dive Stress Test.
+
+Focus especially on:
+
+- organizational resistance
+- governance
+- migration sequencing
+- dependency management
+- communication risks
+
+Challenge every major assumption.
+Identify the most likely organizational failure patterns.
 ```
+The skill adapts to the amount of context provided. A single paragraph is often enough to begin. Additional detail improves the quality of the assessment but is not required.
 
-```text
-What could kill this launch plan?
-```
 
----
-
-## Deep Dive Mode
-
-```text
-Stress test this in deep-dive mode.
-```
-
-```text
-Run a full stress test on this strategic initiative.
-```
-
-```text
-Expand failure mode #3.
-```
-
-```text
-Give me the detailed version.
-```
 
 ---
 
@@ -209,7 +224,7 @@ A Cassandra Assessment contains:
 * Hidden Assumption
 * Base Rate Analysis
 * Organizational Failure Analysis
-* Revised Plan Recommendations
+* Overall Assessment
 * Pre-Launch Checklist
 * Early Warning Indicators
 
@@ -263,6 +278,14 @@ Additional templates may be added over time for:
 ```text
 skills/stress-test/SKILL.md
 ```
+---
+
+# Rendered Examples
+
+View the formatted HTML examples here (V2 examples coming soon):
+
+- [Jira Consolidation Stress Test](https://ahinek.github.io/stress-test-skill/examples/jira-consolidation-stress-test.html)
+- [Jira Consolidation Risk Reduction](https://ahinek.github.io/stress-test-skill/examples/jira-consolidation-risk-reduction.html)
 
 ---
 
@@ -297,4 +320,19 @@ A Stress Test asks:
 > This failed. Why?
 
 That framing changes the quality of the analysis dramatically.
+
+Instead of asking:
+
+> Is this a good plan?
+
+Ask:
+
+> If this plan failed six months from now, what would we wish we had seen today?
+
+That question is the heart of the Stress Test Skill. It shifts the conversation away from defending the current plan and toward discovering the assumptions, risks, and decisions that are still within our power to change.
+
+The purpose of a Cassandra Assessment is not to predict the future.
+
+Its purpose is to improve decisions before commitments become expensive to reverse.
+
 
