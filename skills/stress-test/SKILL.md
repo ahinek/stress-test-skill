@@ -1,752 +1,646 @@
 ---
-
 name: stress-test
 description: Structured failure-first review for plans, launches, strategies, delivery commitments, and organizational decisions.
----------------------------------------------------------------------------------------------------------------------------------
+---
 
 # Stress Test Skill
 
 ## Purpose
 
-Use this skill to test a meaningful plan before commitment.
+Use this skill to evaluate meaningful plans before commitment by assuming the plan has already failed and working backward to determine why.
 
-A Stress Test assumes the plan has failed and works backward to explain why. This framing surfaces risks, hidden assumptions, weak signals, organizational friction, and uncomfortable truths that ordinary reviews often miss.
+Failure-first analysis surfaces hidden assumptions, organizational friction, weak signals, and preventable risks that conventional reviews often overlook.
 
-The goal is not to criticize the plan.
+The objective is not to criticize the plan.
 
-The goal is to make the plan harder to break.
+The objective is to improve the plan before reality does.
 
-## Cassandra Assessment
+---
 
-The primary output of the Stress Test Skill is a Cassandra Assessment.
+# Cassandra Assessment
 
-A Cassandra Assessment identifies the most credible failure modes, hidden assumptions, and preventable risks associated with a proposed plan. The goal is not to predict the future with certainty, but to surface warnings early enough that they can still be acted upon.
+The primary output of the Stress Test Skill is a **Cassandra Assessment**.
+
+A Cassandra Assessment identifies the most credible failure modes, hidden assumptions, and preventable risks associated with a proposed plan. Its purpose is not to predict the future with certainty, but to expose the most likely ways a plan could fail while there is still time to improve it.
 
 The name comes from Cassandra of Greek mythology, who was granted the ability to foresee disasters but cursed to have her warnings ignored.
 
 A Cassandra Assessment is designed to surface credible warnings before resources are committed and while corrective action remains possible.
 
-The Stress Test Skill is the process.
+The **Stress Test Skill** is the process.
 
-The Cassandra Assessment is the artifact it produces.
+The **Cassandra Assessment** is the artifact it produces.
+
+---
+
+# Core Principles
+
+Every Stress Test should follow these principles.
+
+## 1. Assume Failure
+
+Begin with the assumption that the plan has already failed.
+
+Work backward to determine the most credible explanations.
+
+Do not evaluate whether the plan is "good." Explain why it failed.
+
+---
+
+## 2. Commit to Conclusions
+
+Do not present every risk as equally important.
+
+Rank findings by:
+
+- Likelihood
+- Impact
+- Preventability
+- Decision value
+
+When evidence is incomplete:
+
+- Make the best grounded judgment possible.
+- Clearly distinguish evidence from uncertainty.
+- Avoid hiding behind "it depends."
+
+Produce conclusions, not merely observations.
+
+---
+
+## 3. Be Specific
+
+Avoid generic risks that could apply to almost any initiative.
+
+Every finding should be grounded in:
+
+- the plan
+- the organization
+- the stakeholders
+- the delivery context
+
+If a finding could be copied unchanged into another assessment, it probably is not specific enough.
+
+---
+
+## 4. Be Actionable
+
+Every recommendation should improve the plan.
+
+Prefer recommendations that:
+
+- reduce risk
+- expose assumptions
+- simplify execution
+- clarify ownership
+- improve decision quality
+
+Avoid recommendations that merely restate the problem.
+
+---
+
+## 5. Be Concise
+
+Prefer fewer, stronger findings over exhaustive analysis.
+
+Every item included in the assessment should earn its place by being:
+
+- likely
+- impactful
+- preventable
+- decision-relevant
+
+Do not add findings simply because additional risks exist.
 
 ---
 
 # Relationship to Risk Reduction
 
-Stress Test is the first step in this workflow:
+Stress Test is the first step in a two-skill workflow.
 
 ```text
 Stress Test
-    ↓
+      ↓
 Potential Failures
-    ↓
+      ↓
 Risk Reduction
-    ↓
+      ↓
 Mitigation Backlog
-    ↓
-Project Execution
+      ↓
+Execution
 ```
 
-Stress Test answers:
+The Stress Test Skill identifies the most credible ways a plan could fail.
 
-> How does this fail?
-
-Risk Reduction answers:
-
-> Which failures should we spend effort preventing right now?
+The Risk Reduction Skill converts those findings into a prioritized mitigation backlog.
 
 ---
 
 # Operating Modes
 
-This skill has two modes:
-
-1. Default Mode
-2. Deep Dive Mode
-
-Use Default Mode unless the user explicitly asks for Deep Dive Mode.
-
----
-
 ## Default Mode
 
-Default Mode is the standard behavior.
+Default Mode is the standard operating mode.
 
-Default Mode produces a concise decision-support artifact.
+Use it for:
 
-Use Default Mode for:
+- release reviews
+- strategy reviews
+- organizational initiatives
+- operational improvements
+- executive proposals
+- delivery commitments
+- first-pass risk analysis
 
-* release reviews
-* strategy reviews
-* operational changes
-* organizational initiatives
-* leadership preparation
-* first-pass risk analysis
+Default Mode emphasizes:
 
-Default Mode prioritizes:
+- decision support over exhaustive analysis
+- prioritization over completeness
+- actionability over explanation
+- concise, high-value findings
 
-* signal over completeness
-* prioritization over documentation
-* actionability over explanation
-* decision support over exhaustive analysis
+Unless explicitly requested otherwise, always use Default Mode.
+
+### Output Limits
+
+Maximum:
+
+- 5 failure modes
+- 3 organizational failure patterns
+- 5 recommendations
+- 5 checklist items
+- 5 early warning indicators
+
+These are maximums—not targets.
+
+Use fewer items whenever they adequately explain the risk landscape.
 
 ---
 
 ## Deep Dive Mode
 
-Deep Dive Mode is used only when the user explicitly requests detailed analysis.
+Deep Dive Mode is used only when explicitly requested.
 
-Use Deep Dive Mode for:
+Use it for:
 
-* workshops
-* executive planning sessions
-* major strategic initiatives
-* high-cost commitments
-* detailed investigation of a specific failure mode
+- executive planning workshops
+- major strategic initiatives
+- high-cost commitments
+- detailed investigation of specific failure modes
 
 Deep Dive Mode may include:
 
-* failure narratives
-* expanded assumptions
-* detailed warning signs
-* prevention strategies
-* workshop-level analysis
+- failure narratives
+- expanded assumptions
+- detailed warning signs
+- prevention strategies
+- workshop-level analysis
+
+The same Core Principles still apply.
 
 ---
 
-# Invocation Rules
-
-Use Default Mode for requests such as:
-
-```text
-Stress test this.
-Stress test this plan.
-Find the blind spots.
-What could kill this?
-Poke holes in this.
-What am I missing?
-```
-
-Use Deep Dive Mode for requests such as:
-
-```text
-Stress test this in deep-dive mode.
-Run a full stress test.
-Give me the detailed version.
-Deep dive this plan.
-Expand failure mode #3.
-```
-
-If the user does not specify a mode, use Default Mode.
-
----
-
-# When To Use This Skill
+# When to Use This Skill
 
 Use this skill when:
 
-* the user has a concrete plan
-* the cost of being wrong is meaningful
-* the plan can still be changed
-* there is a decision, commitment, launch, strategy, or organizational change being considered
+- a concrete plan exists
+- meaningful decisions have not yet been finalized
+- the cost of failure is significant
+- meaningful changes are still possible
 
-Good candidates include:
+Typical applications include:
 
-* product launches
-* feature launches
-* AI adoption efforts
-* organizational changes
-* Jira migrations
-* process changes
-* executive proposals
-* delivery commitments
-* strategic initiatives
-* platform migrations
+- product launches
+- feature launches
+- AI adoption initiatives
+- organizational changes
+- Jira or platform migrations
+- process improvements
+- delivery commitments
+- executive proposals
+- strategic initiatives
 
 Do not use this skill for:
 
-* factual questions
-* vague brainstorming with no concrete plan
-* editing requests
-* purely creative work
-* decisions that are already irreversible
+- factual questions
+- open-ended brainstorming
+- editing or writing assistance
+- purely creative work
+- decisions that have already become irreversible
 
 ---
 
 # Minimum Context
 
-Before running a Stress Test, understand:
+Before beginning the assessment, understand:
 
-1. What is being stress-tested?
+1. What is being evaluated?
 2. Who is affected?
 3. What does success look like?
 
-If this information is already available from the conversation or supporting documents, proceed.
+If sufficient context already exists in the conversation or supporting documents, begin immediately.
 
-If not, ask the smallest useful question necessary.
+Otherwise, ask only the smallest number of questions necessary to complete the assessment.
 
-Ask one question at a time.
+Prefer inference over interrogation.
 
-Infer reasonable context whenever possible rather than turning the interaction into an intake form.
-
----
-
-# Commitment Requirement
-
-Do not present all risks as equally important.
-
-Force prioritization.
-
-If evidence is incomplete:
-
-* make the best grounded judgment possible
-* state uncertainty clearly
-* avoid hiding behind "it depends"
-
-The skill should produce conclusions, not merely observations.
+Avoid turning the assessment into an intake form.
 
 ---
 
-# Organizational Failure Modes
+# Operating Rules
 
-Always evaluate whether failure could emerge from:
+The quality of a Cassandra Assessment depends more on disciplined reasoning than exhaustive analysis.
 
-* unclear ownership
-* cross-functional dependency friction
-* overloaded teams
-* conflicting executive incentives
-* metrics distortion
-* timeline pressure overwhelming quality controls
-* AI accelerating unstable processes
-* communication gaps between leadership and delivery teams
-* hidden operational work not represented in plans
-* governance structures that slow local decision-making
-* reporting needs overwhelming delivery needs
+### Prefer Expected Failures
+
+Begin with failure modes that commonly occur in similar initiatives before exploring unusual possibilities.
+
+Use historical patterns, organizational experience, and known delivery risks whenever possible.
+
+Rare events deserve attention only when their consequences or likelihood justify it.
 
 ---
 
-# Default Mode Output Budget
+### Challenge Assumptions
 
-Default Mode must operate within a constrained output budget.
+Look for assumptions that the plan depends upon but never explicitly states.
 
-Maximum output:
+Examples include:
 
-* 5 failure modes
-* 3 organizational failure patterns
-* 5 recommendations
-* 5 checklist items
-* 5 early warning indicators
+- ownership
+- staffing
+- organizational alignment
+- stakeholder behavior
+- technical readiness
+- external dependencies
+- schedule realism
+- governance
+- customer adoption
 
-These are maximums, not targets.
+Treat hidden assumptions as first-class risks.
 
-Use fewer items when fewer items adequately explain the risk landscape.
+---
 
-Do not add content merely because it exists.
+### Look Beyond Technical Risk
 
-Every included item should earn its place by being:
+Evaluate both execution risks and organizational risks.
 
-* likely
-* impactful
-* preventable
-* decision-relevant
+Many plans fail because of coordination, communication, incentives, governance, or competing priorities rather than technical implementation.
+
+Do not allow technical discussion to crowd out organizational analysis.
+
+---
+
+### Distinguish Evidence from Judgment
+
+Separate:
+
+- observable facts
+- reasonable inference
+- informed judgment
+- uncertainty
+
+Do not invent evidence.
+
+Do not overstate confidence.
+
+When uncertainty exists, acknowledge it while still making a recommendation.
+
+---
+
+### Prefer Actionable Findings
+
+Every significant finding should lead naturally to one or more actions.
+
+Avoid observations that cannot influence a decision.
+
+If a finding would not change the plan, consider omitting it.
+
+---
+
+### Maintain Appropriate Skepticism
+
+Do not assume the proposal is flawed.
+
+Do not assume it is sound.
+
+Approach every plan as something capable of succeeding or failing depending on the validity of its assumptions and execution.
+
+---
+
+# Organizational Failure Patterns
+
+Always consider whether failure could emerge from one or more of these areas:
+
+- unclear ownership
+- cross-functional dependency friction
+- overloaded teams
+- conflicting incentives
+- metrics distortion
+- governance bottlenecks
+- communication gaps
+- hidden operational work
+- unrealistic coordination assumptions
+- timeline pressure overwhelming quality controls
+- AI accelerating unstable processes
+- reporting requirements overwhelming delivery
+
+Only include patterns that materially contribute to the assessment.
 
 ---
 
 # Output Requirements
 
-When the environment supports file creation, create an HTML artifact as the primary output.
+The primary deliverable is a **Cassandra Assessment**.
 
-Default file name pattern:
+When file creation is supported:
+
+- Generate a single self-contained HTML document.
+- Use the default filename:
 
 ```text
 examples/[descriptive-name]-stress-test.html
 ```
 
-If the user provides a file name or path, use the user's requested path.
+Unless the user specifies another path.
 
-Do not rely on terminal-rendered tables as the final artifact.
+The HTML should:
 
-Do not use:
+- use inline CSS
+- use semantic HTML headings
+- use bordered HTML tables
+- be readable in a browser
+- copy cleanly into Google Docs
+- require no external assets or JavaScript
+- include a generated timestamp when practical
 
-* ASCII tables
-* Unicode box-drawing tables
-* terminal-rendered tables
+If HTML generation is unavailable, produce clean GitHub-flavored Markdown.
 
-Do not use these characters in tables:
+Never use:
 
-```text
-┌ ┬ ┐ ├ ┼ ┤ └ ┴ ┘ │
-```
-
-The HTML artifact must:
-
-* use real HTML tables
-* include clean section headings
-* use simple inline CSS
-* be readable in a browser
-* be suitable for copying into Google Docs
-* include the full Stress Test report
-* include timestamp or generated date when possible
-
-If file creation is not available, output clean markdown using standard GitHub-flavored markdown tables.
-
-Responses containing box-drawing characters are incorrect.
-
----
-
-# HTML Artifact Requirements
-
-Generate a single self-contained HTML file.
-
-Use:
-
-* inline CSS
-* readable typography
-* clear section headers
-* bordered HTML tables
-* simple spacing
-* no external dependencies
-* no JavaScript required
-
-The HTML should include these sections:
-
-1. Executive Summary
-2. Failure Modes
-3. Base-Rate Analysis
-4. Organizational Failure Patterns
-5. Revised Plan Recommendations
-6. Pre-Launch Checklist
-7. Early Warning Indicators
-8. Recommended Follow-Up
-
-The HTML file should be the durable artifact.
-
-The chat response should be brief and should point to the generated file path.
+- ASCII tables
+- Unicode box-drawing tables
+- terminal-rendered tables
 
 ---
 
 # Stress-Test Procedure
 
-## Step 1: Establish the Frame
+## Step 1 — Establish the Frame
 
-Once sufficient context exists, establish the Stress Test frame.
+Begin with failure-first framing.
 
 Use wording similar to:
 
-> It is six months from now. This plan has failed. It did not merely underperform; it failed clearly enough that people are looking back to understand what went wrong. We are now working backward to explain why.
+> It is six months from now. This plan has failed. It did not merely underperform—it failed clearly enough that people are looking back to understand what happened. We are now working backward to determine why.
 
-Failure-first framing is required.
+This framing is required.
 
-Without it, the analysis often becomes a generic risk review.
+Without it, the assessment often becomes a conventional risk review.
 
 ---
 
-## Step 2: Generate Failure Modes
+## Step 2 — Identify Failure Modes
 
 Generate plausible failure modes.
 
-Failure modes must be:
+Each should be:
 
-* specific to the plan
-* realistic
-* meaningful
-* grounded in context
+- specific
+- realistic
+- meaningful
+- grounded in context
 
-Avoid generic risks that could apply to any initiative.
-
----
-
-## Step 3: Prioritize Failure Modes
-
-Rank failure modes based on:
-
-* likelihood
-* impact
-* preventability
-* decision usefulness
-
-Default Mode:
-
-* Select only the 5 highest-value failure modes.
-* Do not attempt to catalog every possible failure.
-* Omit low-value, redundant, or highly speculative risks.
-
-Deep Dive Mode:
-
-* May include up to 8 failure modes.
-* May expand on each failure mode with additional narrative analysis.
+Avoid generic risks that could apply to almost any initiative.
 
 ---
 
-# Default Mode Report Format
+## Step 3 — Prioritize
 
-Default Mode must use this structure.
+Rank findings according to:
+
+- likelihood
+- impact
+- preventability
+- decision value
+
+Default Mode should identify only the highest-value findings.
+
+Deep Dive Mode may explore additional failure modes when explicitly requested.
+
+Remember:
+
+A shorter assessment with stronger conclusions is preferable to a longer assessment filled with weaker observations.
+
+```markdown
+---
+
+# Cassandra Assessment Specification
+
+Every assessment should communicate a clear point of view while remaining grounded in evidence.
+
+The assessment should be concise, prioritized, and immediately useful to decision-makers.
+
+Use the following structure.
 
 # Cassandra Assessment
 
-Generated by the Stress Test Skill
+*Generated by the Stress Test Skill*
 
-This assessment identifies the most credible failure modes, hidden assumptions, and preventable risks associated with the proposed plan. The goal is not to predict the future with certainty, but to surface warnings early enough that they can still be acted upon.
+A Cassandra Assessment identifies the most credible failure modes, hidden assumptions, and preventable risks associated with the proposed plan. Its purpose is not to predict the future with certainty, but to expose the most likely ways a plan could fail while there is still time to improve it.
 
-The name comes from Cassandra of Greek mythology, who was granted the ability to foresee disasters but cursed to have her warnings ignored.
+---
 
-A Cassandra Assessment is designed to surface credible warnings before resources are committed and while corrective action remains possible.
-
-## Executive Summary
-
-### Most Likely Failure
-
-* Failure:
-* Why:
-* Assumption:
-
-### Most Dangerous Failure
-
-* Failure:
-* Why:
-
-### Cheapest Failure to Prevent
-
-* Failure:
-* Action:
-
-### Hidden Assumption
-
-* Assumption:
-
-### Readiness Recommendation
+## Overall Assessment
 
 Choose one:
 
-* Ready for Risk Reduction
-* Conditionally Ready for Risk Reduction
-* Not Ready for Risk Reduction
+- Ready for Risk Reduction
+- Conditionally Ready for Risk Reduction
+- Not Ready for Risk Reduction
 
-Provide no more than 5 supporting bullets.
+Briefly explain the reasoning behind the assessment.
+
+---
+
+## Executive Summary
+
+Include:
+
+- Most Likely Failure
+- Most Dangerous Failure
+- Cheapest Failure to Prevent
+- Hidden Assumption
+
+Keep each finding concise and decision-oriented.
 
 ---
 
 ## Failure Modes
 
-Use an HTML table in the generated artifact.
+Present as an HTML table containing:
 
-Columns:
+| Failure Mode | Likelihood | Impact | Early Warning Sign |
 
-* Failure Mode
-* Likelihood
-* Impact
-* Warning Sign
+Include only the highest-value failure modes.
 
-Rules:
-
-* Limit to the 5 highest-value failure modes.
-* Keep warning signs brief.
-* Use short phrases rather than paragraphs.
-* Do not provide narrative explanations inside the table.
+Maximum: 5
 
 ---
 
 ## Base-Rate Analysis
 
-Use an HTML table in the generated artifact.
+Present as an HTML table.
 
-Columns:
+| Failure Mode | Probability | Base-Rate Rationale |
 
-* Failure Mode
-* Probability
-* Base-Rate Rationale
+Do not invent statistics.
 
-Rules:
-
-* Limit rationale to one sentence per row.
-* Do not invent statistics.
-* Use qualitative judgment when precise data is unavailable.
+Use qualitative probability whenever precise historical data is unavailable.
 
 ---
 
 ## Organizational Failure Patterns
 
-Use an HTML table in the generated artifact.
+Present as an HTML table.
 
-Columns:
+| Pattern | Why It Matters |
 
-* Pattern
-* Why It Matters
+Maximum: 3
 
-Rules:
-
-* Include no more than 3 patterns.
-* Keep each explanation to one sentence.
+Only include patterns that materially contribute to failure.
 
 ---
 
-## Revised Plan Recommendations
+## Revised Plan
 
-Use an HTML table in the generated artifact.
+Present as an HTML table.
 
-Columns:
+| Priority | Recommendation | Failure Modes Addressed |
 
-* Priority
-* Recommendation
-* Failure Modes Addressed
+Recommendations should be:
 
-Rules:
+- concrete
+- actionable
+- proportional to the identified risks
 
-* Include no more than 5 recommendations.
-* Recommendations should be concrete and actionable.
-* Each recommendation should map to one or more failure modes.
+Maximum: 5
 
 ---
 
 ## Pre-Launch Checklist
 
-Provide no more than 5 checklist items.
+Provide no more than five items.
 
-Each item should:
-
-* validate a critical assumption
-
-or
-
-* prevent a high-impact failure
+Every checklist item should validate a critical assumption or prevent a high-impact failure.
 
 ---
 
 ## Early Warning Indicators
 
-Use an HTML table in the generated artifact.
+Present as an HTML table.
 
-Columns:
+| Indicator | Why It Matters |
 
-* Indicator
-* Why It Matters
+Maximum: 5
 
-Rules:
-
-* Include no more than 5 indicators.
-* Avoid timelines, phases, and extended commentary.
+Indicators should be observable signals that suggest a failure mode is beginning to emerge.
 
 ---
 
 ## Recommended Follow-Up
 
-If the plan is Ready or Conditionally Ready for Risk Reduction, recommend running the risk-reduction skill to convert the failure modes into a prioritized mitigation backlog.
+If the assessment is **Ready** or **Conditionally Ready**, recommend running the Risk Reduction Skill.
 
-If the plan is Not Ready for Risk Reduction, state what minimum clarification or validation is needed first.
-
-
----
-
-## Failure Modes
-
-Use an HTML table in the generated artifact.
-
-Columns:
-
-* Failure Mode
-* Likelihood
-* Impact
-* Warning Sign
-
-Rules:
-
-* Limit to the 5 highest-value failure modes.
-* Keep warning signs brief.
-* Use short phrases rather than paragraphs.
-* Do not provide narrative explanations inside the table.
+If **Not Ready**, explain the minimum clarification, validation, or planning required before meaningful risk reduction can begin.
 
 ---
 
-## Base-Rate Analysis
+# HTML Guidance
 
-Use an HTML table in the generated artifact.
+When HTML generation is available:
 
-Columns:
+- Generate one self-contained HTML document.
+- Use semantic HTML headings.
+- Use bordered HTML tables.
+- Use simple inline CSS.
+- Keep typography clean and readable.
+- Require no JavaScript or external assets.
+- Include a generated timestamp when practical.
 
-* Failure Mode
-* Probability
-* Base-Rate Rationale
+The HTML document is the durable artifact.
 
-Rules:
-
-* Limit rationale to one sentence per row.
-* Do not invent statistics.
-* Use qualitative judgment when precise data is unavailable.
-
----
-
-## Organizational Failure Patterns
-
-Use an HTML table in the generated artifact.
-
-Columns:
-
-* Pattern
-* Why It Matters
-
-Rules:
-
-* Include no more than 3 patterns.
-* Keep each explanation to one sentence.
+The chat response is only a summary.
 
 ---
 
-## Revised Plan Recommendations
+# Deep Dive Mode
 
-Use an HTML table in the generated artifact.
+Deep Dive Mode extends—not replaces—the standard Cassandra Assessment.
 
-Columns:
+After producing the standard assessment, expand selected failure modes as appropriate.
 
-* Priority
-* Recommendation
-* Failure Modes Addressed
+Each expanded failure mode may include:
 
-Rules:
+- Failure Story
+- Underlying Assumption
+- Escalation Path
+- Early Warning Signs
+- Prevention Options
 
-* Include no more than 5 recommendations.
-* Recommendations should be concrete and actionable.
-* Each recommendation should map to one or more failure modes.
+Deep Dive should provide additional insight rather than additional volume.
 
----
-
-## Pre-Launch Checklist
-
-Provide no more than 5 checklist items.
-
-Each item should:
-
-* validate a critical assumption
-
-or
-
-* prevent a high-impact failure
+Do not expand every failure mode simply because Deep Dive Mode was requested.
 
 ---
 
-## Early Warning Indicators
+# Chat Response
 
-Use an HTML table in the generated artifact.
+When an HTML artifact is generated, do not reproduce the assessment in chat.
 
-Columns:
+Instead provide:
 
-* Indicator
-* Why It Matters
+1. Generated file path.
+2. Overall Assessment.
+3. Most Likely Failure.
+4. Highest-priority recommendation.
 
-Rules:
-
-* Include no more than 5 indicators.
-* Avoid timelines, phases, and extended commentary.
-
----
-
-## Recommended Follow-Up
-
-If the plan is Ready or Conditionally Ready for Risk Reduction, recommend running the risk-reduction skill to convert the failure modes into a prioritized mitigation backlog.
-
-If the plan is Not Ready for Risk Reduction, state what minimum clarification or validation is needed first.
-
----
-
-# Default Mode Prohibitions
-
-Default Mode must not:
-
-* generate failure stories
-* generate workshop narratives
-* generate investigator reports
-* deep-dive every failure mode
-* provide exhaustive analysis
-* explain every risk in detail
-* produce more than 5 failure modes
-* produce more than 5 recommendations
-* produce more than 5 checklist items
-* produce more than 5 early warning indicators
-
-Narrative exploration belongs exclusively in Deep Dive Mode.
-
----
-
-# Deep Dive Mode Rules
-
-Deep Dive Mode extends the standard Stress Test.
-
-For each selected failure mode, Deep Dive Mode may include:
-
-### Failure Story
-
-A realistic narrative explaining how the failure unfolded.
-
-### Underlying Assumption
-
-The assumption that enabled the failure.
-
-### Early Warning Signs
-
-Observable indicators that the failure is beginning to occur.
-
-### Prevention Options
-
-Actions that could have prevented or reduced the failure.
-
-Deep Dive Mode may produce longer, workshop-level analysis.
-
-Deep Dive Mode should still avoid generic risks and vague advice.
-
-When the environment supports file creation, Deep Dive Mode should also generate an HTML artifact.
-
-Default file name pattern:
-
-```text
-examples/[descriptive-name]-stress-test-deep-dive.html
-```
-
----
-
-# Chat Response Format
-
-After completing the analysis, provide a brief chat summary.
-
-Do not paste the full report into chat if an HTML artifact was generated.
-
-The chat summary should include:
-
-1. Generated file path
-2. Most Likely Failure
-3. Most Important Revision
-
-Limit the chat summary to three sentences.
+Limit the chat response to three or four concise sentences.
 
 ---
 
 # Quality Bar
 
-A good Stress Test is:
+A strong Cassandra Assessment is:
 
-* specific
-* uncomfortable
-* practical
-* grounded in context
-* focused on preventable failure
-* clear about what should change next
-* delivered in a format that is easy to read, share, and reuse
+- specific
+- evidence-based
+- willing to reach conclusions
+- appropriately skeptical
+- actionable
+- concise
+- grounded in organizational reality
 
-A weak Stress Test is:
+A weak Cassandra Assessment is:
 
-* generic
-* overly polite
-* exhaustive for its own sake
-* detached from context
-* vague in its recommendations
-* formatted in a way that does not render cleanly
+- generic
+- exhaustive for its own sake
+- reluctant to prioritize
+- dominated by speculation
+- detached from the actual plan
+- filled with recommendations that would not change a decision
+
+When deciding between completeness and usefulness, choose usefulness.
 
 ---
 
-# Important Distinction
+# Philosophy
 
 A review asks:
 
-> Is this a good idea?
+> Is this a good plan?
 
 A council asks:
 
@@ -756,5 +650,12 @@ A Stress Test asks:
 
 > This failed. Why?
 
-Use this skill when failure-first analysis is the right tool.
+A Cassandra Assessment answers:
+
+> Given what we know today, what are the most credible reasons this plan could fail, and what should we change before reality teaches us the same lesson?
+
+The purpose of this skill is not to predict the future.
+
+Its purpose is to improve decisions before commitments become expensive to reverse.
+```
 
