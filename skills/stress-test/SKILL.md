@@ -33,6 +33,24 @@ The **Cassandra Assessment** is the artifact it produces.
 
 ---
 
+# Required Report Structure
+
+Every Stress Test must produce a complete **Cassandra Assessment** using the following sections, in this order.
+
+1. Leadership Brief
+2. Executive Summary
+3. Base Rate Analysis
+4. Failure Modes
+5. Revised Plan
+6. Pre-Launch Checklist
+7. Recommended Follow-Up
+
+Do not omit any section. If evidence is insufficient for a required section, explicitly state **"Insufficient Evidence"** rather than removing the section.
+
+The Leadership Brief is intended for leaders who need to understand the assessment quickly. The remainder of the Cassandra Assessment provides the supporting evidence, rationale, and detailed analysis behind the conclusions presented in the Leadership Brief.
+
+---
+
 # Core Principles
 
 Every Stress Test should follow these principles.
@@ -464,6 +482,63 @@ Choose one:
 Briefly explain the reasoning behind the assessment.
 
 ---
+# Leadership Brief
+
+The Leadership Brief is a concise, email-ready summary intended for decision-makers.
+
+It should be possible to copy this section directly into an email, chat message, Jira comment, or project update without modification.
+
+Do not include greetings, email addresses, subject lines, or other email formatting.
+
+The Leadership Brief should be approximately 250–400 words and contain the following sections in this order.
+
+## Purpose
+
+Provide a single sentence describing what the Stress Test is doing.
+
+Use a factual, matter-of-fact explanation.
+
+Example:
+
+> This stress test reviews a proposed initiative by assuming it has failed, then working backward to identify the most credible causes of failure and the actions most likely to improve the plan before execution begins.
+
+## Project
+
+State the project or initiative being assessed.
+
+## Most Dangerous Failure
+
+Provide the single failure mode with the greatest potential impact if it occurs.
+
+Explain why it matters in no more than two short paragraphs.
+
+## Most Likely Failure
+
+Provide the failure mode judged most likely to occur.
+
+Explain why it is considered the most likely in no more than two short paragraphs.
+
+## Top Prioritized Recommendations
+
+Provide the two or three recommendations that would most improve the project's likelihood of success.
+
+Recommendations should be specific, actionable, and ordered by expected impact.
+
+## Pre-Launch Checklist
+
+Provide a concise checklist containing only the highest-value readiness items that should be completed before significant execution begins.
+
+Limit the checklist to approximately five to eight items.
+
+## Readiness Recommendation
+
+Provide the overall readiness recommendation using the existing assessment categories.
+
+This recommendation should be consistent with the Executive Summary that follows.
+
+End the Leadership Brief with a single sentence explaining that the detailed Cassandra Assessment begins immediately below and provides the supporting analysis for these conclusions.
+
+---
 
 ## Executive Summary
 
@@ -634,6 +709,21 @@ A weak Cassandra Assessment is:
 
 When deciding between completeness and usefulness, choose usefulness.
 
+---
+## Final Validation
+
+Before returning the Cassandra Assessment, verify that all required sections are present.
+
+Confirm that:
+
+- A Leadership Brief appears first.
+- The Leadership Brief contains every required subsection.
+- The Executive Summary follows the Leadership Brief.
+- Base Rate Analysis is rendered as an HTML table.
+- Failure Modes are rendered as an HTML table.
+- The Readiness Recommendation is consistent throughout the document.
+
+If any required section is missing, regenerate the report before responding.
 ---
 
 # Philosophy
